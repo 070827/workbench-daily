@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>创作情报中枢 · 自媒体工作台</title>
+<style>
+:root{
+ --bg:#FAF7F0; --card:#FFFFFF; --ink:#3A3F45; --sub:#8A919B; --line:#F0EAE0;
+ --blue:#4A90D9; --blue2:#6FA8E0; --blueBg:#E9F2FC; --blueDeep:#2E6CB8;
+ --green:#5FA47A; --greenBg:#E9F4EE; --orange:#E8935A; --orangeBg:#FDF0E4;
+ --purple:#9B7ED8; --purpleBg:#F1EBFB; --red:#D9685C; --redBg:#FBE9E7;
+ --radius:18px; --shadow:0 3px 16px rgba(170,150,110,.08); --shadowSoft:0 2px 8px rgba(170,150,110,.05);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;font-size:14px;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:14px 14px 100px}
+header.top{position:sticky;top:0;z-index:50;background:rgba(250,247,240,.94);backdrop-filter:blur(8px);padding:10px 14px 6px;border-bottom:1px solid var(--line)}
+.toprow{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px;color:var(--blueDeep)}
+.logo .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),#9BC3EC);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px}
+.syncbar{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--sub);background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 10px;cursor:pointer}
+.syncbar .st{width:8px;height:8px;border-radius:50%;background:#C9CDD3}
+.syncbar .st.on{background:var(--green)} .syncbar .st.off{background:var(--orange)}
+nav.main{max-width:960px;margin:8px auto 0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.main::-webkit-scrollbar{display:none}
+nav.main a{flex:0 0 auto;padding:7px 16px;border-radius:20px;font-size:13px;color:var(--sub);text-decoration:none;white-space:nowrap;transition:.2s}
+nav.main a.on{background:var(--blue);color:#fff;font-weight:500}
+.pages{margin-top:14px}
+.page{display:none;animation:fade .25s ease}
+.page.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+h2.ptitle{font-size:17px;font-weight:600;margin:4px 0 12px;display:flex;align-items:center;gap:8px}
+h2.ptitle .sub{font-size:12px;color:var(--sub);font-weight:400}
+.subnav{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.subnav a{padding:7px 15px;border-radius:18px;font-size:12px;color:var(--sub);background:var(--card);border:1px solid rgba(240,234,224,.8);text-decoration:none;cursor:pointer}
+.subnav a.on{background:var(--blueBg);color:var(--blueDeep);border-color:#D3E6F8;font-weight:500}
+.sec{background:var(--card);border:1px solid rgba(240,234,224,.55);border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:var(--shadow)}
+.sec h3{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sec h3 .tag{font-size:11px;font-weight:400;color:var(--sub);background:var(--bg);padding:2px 8px;border-radius:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:640px){.grid3{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
+.card{border:1px solid rgba(240,234,224,.6);border-radius:16px;padding:14px;cursor:pointer;transition:.18s;background:#fff;box-shadow:var(--shadowSoft)}
+.card:active{transform:scale(.98)}
+.card h4{font-size:13px;font-weight:600;margin-bottom:4px}
+.card .d{font-size:12px;color:var(--sub)}
+.card .m{font-size:12px;color:var(--sub);margin-top:6px;display:flex;gap:5px;flex-wrap:wrap}
+.chip{display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;background:var(--blueBg);color:var(--blueDeep)}
+.chip.g{background:var(--greenBg);color:#3E7A56}.chip.o{background:var(--orangeBg);color:#B4693C}.chip.p{background:var(--purpleBg);color:#6E52AC}.chip.r{background:var(--redBg);color:#B04A40}
+.chip.n{background:#F1EFE8;color:#5F5E5A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:8px 16px;border-radius:20px;border:none;font-size:13px;cursor:pointer;background:var(--blue);color:#fff;font-family:inherit;transition:.18s}
+.btn:active{transform:scale(.96)}
+.btn.ghost{background:var(--card);color:var(--blueDeep);border:1px solid #C9DFF5}
+.btn.mini{padding:4px 11px;font-size:12px;border-radius:14px}
+.btn.green{background:var(--green)}.btn.orange{background:var(--orange)}.btn.red{background:var(--red)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+input[type=text],input[type=number],input[type=date],input[type=time],input[type=url],input[type=email],textarea,select{width:100%;padding:11px 14px;border:1px solid #EFE9DC;border-radius:12px;font-size:13px;font-family:inherit;background:#FDFCF9;color:var(--ink);outline:none;transition:.18s;box-sizing:border-box}
+input:focus,textarea:focus,select:focus{border-color:var(--blue2);background:#fff;box-shadow:0 0 0 3px rgba(74,144,217,.08)}
+textarea{resize:vertical;min-height:90px}
+input::placeholder,textarea::placeholder{color:#928C80;font-size:12px}
+label.fl{display:block;font-size:12px;color:var(--sub);margin:12px 0 5px;font-weight:500}
+.form-stack{display:flex;flex-direction:column;gap:12px}
+.form-stack .form-field{width:100%}
+.form-line{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.form-line .field,.form-line .form-field{display:flex;flex-direction:column;gap:5px}
+.form-line .field label,.form-line .form-field label{font-size:12px;color:var(--sub);font-weight:500}
+.form-line .field input,.form-line .field select,.form-line .form-field input,.form-line .form-field select{height:42px;padding:0 12px}
+.heart{background:var(--blueBg);border-radius:12px;padding:14px;margin-bottom:12px}
+.heart .big{font-size:14px;font-weight:600;color:var(--blueDeep)}
+.heart .small{font-size:12px;color:var(--sub);margin-top:4px}
+.bar{height:8px;background:#EFEBE2;border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:6px;background:var(--blue)}
+.bar.i1{background:var(--blue)}.bar.i2{background:var(--green)}.bar.i3{background:var(--orange)}.bar.i4{background:var(--purple)}
+.scoreline{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}
+.scoreline .lb{width:56px;color:var(--sub);flex:0 0 auto}
+.scoreline .br{flex:1}
+.scoreline .num{width:24px;text-align:right;font-weight:600;color:var(--blueDeep)}
+table.tbl{width:100%;border-collapse:collapse;font-size:12px}
+table.tbl th{text-align:left;color:var(--sub);font-weight:500;padding:6px 8px;border-bottom:1px solid var(--line)}
+table.tbl td{padding:8px;border-bottom:1px solid #F3EFE6;vertical-align:top}
+table.tbl tr:last-child td{border-bottom:none}
+.listitem{display:flex;gap:10px;padding:11px 4px;border-bottom:1px solid #F3EFE6;align-items:flex-start}
+.listitem:last-child{border-bottom:none}
+.listitem .ic{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;flex:0 0 auto}
+.listitem .bd{flex:1;min-width:0}
+.listitem .bd .t{font-size:13px;font-weight:500}
+.listitem .bd .d{font-size:12px;color:var(--sub);margin-top:2px}
+.modal-mask{position:fixed;inset:0;background:rgba(40,44,52,.45);z-index:100;display:none;align-items:flex-end;justify-content:center}
+.modal-mask.on{display:flex}
+.modal{background:#fff;border-radius:24px 24px 0 0;width:100%;max-width:560px;max-height:86vh;overflow-y:auto;padding:20px 20px 24px;animation:up .25s ease}
+@keyframes up{from{transform:translateY(30px);opacity:0}}
+.modal h3{font-size:15px;font-weight:600;margin-bottom:12px}
+.modal .close{position:sticky;top:0;float:right;width:28px;height:28px;border-radius:50%;background:var(--bg);border:none;font-size:15px;color:var(--sub);cursor:pointer}
+.toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);background:rgba(46,60,76,.92);color:#fff;padding:9px 20px;border-radius:20px;font-size:13px;z-index:200;display:none}
+.hotitem{display:flex;gap:10px;padding:10px 2px;border-bottom:1px solid #F3EFE6;align-items:flex-start}
+.hotitem .rk{width:22px;height:22px;border-radius:7px;background:var(--blueBg);color:var(--blueDeep);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.hotitem .bd{flex:1}.hotitem .heat{font-size:11px;color:var(--sub);white-space:nowrap}
+.hot-link{color:var(--ink);text-decoration:none;font-weight:600;border-bottom:1px dashed var(--blue2);transition:.15s}
+.hot-link:hover{color:var(--blueDeep);border-bottom-style:solid;background:var(--blueBg);padding:0 2px;border-radius:4px}
+.card .hot-link{font-size:15px;border-bottom:none}
+.card .hot-link:hover{background:transparent;padding:0;text-decoration:underline}
+.stage{display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px}
+.stage.up{background:var(--greenBg);color:#3E7A56}.stage.flat{background:#F1EFE8;color:#5F5E5A}.stage.down{background:var(--redBg);color:#B04A40}
+.kv{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.kv:last-child{border-bottom:none}.kv .k{color:var(--sub)}
+.warnbox{background:var(--orangeBg);border:1px solid #F5D9BF;border-radius:12px;padding:12px;font-size:12px;color:#8A5A33;margin:10px 0}
+.checklist label{display:flex;gap:10px;align-items:flex-start;padding:8px 4px;border-bottom:1px solid #F3EFE6;font-size:13px;cursor:pointer}
+.checklist input[type=checkbox]{margin-top:4px;accent-color:var(--blue)}
+.checklist .done{color:#B9BEC4;text-decoration:line-through}
+.checklist textarea.prep-note{width:100%;min-height:54px;padding:7px 10px;border:1px solid #EFE9DC;border-radius:10px;font-size:12px;line-height:1.5;background:#FDFCF9;color:var(--ink);margin:0 0 10px 0;resize:vertical;outline:none;transition:.18s}
+.checklist textarea.prep-note:focus{border-color:var(--blue2);background:#fff;box-shadow:0 0 0 3px rgba(74,144,217,.08)}
+.checklist textarea.prep-note::placeholder{color:#A8A192;font-size:12px}
+.qitem{background:var(--card);border:1px solid rgba(240,234,224,.6);border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:var(--shadowSoft)}
+.qitem .q{font-size:13px;font-weight:600;margin-bottom:6px}
+.qitem pre{background:var(--bg);border-radius:10px;padding:10px;font-size:12px;white-space:pre-wrap;color:#4A5058;font-family:inherit;margin-bottom:8px;max-height:200px;overflow-y:auto}
+.promptlist{display:grid;gap:10px}
+.fomula{background:var(--blueBg);border-radius:12px;padding:12px;margin-bottom:10px}
+.fomula .f{font-size:13px;font-weight:600;color:var(--blueDeep)}
+.fomula .e{font-size:12px;color:#4A5A6B;margin-top:4px}
+.timeline{position:relative;padding-left:20px}
+.timeline:before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:#E3EAF2}
+.tlitem{position:relative;padding:0 0 14px}
+.tlitem:before{content:'';position:absolute;left:-17px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.tlitem h5{font-size:13px;font-weight:600}.tlitem p{font-size:12px;color:var(--sub);margin-top:2px}
+.cal-item{display:flex;gap:12px;padding:9px 2px;border-bottom:1px solid #F3EFE6;align-items:flex-start}
+.cal-item .dt{flex:0 0 64px;text-align:center;background:var(--blueBg);border-radius:10px;padding:6px 2px}
+.cal-item .dt b{display:block;font-size:16px;color:var(--blueDeep)}
+.cal-item .dt span{font-size:10px;color:var(--sub)}
+.cal-item .bd{flex:1}.cal-item .bd .t{font-size:13px;font-weight:500}
+.cal-item .bd .d{font-size:12px;color:var(--sub);margin-top:2px}
+#homeCalendar{cursor:pointer;transition:.15s}
+#homeCalendar:hover{box-shadow:0 6px 18px rgba(74,144,217,.1)}
+.soon{background:var(--greenBg);border-color:#C4E3D2}
+.trackcard{border:1px solid rgba(240,234,224,.6);border-radius:18px;padding:16px;margin-bottom:12px;background:#fff;box-shadow:var(--shadowSoft)}
+.trackcard .hd{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.trackcard .hd .nm{font-size:15px;font-weight:600}
+.trackcard .hd .st{font-size:11px;padding:2px 8px;border-radius:10px}
+.trackcard .hd .st.c{background:var(--greenBg);color:#3E7A56}
+.trackcard .hd .st.p{background:var(--blueBg);color:var(--blueDeep)}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+.stat{background:var(--card);border:1px solid rgba(240,234,224,.6);border-radius:16px;padding:12px;text-align:center;box-shadow:var(--shadowSoft);cursor:pointer;transition:.15s}
+.stat:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(74,144,217,.12);border-color:rgba(74,144,217,.25)}
+.stat b{display:block;font-size:18px;color:var(--blueDeep)}
+.stat span{font-size:11px;color:var(--sub)}
+.empty{text-align:center;color:#C0C4CA;font-size:12px;padding:22px 10px;background:var(--bg);border-radius:14px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.form-field{display:flex;flex-direction:column;gap:5px}
+.form-field label{font-size:12px;color:var(--sub);font-weight:500}
+.form-field input,.form-field select{width:100%;height:42px;padding:0 12px;border:1px solid #EFE9DC;border-radius:12px;font-size:13px;font-family:inherit;background:#FDFCF9;color:var(--ink);outline:none;box-sizing:border-box}
+.form-field input:focus,.form-field select:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(74,144,217,.12)}
+.form-field input[type=date]{padding-right:8px}
+.form-field.full{grid-column:1 / -1}
+.form-field textarea{width:100%;padding:11px 14px;border:1px solid #EFE9DC;border-radius:12px;font-size:13px;font-family:inherit;background:#FDFCF9;color:var(--ink);outline:none;box-sizing:vertical;min-height:90px;resize:vertical}
+.form-field textarea:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(74,144,217,.08)}
+.creator-card{display:flex;gap:12px;padding:14px;border:1px solid rgba(240,234,224,.6);border-radius:18px;background:#fff;box-shadow:var(--shadowSoft);cursor:pointer;transition:.18s;margin-bottom:10px}
+.creator-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(74,144,217,.1);border-color:rgba(74,144,217,.2)}
+.creator-card:active{transform:scale(.99)}
+.creator-card .av{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto;background:var(--blueBg);color:var(--blueDeep)}
+.creator-card .bd{flex:1;min-width:0}
+.creator-card .bd .t{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.creator-card .bd .d{font-size:12px;color:var(--sub);margin-top:4px;line-height:1.5}
+.creator-card .bd .tags{margin-top:6px;display:flex;gap:5px;flex-wrap:wrap}
+.creator-card .meta{flex:0 0 auto;text-align:right;display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.creator-card .meta .score{font-size:18px;font-weight:700;color:var(--blueDeep)}
+.creator-card .meta .score-label{font-size:10px;color:var(--sub)}
+.detail-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.detail-head .av{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--blueBg);color:var(--blueDeep);flex:0 0 auto}
+.detail-head .info{flex:1}
+.detail-head .info h3{font-size:16px;font-weight:600;margin-bottom:4px}
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.metric-box{background:var(--bg);border-radius:12px;padding:10px;text-align:center}
+.metric-box b{display:block;font-size:15px;color:var(--blueDeep)}
+.metric-box span{font-size:10px;color:var(--sub)}
+.pill-tabs{display:flex;gap:6px;margin:14px 0 10px;flex-wrap:wrap}
+.pill-tabs a{padding:6px 14px;border-radius:20px;font-size:12px;color:var(--sub);background:var(--bg);cursor:pointer;border:1px solid transparent}
+.pill-tabs a.on{background:var(--blueBg);color:var(--blueDeep);border-color:#D3E6F8;font-weight:500}
+.video-card{border:1px solid rgba(240,234,224,.6);border-radius:16px;padding:13px;margin-bottom:10px;background:#fff;box-shadow:var(--shadowSoft)}
+.video-card .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.video-card .hd .t{font-size:13px;font-weight:600;flex:1}
+.video-card .metrics{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--sub);margin-bottom:8px}
+.video-card .metrics b{color:var(--ink)}
+.video-card .body{font-size:12px;color:var(--sub);line-height:1.6}
+.video-card .body .lb{color:var(--ink);font-weight:500}
+.video-card .score-row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.video-card .score-row .bar{flex:1;height:6px}
+.empty-mini{text-align:center;color:#BFC3C9;font-size:12px;padding:18px 10px;background:var(--bg);border-radius:12px}
+/* ===================== 赛道决策页 ===================== */
+.decnav{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;position:sticky;top:74px;z-index:40;background:rgba(250,247,240,.96);backdrop-filter:blur(8px);padding:6px 2px;border-radius:14px}
+.decnav a{padding:6px 13px;border-radius:16px;font-size:12px;color:var(--sub);background:var(--card);border:1px solid rgba(240,234,224,.8);text-decoration:none;cursor:pointer;white-space:nowrap}
+.decnav a.on{background:var(--blueBg);color:var(--blueDeep);border-color:#D3E6F8;font-weight:500}
+#pg-decision .sec{scroll-margin-top:120px}
+.dec-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#E9F2FC 0%,#FDF0E4 100%);border-radius:20px;padding:22px 20px;margin-bottom:14px;box-shadow:var(--shadow)}
+.dec-hero .nm{font-size:21px;font-weight:700;color:var(--blueDeep);margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dec-hero .nm .tag{font-size:11px;font-weight:500;background:var(--green);color:#fff;padding:2px 10px;border-radius:12px}
+.dec-hero .tl{font-size:13px;color:#4A5A6B;margin-bottom:14px;line-height:1.7}
+.dec-hero .bigscore{position:absolute;right:18px;top:16px;text-align:center;background:rgba(255,255,255,.75);border-radius:16px;padding:8px 14px}
+.dec-hero .bigscore b{display:block;font-size:26px;color:var(--blueDeep);line-height:1.1}
+.dec-hero .bigscore span{font-size:10px;color:var(--sub)}
+.dec-hero .keys{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.dec-hero .keys i{font-style:normal;font-size:11px;padding:4px 10px;border-radius:12px;background:#fff;color:var(--blueDeep);border:1px solid #D3E6F8}
+.dec-actions{display:flex;gap:8px;flex-wrap:wrap}
+.logic-list{display:grid;gap:8px}
+.logic-item{display:flex;gap:10px;align-items:flex-start;background:var(--bg);border-radius:12px;padding:10px 12px}
+.logic-item .no{width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px}
+.logic-item .bd{flex:1}
+.logic-item .bd .t{font-size:13px;font-weight:600}
+.logic-item .bd .t em{font-style:normal;color:var(--blueDeep)}
+.logic-item .bd .d{font-size:12px;color:var(--sub);margin-top:2px;line-height:1.6}
+.logic-item .verdict{margin-top:6px;font-size:12px;background:#fff;border-left:3px solid var(--blue);border-radius:8px;padding:5px 10px;color:#4A5058}
+.matrix-wrap{background:var(--bg);border-radius:14px;padding:12px;margin-bottom:10px}
+.matrix-wrap .mtitle{font-size:12px;color:var(--sub);text-align:center;margin-bottom:6px}
+.matrix-wrap .mtitle b{color:var(--ink)}
+.matrix-box{position:relative;width:100%;max-width:520px;margin:0 auto;aspect-ratio:16/10}
+.matrix-box svg{width:100%;height:100%;display:block}
+.mx-quad{font-size:11px;line-height:1.5}
+.mx-quad b{display:block;font-size:12px;margin-bottom:2px}
+.mx-point{font-size:11px;font-weight:600}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media(max-width:640px){.flow{grid-template-columns:1fr 1fr}}
+.flow .fs{position:relative;background:#fff;border:1px solid rgba(240,234,224,.6);border-radius:14px;padding:12px;box-shadow:var(--shadowSoft)}
+.flow .fs .stage{display:block;margin-bottom:6px;font-weight:600}
+.flow .fs .act{font-size:12px;color:var(--sub);line-height:1.6}
+.flow .fs:not(:last-child):after{content:'→';position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:#C9CDD3;font-size:15px;z-index:2}
+@media(max-width:640px){.flow .fs:nth-child(2n):after{content:''}}
+.redline-grid{display:grid;gap:8px}
+.redline-item{display:flex;gap:10px;align-items:flex-start;border-radius:12px;padding:11px 13px;background:var(--redBg);border:1px solid #F5CFCB}
+.redline-item .ic{font-size:16px;flex:0 0 auto}
+.redline-item .bd .t{font-size:13px;font-weight:600;color:#B04A40}
+.redline-item .bd .d{font-size:12px;color:#8A5A55;margin-top:2px;line-height:1.6}
+.sec-num{font-size:12px;color:var(--blueDeep);background:var(--blueBg);padding:2px 9px;border-radius:10px;font-weight:600}
+.sec h3 .t{display:flex;align-items:center;gap:8px}
+.sec h3 .t i{font-style:normal;font-size:12px;color:var(--sub);font-weight:400}
+.dec-tip{display:flex;gap:8px;align-items:center;background:var(--blueBg);border:1px solid #D3E6F8;border-radius:12px;padding:10px 12px;font-size:12px;color:var(--blueDeep);margin-bottom:12px}
+.foot{text-align:center;color:#B9BEC4;font-size:11px;padding:20px 0 10px}
+.mobilebar{display:none}
+@media(max-width:640px){
+ .wrap{padding:10px 10px 96px}
+ .desk-only{display:none}
+ .mobilebar{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);z-index:90;padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
+ .mobilebar a{flex:1;text-align:center;padding:5px 0;font-size:10px;color:var(--sub);text-decoration:none}
+ .mobilebar a b{display:block;font-size:17px;font-weight:400}
+ .mobilebar a.on{color:var(--blue)}
+ .mobilebar .plus{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);flex:none;width:0;padding:0;margin:0}
+ .mobilebar .plus b{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-size:22px;font-weight:400;box-shadow:0 4px 14px rgba(74,144,217,.4);border:3px solid #fff;display:flex;align-items:center;justify-content:center}
+ .listitem .bd .t{word-break:break-word;white-space:normal}
+ .modal{max-height:90vh}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="top">
+ <div class="toprow">
+  <div class="logo"><div class="dot">✦</div>创作情报中枢</div>
+  <div style="display:flex;align-items:center;gap:8px">
+   <button class="btn mini desk-only" style="background:var(--blue);color:#fff;font-weight:600" onclick="openCollect()">＋ 采集</button>
+   <div class="syncbar" onclick="openModal('syncModal')"><span class="st" id="syncDot"></span><span id="syncTxt">本地存储</span></div>
+  </div>
+ </div>
+ <nav class="main" id="mainNav">
+  <a data-p="home" class="on">首页</a>
+  <a data-p="insp">灵感</a>
+  <a data-p="create">创作</a>
+  <a data-p="intel">情报</a>
+  <a data-p="ops">运营</a>
+ </nav>
+</header>
+
+<div class="pages">
+
+<!-- ============ 首页 · 概览仪表盘 ============ -->
+<div class="page on" id="pg-home">
+ <h2 class="ptitle">首页 <span class="sub" id="homeDate"></span></h2>
+ <div class="heart">
+  <div class="big" id="homeGreet"></div>
+  <div class="small" id="homeTip"></div>
+ </div>
+ <div class="statrow">
+  <div class="stat" onclick="homeStat('insp')"><b id="stInsp">0</b><span>今日热点</span></div>
+  <div class="stat" onclick="homeStat('pool')"><b id="stPool">0</b><span>选题</span></div>
+  <div class="stat" onclick="homeStat('done')"><b id="stDone">0</b><span>已发布</span></div>
+  <div class="stat" onclick="homeStat('creator')"><b id="stCreator">0</b><span>对标账号</span></div>
+ </div>
+ <div class="sec" id="homeDailyHot"></div>
+ <div class="sec" id="homeDecision"></div>
+ <div class="sec" id="homeCalendar" onclick="openCalendarModal()"></div>
+ <div class="sec">
+  <h3>下一步该做什么 <span class="tag" id="homeNextTag">运营期</span></h3>
+  <div id="homeNext"></div>
+ </div>
+ <div class="sec" id="homePrepWrap">
+  <h3>开号筹备进度 <span class="tag" id="homePrepPct"></span></h3>
+  <div id="homePrep"></div>
+ </div>
+</div>
+
+<!-- ============ 灵感（独立页：采集 → 整理 → 转选题） ============ -->
+<div class="page" id="pg-insp">
+ <h2 class="ptitle">灵感 <span class="sub">采集入库 · 灵感流 · 灵感库</span></h2>
+ <div class="subnav" id="subnav-insp">
+  <a data-s="collect" class="on">采集入库</a>
+  <a data-s="flow">灵感流</a>
+  <a data-s="lib">灵感库</a>
+ </div>
+ <div class="subpage" id="sp-collect"></div>
+ <div class="subpage" id="sp-flow" style="display:none"></div>
+ <div class="subpage" id="sp-lib" style="display:none"></div>
+</div>
+
+<!-- ============ 创作（选题 → 大纲 → 提示词 → 素材） ============ -->
+<div class="page" id="pg-create">
+ <h2 class="ptitle">内容创作 <span class="sub">选题池 · 大纲工坊 · 提示词 · 素材</span></h2>
+ <div class="subnav" id="subnav-create">
+  <a data-s="pool" class="on">选题池</a>
+  <a data-s="workshop">大纲工坊</a>
+  <a data-s="prompts">提示词库</a>
+  <a data-s="material">素材库</a>
+ </div>
+ <div class="subpage" id="sp-pool"></div>
+ <div class="subpage" id="sp-workshop" style="display:none"></div>
+ <div class="subpage" id="sp-prompts" style="display:none"></div>
+ <div class="subpage" id="sp-material" style="display:none"></div>
+</div>
+
+<!-- ============ 情报（热点 · 对标拆解 · 话题追踪） ============ -->
+<div class="page" id="pg-intel">
+ <h2 class="ptitle">平台情报 <span class="sub">热点 · 对标拆解 · 话题追踪</span></h2>
+ <div class="subnav" id="subnav-intel">
+  <a data-s="hot" class="on">平台热点</a>
+  <a data-s="creators">对标拆解</a>
+  <a data-s="track">话题追踪</a>
+ </div>
+ <div class="subpage" id="sp-hot"></div>
+ <div class="subpage" id="sp-creators" style="display:none"></div>
+ <div class="subpage" id="sp-track" style="display:none"></div>
+</div>
+
+<!-- ============ 运营（排程 · 数据 · 变现 · 筹备） ============ -->
+<div class="page" id="pg-ops">
+ <h2 class="ptitle">运营管理 <span class="sub">排程 · 数据 · 变现 · 筹备</span></h2>
+ <div class="subnav" id="subnav-ops">
+  <a data-s="schedule" class="on">发布排程</a>
+  <a data-s="analysis">数据分析</a>
+  <a data-s="monetize">变现商业化</a>
+  <a data-s="prep">开号筹备</a>
+ </div>
+ <div class="subpage" id="sp-schedule"></div>
+ <div class="subpage" id="sp-analysis" style="display:none"></div>
+ <div class="subpage" id="sp-monetize" style="display:none"></div>
+ <div class="subpage" id="sp-prep" style="display:none"></div>
+</div>
+
+</div>
+
+<div class="foot">创作情报中枢 · 数据存于本机浏览器 · 点击顶部「同步」可跨设备转移</div>
+</div>
+
+<nav class="mobilebar" id="mobileBar">
+ <a data-p="home" class="on"><b>⌂</b>首页</a>
+ <a data-p="insp"><b>✧</b>灵感</a>
+ <a class="plus" onclick="openCollect()"><b>＋</b></a>
+ <a data-p="create"><b>✎</b>创作</a>
+ <a data-p="intel"><b>◈</b>情报</a>
+ <a data-p="ops"><b>▤</b>运营</a>
+</nav>
+
+<div class="modal-mask" id="modalMask" onclick="if(event.target===this)closeModal()">
+ <div class="modal" id="modalBox"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+window.PRELOAD = {
+ver: '1.0',
+tracks: [
+ {id:'eff', name:'效率工具', color:'#4A90D9', light:'#E8F2FC', desc:'工具测评 · 效率方法 · 打工人工作流 · AI提效',
+  signals:[
+   {d:'2026-08-15', s:'AI工具普及是当前最大变量：用AI提效类内容需求量级大涨，平台算法爱推"工具清单+真实场景"型内容'},
+   {d:'2026-08-12', s:'研究显示62%工作时间花在重复任务上——"自动化/减负"是强共鸣点，职场效率内容是短视频稳定赛道'},
+   {d:'2026-08-10', s:'趋势：从"工具多"转向"选对2-4个工具解决真实瓶颈"，方法比工具更重要的观点开始流行'}
+  ],
+  scores:{speed:7, monetize:8, cost:7, barrier:7, interest:8},
+  cases:[
+   {t:'「打工人的效率工具红黑榜」清单型内容收藏率高，制作成本低（录屏+口播）'},
+   {t:'「AI帮我干了这些重复活」真实场景展示，共鸣强，涨粉快'},
+   {t:'「一人公司工具栈」知识付费空间大，变现路径清晰'}
+  ],
+  why:'与你每天4小时做内容的节奏匹配：录屏+口播制作成本低；知识付费和工具推广变现空间大；你的物流/财务本职工作能提供真实场景素材'},
+ {id:'life', name:'生活方式', color:'#7FB5A5', light:'#E7F4EF', desc:'打工人日常 · 独居生活 · 松弛感 · 治愈vlog',
+  signals:[
+   {d:'2026-08-15', s:'"松弛感"成2026生活方式关键词：68%职场人把每日松弛纳入健康KPI，治愈系内容刷屏'},
+   {d:'2026-08-13', s:'真实感>精致感：有瑕疵、有真实的日常记录完播率远超精致摆拍（行业周报数据）'},
+   {d:'2026-08-11', s:'DITL(一日vlog)+时间戳记录是当前涨粉最快形态，上班族设定天然有代入感'}
+  ],
+  scores:{speed:8, monetize:6, cost:7, barrier:6, interest:7},
+  cases:[
+   {t:'「下班后3小时」系列：独居打工人日常，情绪共鸣强，涨粉稳定'},
+   {t:'「出租屋改造」「低成本把日子过舒服」收藏率高'},
+   {t:'变现靠好物分享+生活品牌合作，单价中等但单量大'}
+  ],
+  why:'与你"上班族+下班4小时"人设天然契合，真实感内容不需要额外设备；但竞争门槛低、同质化严重，需要人设差异化'},
+ {id:'food', name:'美食', color:'#E8935A', light:'#FDF0E4', desc:'打工人快手菜 · 便当 · 懒人料理 · 探店',
+  signals:[
+   {d:'2026-08-15', s:'"反差感"是2026美食赛道爆款密码：#邪修做饭话题4亿播放，翻车现场比精致教程更吸粉'},
+   {d:'2026-08-14', s:'打工人快手菜需求爆发：盒马快手菜销量同比+50%，"10分钟/5元带饭"是强选题方向'},
+   {d:'2026-08-12', s:'"一锅端""冰箱剩菜改造"搜索量同比+40%，加班族拯救晚餐是高频场景'}
+  ],
+  scores:{speed:8, monetize:7, cost:6, barrier:7, interest:6},
+  cases:[
+   {t:'「月薪3k打工人带饭不重样」职业+生活反差，单条播放破百万'},
+   {t:'「加班夜工位小锅煮」场景化强，人设鲜明'},
+   {t:'变现：食材/厨具带货佣金高（15-30%），也可接品牌'}
+  ],
+  why:'快手菜内容需求爆发、制作成本低（厨房就是片场）、带货佣金高；但美食赛道内卷严重，需要强人设或强反差才能突围'},
+ {id:'home', name:'家居好物', color:'#9B7ED8', light:'#F1EBFB', desc:'收纳改造 · 出租屋改造 · 好物测评 · 智商税避坑',
+  signals:[
+   {d:'2026-08-15', s:'收纳改造是常青赛道："免打孔置物架"类视频单话题播放破4亿，改造前后对比是爆款公式'},
+   {d:'2026-08-13', s:'"网红好物智商税测评"涨粉快：反向种草（避坑）比正向种草更受欢迎'},
+   {d:'2026-08-10', s:'出租屋改造+平价好物是租住人群刚需，客单价20-80元小件商品转化率高'}
+  ],
+  scores:{speed:7, monetize:9, cost:6, barrier:7, interest:6},
+  cases:[
+   {t:'「50元搞定出租屋角落」改造对比视频天然高互动'},
+   {t:'「这5件网红家居用品我后悔买了」避坑型内容涨粉稳'},
+   {t:'变现：家居好物带货佣金15-40%，是所有赛道里最高的之一'}
+  ],
+  why:'带货佣金最高（15-40%）、改造对比内容天然高传播；但需要购买样品（初期成本），且"改造"类拍摄相对费时'},
+ {id:'eatASMR', name:'演绎类吃播 ASMR', color:'#D97E5A', light:'#FCEDE6', desc:'轻演绎 × 高ASMR · 治愈系一人食 · 真实吃 · 不浪费',
+  signals:[
+   {d:'2026-08-15', s:'吃播是十年常青品类，ASMR踩在助眠/解压经济上升曲线上，一次内容同时给「爽感+放松感」'},
+   {d:'2026-08-12', s:'2021年《反食品浪费法》后平台严打假吃/催吐/暴食，真实吃、适量做的内容反而获得信任红利'},
+   {d:'2026-08-10', s:'「治愈人设+高质量听觉+轻剧情」交叉点尚无统治性头部，窗口在差异化定位'}
+  ],
+  scores:{speed:8, monetize:7, cost:6, barrier:7, interest:8},
+  cases:[
+   {t:'「下班后一个人的精致晚餐」：奶油色调+自然咀嚼声，立账号人设主阵地'},
+   {t:'「备菜/切菜/咀嚼 ASMR 合集」：不露脸也能更，素材复用率高'},
+   {t:'「加班到九点奖励自己」轻剧情版：10秒戏+沉浸吃，追热点拉新粉'}
+  ],
+  why:'与「独居打工人+奶油清新审美」人设天然匹配；一人食素材不枯竭、成本可控；真实吃不踩合规红线；变现从食品/厨具到助眠产品都清晰'}
+],
+calendar: [
+ {d:'2026-08-19', name:'七夕', type:'节日', tracks:['eatASMR'], idea:'「一个人的七夕晚餐」治愈系ASMR：独居仪式感拉满；奶油色调+甜点咀嚼音', lead:14},
+ {d:'2026-08-23', name:'处暑·换季', type:'换季', tracks:['eatASMR'], idea:'「处暑一碗汤」一人食ASMR：贴秋膘前奏，清润料理+备菜切菜音', lead:10},
+ {d:'2026-08-27', name:'中元节', type:'节日', tracks:['eatASMR'], idea:'「夜归人的一碗热面」深夜治愈ASMR：加班晚归情绪选题', lead:7},
+ {d:'2026-09-01', name:'开学季/新人季', type:'节点', tracks:['eatASMR'], idea:'「打工新人第一周怎么吃」独居便当ASMR：下班自炊治愈日常', lead:10},
+ {d:'2026-09-07', name:'白露·入秋', type:'换季', tracks:['eatASMR'], idea:'「入秋第一锅」小火锅ASMR：热气腾腾+沸腾声，治愈系主阵地', lead:7},
+ {d:'2026-09-10', name:'教师节', type:'节日', tracks:['eatASMR'], idea:'「下班奖励自己一碗汤」一人食ASMR：感恩季情绪内容', lead:5},
+ {d:'2026-09-25', name:'中秋节', type:'节日', tracks:['eatASMR'], idea:'「一人食月饼测评」咀嚼音ASMR；「打工人中秋回不了家的仪式感晚餐」', lead:12},
+ {d:'2026-10-01', name:'国庆长假', type:'节点', tracks:['eatASMR'], idea:'「宅家7天治愈食谱」系列ASMR：一人食长假自愈企划', lead:12},
+ {d:'2026-10-08', name:'寒露·深秋', type:'换季', tracks:['eatASMR'], idea:'深秋热汤料理ASMR：暖胃一人食、咕嘟声纯享', lead:7},
+ {d:'2026-10-18', name:'重阳节', type:'节日', tracks:['eatASMR'], idea:'「记忆里奶奶做的那道菜」复刻ASMR：怀旧治愈+真实吃', lead:7},
+ {d:'2026-10-23', name:'霜降·入冬前', type:'换季', tracks:['eatASMR'], idea:'入冬前最后一顿清爽料理ASMR：应季食材咀嚼音', lead:7},
+ {d:'2026-11-07', name:'立冬', type:'换季', tracks:['eatASMR'], idea:'「冬日第一顿火锅」沉浸式ASMR：沸腾声+下锅声+咀嚼音', lead:7},
+ {d:'2026-11-11', name:'双11', type:'电商', tracks:['eatASMR'], idea:'「双11入手的治愈小家电开箱+使用」ASMR：小锅具/料理机实测', lead:20},
+ {d:'2026-11-22', name:'小雪·降温', type:'换季', tracks:['eatASMR'], idea:'降温热饮DIY ASMR：热可可/姜茶制作声+饮用音', lead:7},
+ {d:'2026-12-07', name:'大雪', type:'换季', tracks:['eatASMR'], idea:'「冬日治愈热食」系列：关东煮/汤面纯享ASMR', lead:7},
+ {d:'2026-12-12', name:'双12/年货预热', type:'电商', tracks:['eatASMR'], idea:'「一人食年货零食测评」咀嚼音ASMR：年底最后一波种草', lead:12},
+ {d:'2026-12-21', name:'冬至', type:'节日', tracks:['eatASMR'], idea:'「冬至饺子/汤圆」南北差异ASMR：两种吃法咀嚼音对比', lead:7},
+ {d:'2026-12-25', name:'圣诞节', type:'节日', tracks:['eatASMR'], idea:'「一个人的圣诞仪式感晚餐」治愈ASMR：奶油色调+烤鸡撕开声', lead:10},
+ {d:'2026-12-31', name:'跨年', type:'节点', tracks:['eatASMR'], idea:'「2026最后一顿一个人吃的饭」年度治愈ASMR：复盘+跨年仪式感', lead:14},
+ {d:'2027-01-01', name:'元旦·新年', type:'节点', tracks:['eatASMR'], idea:'「新年第一顿早餐」元气ASMR：开启新一年的一人食', lead:10},
+ {d:'2027-01-28', name:'春节前（2027除夕约2/5）', type:'节点', tracks:['eatASMR'], idea:'「一个人的年夜饭」治愈ASMR：不回家也有仪式感；备菜切菜音+咀嚼音', lead:15}
+],
+prompts: {
+ '标题生成': [
+  {t:'爆款标题生成器（多版可选）', p:'你是小红书/抖音爆款标题专家。请为我这条内容生成8个标题候选：\n内容主题：{主题}\n赛道：{赛道}\n内容形态：{形态}\n目标人群：{人群}\n要求：1) 使用数字、悬念、对比、身份认同等钩子手法 2) 每条不超过20字 3) 标注每条用了什么钩子 4) 其中2条用"反常识"角度'},
+  {t:'标题A/B对比优化', p:'我目前的标题是：「{当前标题}」，数据表现：{数据表现}。请帮我分析问题，并给出3个优化版本，每个都要说明改了什么、为什么这样改更能提升点击。'},
+  {t:'搜索流量标题', p:'请基于关键词「{关键词}」生成5个面向搜索流量的标题，要求：1) 自然嵌入关键词 2) 有明确价值承诺（教程/清单/避坑） 3) 符合{平台}的标题风格'}
+ ],
+ '脚本撰写': [
+  {t:'3秒钩子口播脚本（短视频）', p:'请为以下选题写一条{时长}的短视频口播脚本：\n选题：{选题}\n赛道：{赛道}\n目标人群：{人群}\n结构要求：1) 前3秒必须用钩子抓住注意力（悬念/痛点/反常识）2) 中间2-3个信息点，每个不超过15秒 3) 结尾用行动引导（关注/收藏/评论）\n语言要求：口语化、有节奏感、像朋友聊天，不要书面语'},
+  {t:'图文笔记正文', p:'请为以下选题写一篇小红书图文笔记：\n选题：{选题}\n封面标题：{封面标题}\n要求：1) 正文800-1200字 2) 开头50字必须抓住人 3) 用分段+小标题+emoji提升可读性 4) 结尾引导收藏 5) 附6-10个话题标签'},
+  {t:'系列内容第一集', p:'我要做一个系列内容《{系列名}》，这是第1集。请写脚本框架：1) 系列整体价值主张 2) 第1集的钩子和内容结构 3) 埋3个"追更理由"让观众期待第2集'}
+ ],
+ '文案改写': [
+  {t:'干瘪文案变网感', p:'我这段文案太干巴巴了，帮我改成有网感、有情绪的表达：\n原文：{原文}\n要求：1) 保持核心信息不变 2) 加情绪钩子和口语化表达 3) 可用对比/自嘲/悬念 4) 输出后解释改了哪里'},
+  {t:'评论区回复话术', p:'我这条内容发布后收到这样的评论：「{评论}」。请给我3种回复方式：1) 走心型 2) 幽默型 3) 引导互动型（引导点赞收藏或关注）'}
+ ],
+ '评论区互动': [
+  {t:'引导评论的神评论', p:'为这条内容「{内容主题}」设计5条可以自己发的"神评论"或置顶评论引导，要求：1) 能引发讨论（提问/观点）2) 贴合内容主题 3) 口语化'},
+  {t:'争议话题回应', p:'评论区有人质疑：「{质疑内容}」。请给我1条不卑不亢的回应，要求：1) 先肯定对方的角度 2) 补充事实或你的观点 3) 不让矛盾升级'}
+ ],
+ '封面文案': [
+  {t:'封面大字文案', p:'为这条内容「{内容主题}」设计3组封面大字文案（每组主标题+副标题），要求：1) 主标题≤8字，一眼看懂 2) 用数字/对比/悬念 3) 适配{平台}封面比例'},
+  {t:'封面视觉建议', p:'为内容「{内容主题}」给出封面视觉建议：1) 构图（主体位置/留白）2) 配色（2-3个主色）3) 元素（是否放实物图/人物/对比图）4) 参考风格'}
+ ],
+ '话题标签': [
+  {t:'标签组合策略', p:'为内容「{内容主题}」推荐15个话题标签，要求：1) 分三组：大流量标签5个+赛道精准标签5个+长尾标签5个 2) 每个标签标注用途 3) 结合{赛道}赛道和近期热点'},
+  {t:'搜索型标签', p:'请找出5个和「{关键词}」相关的搜索型标签（用户会主动搜的），并说明为什么选它们'}
+ ],
+ '发布配文': [
+  {t:'发布配文+引导', p:'为内容「{内容主题}」写发布配文（不超过80字），要求：1) 第一句钩子 2) 中间一句核心价值 3) 结尾引导互动（提问引导评论）4) 配3个表情符号'},
+  {t:'多平台适配配文', p:'把这条配文「{配文}」分别改写适配：小红书（重颜值和干货感）、抖音（重情绪和节奏）、视频号（重信任和实用）、B站（重深度和专业）'}
+ ],
+ '置顶评论': [
+  {t:'置顶评论（补充信息）', p:'为内容「{内容主题}」写一条置顶评论，用于补充：1) 评论区问得最多的3个问题及答案 2) 引导关注理由 3) 引流下一期内容'},
+  {t:'置顶评论（互动引导）', p:'写一条能提升互动率的置顶评论：1) 一个开放性问题 2) 承诺互动反馈（如"点赞过千出详细教程"）'}
+ ],
+ '数据复盘': [
+  {t:'单条数据复盘', p:'我这条内容数据如下：\n播放/曝光：{曝光}\n互动：{互动}（赞{赞}评{评}藏{藏}）\n涨粉：{涨粉}\n发布时间：{时间}\n赛道：{赛道}\n请分析：1) 哪个指标是短板 2) 对照同赛道均值给评级 3) 3条可执行的优化建议'},
+  {t:'账号阶段复盘', p:'我账号最近{周期}数据：\n总粉丝：{粉丝}（净增{净增}）\n发布{数量}条，最好一条{最好数据}\n最差一条{最差数据}\n请分析：1) 什么内容在涨粉、什么在掉粉 2) 下阶段应该加码/砍掉什么方向 3) 下{周期}的3个关键动作'}
+ ]
+},
+titles: [
+ {f:'数字+结果承诺', e:'「10分钟搞定一人食治愈晚餐」「3个设置让手机拍出ASMR感」', track:'eatASMR'},
+ {f:'痛点+解决方案', e:'「加班到9点？一碗热汤面治愈你」「深夜睡不着？试试这个助眠吃播」', track:'eatASMR'},
+ {f:'反常识', e:'「吃播不用露脸，也能涨粉」「精致晚餐背后，是我在厨房忙到冒烟」', track:'eatASMR'},
+ {f:'身份认同', e:'「独居第3年：一个人吃饭也要有仪式感」「下班后2小时，是我一天最治愈的时刻」', track:'eatASMR'},
+ {f:'对比/前后', e:'「备菜前vs开吃后：一个人的小火锅」「普通晚餐vs ASMR晚餐，差在哪」', track:'eatASMR'},
+ {f:'清单式', e:'「独居治愈系晚餐7天不重样」「300元以内ASMR收音设备清单」', track:'eatASMR'},
+ {f:'悬念/未完成', e:'「为什么你的吃播没人看？原因在第3条」「我试了30天不浪费晚餐，最后发现…」', track:'eatASMR'},
+ {f:'避坑/反向', e:'「这3种假吃，观众一眼识破」「别买！这些ASMR神器纯智商税」', track:'eatASMR'},
+ {f:'教程式', e:'「3分钟学会：手机拍出高质感ASMR」「手把手：从备菜到收音的完整流程」', track:'eatASMR'},
+ {f:'场景共鸣', e:'「深夜的出租屋，一碗泡面也有仪式感」「加班夜的治愈晚餐，一个人也要好好吃」', track:'eatASMR'},
+ {f:'时间限定', e:'「30天挑战：每天一道治愈系晚餐」「一周不点外卖，一个人也要吃好」', track:'eatASMR'},
+ {f:'亲测/实测', e:'「亲测：这3款麦克风只有1个适合吃播」「实测：手机直接收音vs加麦，差别有多大」', track:'eatASMR'}
+],
+scripts: [
+ {name:'沉浸式吃播ASMR·标准5段', track:'video', tpl:'【第1段 3秒开场】{先声后画：咀嚼/倒水/滋啦声起，画面奶油色调切食物特写}\n【第2段 人设钩子】{一句话交代场景：下班回家/周末独处，不露脸也可用字幕}\n【第3段 沉浸吃】{主体：2-3种口感层次，近场收音，动作放慢，不赶时间}\n【第4段 情绪收尾】{吃饱的满足感/今日一句治愈文案，画面渐暗}\n【第5段 引导】{关注/评论区聊：你最想看我吃什么？+下期预告}'},
+ {name:'短视频口播·标准5段', track:'video', tpl:'【第1段 3秒钩子】{悬念/痛点开场，一句话}\n【第2段 痛点放大】{说中观众痛点，产生共鸣}\n【第3段 解决方案】{1-3个方法，每个≤15秒，可展示}\n【第4段 结果/说服】{效果展示/对比/案例}\n【第5段 行动引导】{关注/收藏/评论引导+下期预告}'},
+ {name:'短视频口播·反常识型', track:'video', tpl:'【第1段 反常识钩子】{"你以为X？其实Y"}\n【第2段 展开论证】{2-3个证据/场景}\n【第3段 我的做法】{给出你的方案}\n【第4段 验证】{结果/数据/对比}\n【第5段 引导】{评论提问引导}'},
+ {name:'图文笔记·干货清单', track:'image', tpl:'【封面】{大字标题+核心数字}\n【开头50字】{身份代入+痛点}\n【正文】{清单项1..N，每项：名称+为什么好+价格/入手渠道}\n【结尾】{总结+引导收藏}\n【标签】{大流量5+赛道5+长尾5}'},
+ {name:'图文笔记·避坑测评', track:'image', tpl:'【封面】{避坑标题+警示感}\n【开头】{踩坑经历/引入}\n【正文】{推荐2-3个+避雷2-3个，理由具体}\n【结尾】{总结清单+引导评论}\n【标签】{测评/避坑/好物相关}'},
+ {name:'系列内容·第一集模板', track:'video', tpl:'【开场】{系列介绍：这个系列解决什么问题}\n【本集内容】{第一个子主题完整讲清}\n【埋点】{3个"下集更精彩"的钩子}\n【结尾】{关注+追更理由}'}
+],
+music: [
+ {name:'治愈钢琴/纯音乐', src:'网易云/剪映（搜索"治愈纯音乐"）', tag:['治愈','一人食'], note:'适配独居晚餐、治愈系吃播，音量压到人声和咀嚼音之下'},
+ {name:'轻爵士/慢调BGM', src:'网易云/剪映（搜索"轻爵士"）', tag:['氛围','仪式感'], note:'适配轻剧情吃播（加班晚归奖励自己），前5秒戏用'},
+ {name:'白噪音底噪', src:'录制环境音（雨声/窗外车流）', tag:['环境','真实'], note:'做ASMR纯享底噪，比BGM更真实，音量-20db'},
+ {name:'美食ASMR音效', src:'剪映素材库（搜索"做饭ASMR""滋滋声"）', tag:['美食','ASMR'], note:'切菜、下锅、出锅的实拍原声比BGM更香，主体声别用BGM盖'},
+ {name:'轻柔环境铺底', src:'剪映（搜索"深夜""放松"氛围乐）', tag:['助眠','深夜'], note:'22点后发布的助眠向内容，BGM要轻、慢、不抢咀嚼音'}
+],
+sounds: [
+ {name:'咀嚼声主体', src:'实拍收音（麦克风离嘴15cm内）', tag:['主体','ASMR'], note:'脆口/软糯分开攒，一条视频里2-3种口感层次最耐听'},
+ {name:'切菜备菜声', src:'木质砧板+匀速下刀实拍', tag:['备菜','解压'], note:'B系列纯享音素材，节奏感比速度重要'},
+ {name:'气泡饮品声', src:'玻璃杯+冰块近场收音', tag:['饮品','转场'], note:'倒水/啜饮/冰块碰撞，可做段落转场音'},
+ {name:'环境氛围音', src:'录制雨声/窗外白噪/厨房环境', tag:['氛围','助眠'], note:'铺在咀嚼音下面做底噪，音量压低不抢主体'}
+],
+/* ASMR 声源库：吃播 ASMR 的「原材料」，按四类攒（B系列纯享音直接消费它） */
+asmrSounds: {
+ '咀嚼声（主体声）': [
+  {name:'脆口食物咀嚼', need:'薯片/苹果/黄瓜，麦克风离嘴15cm内，收音避开衣领摩擦'},
+  {name:'软糯食物咀嚼', need:'米饭/年糕/面条，慢嚼+偶尔吞咽声，节奏别太快'},
+  {name:'剥壳声', need:'虾/蟹/花生，特写镜头+近场收音，自带解压属性'}
+ ],
+ '切菜备菜声': [
+  {name:'切菜声', need:'木质砧板为佳，匀速下刀，节奏感比速度重要'},
+  {name:'撕菜/掰开声', need:'生菜/西兰花手撕，声音干净清脆'},
+  {name:'下锅滋啦声', need:'热锅冷油瞬间，全片高光声之一，务必收音'}
+ ],
+ '气泡饮品声': [
+  {name:'气泡水倒入声', need:'冰块+玻璃杯，倒水高度高一点声音更清亮'},
+  {name:'吸管啜饮声', need:'碳酸饮料，喝到一半时收音最好'},
+  {name:'冰块杯壁碰撞声', need:'冰块碰玻璃杯，近场收音，剪辑时可做转场音'}
+ ],
+ '环境氛围音': [
+  {name:'碗筷碰撞声', need:'陶瓷碗+木筷，进餐背景声，叠在人声下面'},
+  {name:'呼吸/翻书声', need:'治愈段落用，录白噪备选，后期压低音量'},
+  {name:'雨声/白噪音', need:'阴天录制备用，做ASMR纯享结尾渐变'}
+ ]
+},
+refs: [
+ {name:'纯享ASMR吃播·参考方向', track:'eatASMR', platform:'B站/抖音', why:'①无剧情纯咀嚼音（脆皮/水果/气泡水）②白噪音+进食氛围 ③深夜助眠向合集。拆解重点：收音设备、声场层次、封面静物感', tags:['纯享音','助眠','解压']},
+ {name:'治愈系一人食·参考方向', track:'eatASMR', platform:'小红书/抖音', why:'①奶油色调独居晚餐 ②下班/加餐情绪叙事 ③精致小锅具+自然光。拆解重点：色调统一、前3秒情绪钩子、评论区互动话术', tags:['一人食','治愈','独居']},
+ {name:'轻剧情吃播·参考方向', track:'eatASMR', platform:'抖音/视频号', why:'①加班晚归奖励自己 ②探店微剧情 ③人设台词+沉浸吃。拆解重点：剧情浓度控制（前10秒戏+后30秒沉浸）、反差人设', tags:['轻剧情','沉浸','反差']},
+ {name:'不浪费/真实吃·参考方向', track:'eatASMR', platform:'视频号/抖音', why:'①冰箱剩菜改造 ②适量做+光盘展示 ③备菜过程ASMR。拆解重点：合规红线下的信任感打造、真实人设塑造', tags:['不浪费','真实吃','信任']}
+],
+platforms: {
+ '抖音': [
+  {t:'「一刀一个巨型白桃」切水果解压ASMR爆火：2026-08-01发布，单条播放破200万（头条公开报道）', heat:92, track:'eatASMR', url:'https://www.toutiao.com/article/7669359159816553004', src:'今日头条·2026-08-02'},
+  {t:'沉浸式甲虫吃水果ASMR（12种水果+蘸酱+奶茶吸管声）2026-07-25发布，解压类评论多', heat:82, track:'eatASMR', url:'https://post.m.smzdm.com/p/avgr7vx9', src:'什么值得买·2026-07-25'},
+  {t:'剥皮软糖ASMR（Peelerz皮乐士）2026-06-10发布：「撕开果皮+咬内芯」过程舒适，标签已有内容池', heat:78, track:'eatASMR', url:'https://post.m.smzdm.com/p/avgr7vx9', src:'什么值得买·2026-06-10'},
+  {t:'「声控吃东西助眠」头部创作者矩阵：冰猫声控/秋秋声控助眠/晚安yoyo，助眠场景+耳机沉浸是共性', heat:83, track:'eatASMR', url:'https://www.hanlefang.net/xiu-dxnqntgbfaqbxfaqtg.html', src:'声控助眠介绍页·2026-08'}
+ ],
+ 'B站': [
+  {t:'「老嫂子Sangyoon」2026-07-28更新：火鸡面+麻辣烫+KFC炸鸡配芝士酱吃播', heat:86, track:'eatASMR', url:'https://post.m.smzdm.com/p/aom00907/', src:'什么值得买·2026-07-28'},
+  {t:'「Jimmy ASMR」2026-07-15更新：火辣奇多粉/午餐肉意大利面/火鸡面/薯饼制作+吃播，纯进食咀嚼音', heat:85, track:'eatASMR', url:'https://post.m.smzdm.com/p/aom00907/', src:'什么值得买·2026-07-15'},
+  {t:'「西八妹mizzang」2026-07-11更新：火鸡面+炸酱面+芝士韩式炸鸡吃播', heat:82, track:'eatASMR', url:'https://post.m.smzdm.com/p/aom00907/', src:'什么值得买·2026-07-11'},
+  {t:'AI 30秒吃播 4K 内容 2026-08-04出现：AI生成吃播开始进入B站，新形态值得关注', heat:74, track:'eatASMR', url:'https://post.m.smzdm.com/p/aom00907/', src:'什么值得买·2026-08-04'}
+ ],
+ '小红书': [
+  {t:'「沉浸式吃奶油火鸡面+手枪腿」2026-07-14发布：沉浸式吃播在小红书有内容产出', heat:81, track:'eatASMR', url:'https://post.m.smzdm.com/p/aom00907/', src:'什么值得买·2026-07-14'}
+ ],
+ '微博/新浪': [
+  {t:'「绿色甜品」唇部ASMR：蜂蜜软糖/琥珀糖/QQ软糖咀嚼音，2026-08近期内容', heat:84, track:'eatASMR', url:'https://www.sina.cn/news/detail/5327058454448409.html', src:'新浪新闻·2026-08'},
+  {t:'「今日ASMR吃播：脆西瓜配菌菇汤」日常系ASMR吃播持续更新', heat:75, track:'eatASMR', url:'https://weibo.com/6854747012/5331824570270799', src:'微博·2026-08'},
+  {t:'「ASMR彩虹棒棒糖吃播」食音类内容，2026-08近期', heat:73, track:'eatASMR', url:'https://www.sina.cn/news/detail/5328661876055412.html', src:'新浪新闻·2026-08'}
+ ]
+},
+trackHot: [
+ {topic:'切水果解压ASMR', track:'eatASMR', heat:92, trend:'up', stage:'上升', note:'巨型白桃切水果2026-08爆火（200万+播放，头条公开报道），低成本强解压，第一优先'},
+ {topic:'火鸡面辣味挑战吃播', track:'eatASMR', heat:86, trend:'up', stage:'上升', note:'B站/小红书7-8月多个头部吃播更新（Sangyoon/西八妹/Jimmy ASMR），辣=话题性'},
+ {topic:'甜品软糖咀嚼音', track:'eatASMR', heat:84, trend:'up', stage:'上升', note:'绿色甜品/剥皮软糖等「过程+脆响」咀嚼音近期产出多，视觉听觉双刺激'},
+ {topic:'TikTok #asmr 话题池', track:'eatASMR', heat:88, trend:'up', stage:'成熟', note:'16亿播放/11.7万视频（2026-08-12榜单），Food ASMR为最优子类，发外网可蹭'},
+ {topic:'沉浸式吃播', track:'eatASMR', heat:81, trend:'flat', stage:'成熟', note:'沉浸式吃奶油火鸡面等在小红书有产出（2026-07-14），强调纯收音无打扰'},
+ {topic:'声控助眠吃播', track:'eatASMR', heat:83, trend:'flat', stage:'成熟', note:'抖音头部声控创作者（冰猫/秋秋/晚安yoyo）持续活跃，耳机沉浸是核心卖点'},
+ {topic:'动物/非人主角吃播', track:'eatASMR', heat:80, trend:'up', stage:'上升', note:'甲虫吃水果ASMR（2026-07-25）评论区解压向，反差主角+沉浸音是新思路'},
+ {topic:'AI生成吃播', track:'eatASMR', heat:74, trend:'up', stage:'萌芽', note:'B站2026-08-04出现AI 30秒吃播4K内容，新形态早期，可观察不可all in'}
+],
+/* ASMR 赛道预置热点（每日搜索未生成时的 fallback） */
+asmrHot: {
+ date:'2026-08-19', track:'eatASMR', trackName:'演绎类吃播 ASMR',
+ sources:['抖音','小红书','B站','微博/新浪'],
+ items:[
+  {topic:'切水果解压ASMR：巨型白桃单条破200万播放', heat:92, stage:'上升', trend:'up', platform:'抖音', note:'2026-08-01发布（头条公开报道），夜市切巨型白桃+清脆切割声+投篮小动作，「简单真诚」胜过精致摆盘。', action:'拍户外/夜市切大个头水果解压ASMR，重点收切割声，配情绪文案。', source:'https://www.toutiao.com/article/7669359159816553004'},
+  {topic:'火鸡面辣味挑战吃播：B站+小红书7-8月密集更新', heat:86, stage:'上升', trend:'up', platform:'B站', note:'Sangyoon/西八妹/Jimmy ASMR等多个头部吃播7-8月更新（公开检索确认），辣味+咀嚼音组合稳定有量。', action:'拍辣味挑战系列：拌面过程ASMR+真实辣反应，结尾冰水解辣也是素材。', source:'https://post.m.smzdm.com/p/aom00907/'},
+  {topic:'TikTok #asmr 16亿播放：Food ASMR 是最优子类', heat:88, stage:'成熟', trend:'up', platform:'综合', note:'2026-08-12榜单数据：11.7万条视频、16亿播放；强需求+中等供给，收音质量优先于画面。', action:'发布时打 #asmr 类标签，内容保持收音干净、节奏统一、少字幕干扰。', source:'https://discotok.com/en/blog/argentina-tiktok-hashtags-trending-now-august-202-20260812'},
+  {topic:'甜品软糖咀嚼音：「绿色甜品」唇部ASMR近期走红', heat:84, stage:'上升', trend:'up', platform:'微博', note:'蜂蜜软糖/琥珀糖/QQ软糖按emoji顺序吃，纯唇部ASMR（2026-08，新浪/微博转载）。', action:'拍单一色系甜品拼盘ASMR，全程无话只收音，标题带#唇部ASMR #咀嚼音。', source:'https://www.sina.cn/news/detail/5327058454448409.html'},
+  {topic:'声控助眠吃播：冰猫/秋秋/晚安yoyo持续活跃', heat:83, stage:'成熟', trend:'flat', platform:'抖音', note:'吃冰咀嚼/地摊小吃角色扮演/3D环绕音（舔耳、口腔音），耳机沉浸是共性卖点。', action:'做场景化声控吃播：地摊/甜品店场景+角色扮演+双声道，服务戴耳机助眠人群。', source:'https://www.hanlefang.net/xiu-dxnqntgbfaqbxfaqtg.html'}
+ ],
+ insights:[
+  '2026-08 真实爆款共性：切水果/剥皮/软糖类「过程+脆响」最易传播（巨型白桃200万+播放为直接证据）。',
+  '火鸡面辣味挑战系是B站+小红书稳定流量，辣=话题性、咀嚼音=留存。',
+  'TikTok #asmr 话题16亿播放：收音质量优先、节奏统一、少字幕是全球通用方法。',
+  '以上均为公开检索确认话题（带来源链接），heat为估算值，非官方数据。'
+ ],
+ updatedAt:'2026-08-19T16:20:00'
+},
+bestTime: {
+ '小红书': {'工作日':['12:00-13:00','18:00-20:00','21:00-23:00'], '周末':['10:00-11:00','14:00-16:00','20:00-22:00'], note:'女性用户夜间活跃，图文晚9点后流量佳'},
+ '抖音': {'工作日':['12:00-13:00','19:00-22:00'], '周末':['09:00-11:00','19:00-23:00'], note:'晚高峰19-22点流量最大，泛娱乐内容'},
+ 'B站': {'工作日':['18:00-23:00'], '周末':['10:00-22:00'], note:'用户集中在晚上和周末，长视频黄金期'},
+ '视频号': {'工作日':['07:00-09:00','12:00-13:00','18:00-21:00'], '周末':['09:00-11:00','19:00-22:00'], note:'微信生态，通勤和饭点强，社交分享驱动'}
+},
+quotes: {
+ '小红书': [['0-1万粉','500-2000元/篇'],['1-5万粉','2000-8000元/篇'],['5-10万粉','8000-2万/篇'],['10万+粉','2万+/篇']],
+ '抖音': [['1-10万粉','1000-8000元/条'],['10-50万粉','1万-5万/条'],['50万+粉','5万+/条']],
+ 'B站': [['1-10万粉','1500-1万/期'],['10万+粉','1万+/期']],
+ '视频号': [['起步期','500-5000元/条'],['万粉以上','5000-2万/条']],
+ '带货': [['食品','15-30%佣金'],['厨具/小家电','15-40%佣金'],['助眠/生活方式','20-40%佣金'],['数码/收音设备','5-20%佣金']],
+ note:'以上为2026市场参考区间，实际以平台官方报价工具和商单谈判为准'
+},
+goldenHour: ['发布后1小时内在评论区活跃回复','给最早评论的5条点赞回复','检查数据是否异常（限流则调整）','发布2小时后看是否值得补推','转发到微信群/朋友圈（视频号尤其）','记录数据快照供复盘','如数据好，准备同题材第二弹'],
+/* ASMR 选题引擎：按内容系列矩阵 A/B/C/D 各备 5 条，随机摇 */
+asmrIdeas: {
+ 'A·治愈一人食': ['下班后第一口：今天也好好吃饭了','一人食第N天：冰箱剩菜的治愈改造','加班晚归，一碗热汤面的仪式感','周末独居：一锅煮的快乐','晚餐配剧：一个人的双人餐'],
+ 'B·ASMR纯享音': ['切菜10分钟：解压备菜全记录','气泡水+冰块：夏日ASMR纯享','剥壳声合集：虾/蟹/花生特辑','咀嚼声专场：脆口食物ASMR','雨夜煮面：环境音+滋啦声'],
+ 'C·轻剧情': ['加班到九点，奖励自己一顿好的','周末早起的独居早餐','没力气做饭？那就煮一锅面','发工资日：给自己加个菜','今天心情差，但饭要吃好'],
+ 'D·爆款拆解': ['拆解本周爆款：为什么这条吃播收藏过万','我的ASMR收音设备全公开','从0到1：治愈系吃播怎么起号','对比3条爆款封面，我学到了什么','收藏率是吃播的爆款信号：怎么看数据']
+},
+setup: [
+ {cat:'账号搭建', items:['昵称（好记+赛道相关，先想3个备选）','头像（真人/卡通，辨识度高）','简介（你是谁+提供什么价值+更新频率）','背景图（风格统一）','主页置顶（1条代表作/自我介绍）']},
+ {cat:'人设梳理', items:['身份标签（上班族/独居/打工人）','核心价值（帮你省时间/省money/治愈）','内容风格（口吻/语气/标志性开场）','差异化记忆点（一个专属口头禅或形式）']},
+ {cat:'第一条内容', items:['选题（从灵感库挑最有把握的）','用大纲工坊出脚本','拍3个版本选最好','发布（选最佳时段）','发布后黄金1小时执行']}
+]
+};
+
+/* ===================== 创作情报中枢 · 应用逻辑 ===================== */
+/* 数据源: window.PRELOAD (p3_data.js) · 本地持久化: localStorage */
+
+/* ---------- 工具 ---------- */
+function $id(x){return document.getElementById(x)}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+function pad(n){return n<10?'0'+n:''+n}
+function todayStr(){var d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function daysTo(s){var t=new Date(s+'T00:00:00');var n=new Date(todayStr()+'T00:00:00');return Math.round((t-n)/86400000)}
+function weekCN(s){var w=['周日','周一','周二','周三','周四','周五','周六'];return w[new Date(s+'T00:00:00').getDay()]}
+function fmtDateCN(s){return Number(s.slice(5,7))+'月'+Number(s.slice(8,10))+'日'}
+function trackInfo(id){return PRELOAD.tracks.find(function(t){return t.id===id})||{name:id||'综合',color:'#8A919B',light:'#F1EFE8'}}
+function trackChip(id){var t=trackInfo(id);return '<span class="chip" style="background:'+t.light+';color:'+t.color+'">'+esc(t.name)+'</span>'}
+/* 平台识别：从链接判断来源平台 */
+function platOf(url){
+ if(!url)return null;
+ if(/xhslink\.com|xiaohongshu\.com/i.test(url))return {k:'xh',name:'小红书',color:'#E86B5A'};
+ if(/douyin\.com|iesdouyin/i.test(url))return {k:'dy',name:'抖音',color:'#3A3F45'};
+ if(/channels\.weixin|weixin\.qq\.com/i.test(url))return {k:'sp',name:'视频号',color:'#07C160'};
+ if(/bilibili\.com|b23\.tv/i.test(url))return {k:'bili',name:'B站',color:'#FB7299'};
+ if(/zhihu\.com/i.test(url))return {k:'zh',name:'知乎',color:'#0084FF'};
+ if(/weibo\.com/i.test(url))return {k:'wb',name:'微博',color:'#E6162D'};
+ if(/taobao\.com|tmall\.com|jd\.com|pinduoduo\.com/i.test(url))return {k:'mall',name:'电商',color:'#FF7A00'};
+ return {k:'web',name:'网页',color:'#8A919B'};
+}
+function platChip(p){return p?'<span class="chip" style="background:#F3F0EA;color:'+p.color+'">'+esc(p.name)+'</span>':''}
+function platEmoji(p){var m={'小红书':'📕','抖音':'🎵','视频号':'📺','B站':'📺','公众号':'📰','知乎':'💡','微博':'👁','电商':'🛒','网页':'🌐'};return m[p]||'🌐'}
+/* 解析粘贴文本：兼容「纯链接 / 标题+链接 / 标题+链接+正文 / 混合文本」 */
+function parsePaste(raw){
+ var lines=raw.split('\n').map(function(s){return s.trim()}).filter(Boolean);
+ var title='',url='',body=[];
+ if(lines.length&&lines[0].charAt(0)==='【'&&lines[0].slice(-1)==='】'){title=lines[0].slice(1,-1);lines.shift()}
+ for(var i=0;i<lines.length;i++){if(/^https?:\/\/\S+/i.test(lines[i])){url=lines[i];lines.splice(i,1);break}}
+ if(!url){var m=raw.match(/https?:\/\/[^\s]+/);if(m)url=m[0]}
+ if(!title&&lines.length&&!body.length){title=lines.shift()||''}
+ body=lines.join('\n');
+ return {title:title,url:url,body:body};
+}
+/* 自动匹配赛道 */
+function guessTrack(text,url){
+ var t=(text||'')+' '+(url||'');
+ if(/收纳|改造|家居|好物|智商税|出租屋|置物架|打扫|清洁/i.test(t))return 'home';
+ if(/菜|饭|食|料理|吃|食谱|带饭|厨/i.test(t))return 'food';
+ if(/工具|效率|AI|自动化|办公|生产力|笔记软件|模板/i.test(t))return 'eff';
+ if(/生活|独居|日常|vlog|下班|打工人|时间|作息/i.test(t))return 'life';
+ return 'all';
+}
+/* 采集入库：自动识别平台+赛道+去重 */
+function smartImport(raw){
+ if(!raw){toast('先粘贴链接或内容');return false}
+ var p=parsePaste(raw);
+ var plat=platOf(p.url);
+ if(p.url&&state.inspirations.some(function(x){return x.url===p.url})){toast('这条链接已在灵感库');return false}
+ var text=[p.title,p.body].filter(Boolean).join('\n')||'未命名链接';
+ var track=guessTrack(text,p.url);
+ var src=p.url?plat?plat.name:'链接':'粘贴导入';
+ state.inspirations.push({id:uid(),text:text,track:track,url:p.url||'',platform:plat?plat.name:'',src:src,time:todayStr()});
+ saveState();renderInsp();renderInspflow();
+ toast('已入库：'+trackInfo(track).name+(plat?' · '+plat.name:''));
+ return true;
+}
+function scoreBar(lb,val,color){return '<div class="scoreline"><span class="lb">'+lb+'</span><div class="br"><div class="bar"><i style="width:'+(val*10)+'%;background:'+color+'"></i></div></div><span class="num">'+(val/2).toFixed(1)+'</span></div>'}
+function heatBar(h){return '<div class="bar"><i style="width:'+Math.min(100,Math.max(5,h))+'%;background:#4A90D9"></i></div>'}
+/* 数字格式化：支持万/亿，保留1位小数 */
+function fmtNum(s){var str=String(s||'').trim();var m=str.match(/^([\d.]+)\s*([万亿])/);if(m){return parseFloat(m[1]).toFixed(m[1].includes('.')?1:0)+m[2]}var n=parseFloat(str.replace(/,/g,''));if(!isFinite(n)||isNaN(n))return str||'-';if(Math.abs(n)>=100000000)return (n/100000000).toFixed(1)+'亿';if(Math.abs(n)>=10000)return (n/10000).toFixed(1)+'万';return Math.round(n).toLocaleString()}
+function rawNum(s){var n=parseFloat(String(s).replace(/,/g,''));return isFinite(n)&&!isNaN(n)?n:0}
+/* 互动率 / 爆款评分计算 */
+function calcEngage(v){var views=rawNum(v.views),likes=rawNum(v.likes),comments=rawNum(v.comments),collects=rawNum(v.collects),shares=rawNum(v.shares);if(!views)return 0;return ((likes+comments*2+collects*1.5+shares*3)/views*100)}
+function calcBoomScore(v){var views=rawNum(v.views),likes=rawNum(v.likes),collects=rawNum(v.collects),eng=calcEngage(v);var s=0;if(views>=100000)s+=3;else if(views>=10000)s+=2;else if(views>=1000)s+=1;if(likes>=10000)s+=3;else if(likes>=1000)s+=2;else if(likes>=100)s+=1;if(collects>=1000)s+=2;else if(collects>=100)s+=1;if(eng>=8)s+=2;else if(eng>=4)s+=1;return Math.min(10,Math.round(s))}
+function typeChip(c){var m={节日:'chip',电商:'chip.o',换季:'chip.g',节点:'chip.p'};return '<span class="'+m[c.type]+'">'+esc(c.type)+'</span>'}
+function stageChip(s){var m={上升:'stage up',成熟:'stage flat',下降:'stage down'};return '<span class="'+m[s]+'">'+esc(s)+'</span>'}
+function trendArrow(t){return t==='up'?'↑':t==='down'?'↓':'→'}
+function copyText(t,msg){var done=function(){toast(msg||'已复制到剪贴板')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fbCopy(t);done()})}else{fbCopy(t);done()}}
+function fbCopy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(ta)}
+
+/* ---------- 状态 ---------- */
+var LSKEY='zhq_workbench_v1';
+var DEFAULT_STATE={
+ inspirations:[], topics:[], follows:[], schedule:[], records:[],
+ checklist:{}, creators:[], chosenTrack:'eatASMR', decided:true,
+ soundBank:{}, decideBy:'2026-09-15'
+};
+var state={};
+function loadState(){try{var raw=localStorage.getItem(LSKEY);if(raw){var s=JSON.parse(raw);state=Object.assign(JSON.parse(JSON.stringify(DEFAULT_STATE)),s)}else{state=JSON.parse(JSON.stringify(DEFAULT_STATE))}}catch(e){state=JSON.parse(JSON.stringify(DEFAULT_STATE))}
+/* 2026-08-17 迁移：赛道已确定为 eatASMR */
+if(!state.decided){state.decided=true;state.chosenTrack='eatASMR';saveState()}
+/* 向后兼容：补齐 creator / video 新字段 */
+(state.creators||[]).forEach(function(c){c.fans=c.fans||'';c.avgLike=c.avgLike||'';c.updateFreq=c.updateFreq||'';c.contentTags=c.contentTags||'';c.strengths=c.strengths||'';c.weakness=c.weakness||'';c.copyPoints=c.copyPoints||'';c.videos=c.videos||[];
+ (c.videos||[]).forEach(function(v){v.views=v.views||'';v.likes=v.likes||'';v.comments=v.comments||'';v.collects=v.collects||'';v.shares=v.shares||'';v.cover=v.cover||'';v.hook=v.hook||'';v.structure=v.structure||'';v.golden=v.golden||'';v.insight=v.insight||'';v.copyable=v.copyable||'';v.score=v.score||0;v.time=v.time||c.time||todayStr()})})}
+function saveState(){try{localStorage.setItem(LSKEY,JSON.stringify(state))}catch(e){}updateStats();updateSyncDot()}
+function initChecklist(){
+ if(!state.checklist||Object.keys(state.checklist).length===0){state.checklist={}}
+ PRELOAD.setup.forEach(function(g,gi){
+  if(!state.checklist[gi]) state.checklist[gi]=g.items.map(function(){return {checked:false,note:''}});
+  state.checklist[gi]=g.items.map(function(it,j){
+   var v=state.checklist[gi][j];
+   if(typeof v==='boolean') return {checked:v,note:''};
+   if(!v||typeof v!=='object') return {checked:false,note:''};
+   return {checked:!!v.checked,note:String(v.note||'')};
+  });
+ });
+}
+function seedData(){if(state._seeded)return;state._seeded=true;
+ var now=todayStr();
+ state.inspirations=[
+  {id:uid(),text:'「一人食治愈晚餐」系列第1条：下班后给自己做一顿精致小火锅，咀嚼音+ASMR收声，拍治愈感',track:'eatASMR',src:'系统情报·赛道预置',time:now,tag:'预置可删'},
+  {id:uid(),text:'「纯享咀嚼音」合集：脆皮鸡翅/薯片/水果，高ASMR低演绎，深夜助眠人群最爱，B站/抖音双发',track:'eatASMR',src:'系统情报·赛道预置',time:now,tag:'预置可删'},
+  {id:uid(),text:'「轻剧情吃播」：加班回家一碗热汤面的独处时刻，治愈人设+ASMR，情绪共鸣强',track:'eatASMR',src:'系统情报·赛道预置',time:now,tag:'预置可删'},
+  {id:uid(),text:'「不浪费挑战」：冰箱剩菜改造晚餐，真实吃+光盘，立住真实人设还贴合平台合规红线',track:'eatASMR',src:'系统情报·赛道预置',time:now,tag:'预置可删'}
+ ];
+ state.topics=[
+  {id:uid(),title:'「一人食治愈晚餐」第1集：下班后的仪式感小火锅',track:'eatASMR',status:'draft',from:'灵感',time:now}
+ ];
+ saveState()}
+
+/* ---------- 顶部状态 ---------- */
+function updateStats(){
+ var a=$id('stInsp'),c=$id('stPool'),e=$id('stDone'),f=$id('stCreator');if(!a)return;
+ a.textContent=(dailyHotItems().items||[]).length;c.textContent=state.topics.length;
+ if(e)e.textContent=state.records.length;
+ if(f)f.textContent=state.creators.length;
+}
+function updateSyncDot(){var d=$id('syncDot');if(!d)return;d.className='st on';$id('syncTxt').textContent='本地存储 · 自动保存'}
+
+/* ---------- 导航 ---------- */
+function switchPage(p){
+ document.querySelectorAll('.page').forEach(function(el){el.classList.remove('on')});
+ $id('pg-'+p).classList.add('on');
+ document.querySelectorAll('#mainNav a').forEach(function(a){a.classList.toggle('on',a.dataset.p===p)});
+ document.querySelectorAll('#mobileBar a').forEach(function(a){a.classList.toggle('on',a.dataset.p===p)});
+ if(p==='home'){renderHome()}
+ else{var as=document.querySelector('#pg-'+p+' .subnav a.on');if(as)renderSub(p,as.dataset.s)}
+}
+function switchSub(g,s){
+ $id('subnav-'+g).querySelectorAll('a').forEach(function(a){a.classList.toggle('on',a.dataset.s===s)});
+ var pg=$id('pg-'+g);
+ pg.querySelectorAll('.subpage').forEach(function(el){el.style.display='none'});
+ $id('sp-'+s).style.display='block';
+ renderSub(g,s);
+}
+function renderSub(g,s){
+ var map={
+  insp:{collect:renderCollect,flow:renderFlow,lib:renderLib},
+  create:{pool:renderPool,workshop:renderWorkshop,prompts:renderPrompts,material:renderMaterial},
+  intel:{hot:renderHot,creators:renderCreators,track:renderTrack},
+  ops:{schedule:renderSchedule,analysis:renderAnalysis,monetize:renderMonetize,prep:renderPrep}
+ };
+ if(map[g]&&map[g][s])map[g][s]();
+}
+
+/* ===================== 首页 ===================== */
+function renderHome(){
+ var h=new Date().getHours();
+ var greet=h<6?'夜深了，注意休息':h<12?'早上好':h<14?'中午好':h<18?'下午好':'晚上好';
+ $id('homeGreet').textContent=greet+'，文利';
+ var left=daysTo(state.decideBy);
+ var tip=state.decided
+  ?'已选定【'+trackInfo(state.chosenTrack).name+'】赛道 · 运营期：定了就发，和考试一起全力发力'
+  :'距定赛道还有 '+Math.max(0,left)+' 天（目标 '+fmtDateCN(state.decideBy)+'）。今天建议：读2张「赛道体检卡」+ 存3条灵感';
+ $id('homeTip').textContent=tip;
+ var tag=$id('homeNextTag');if(tag)tag.textContent=state.decided?'运营期':'探索期';
+ renderHomeDailyHot();
+ renderHomeDecision();
+ renderHomeCalendar();
+ renderHomeNext();
+ renderHomePrep();
+ updateStats();
+}
+/* ---------- 赛道决策卡（已定：演绎类吃播 ASMR） ---------- */
+var DECISION_CARD={
+ track:'演绎类吃播 ASMR',date:'2026-08-17',score:'7.0',
+ tagline:'轻演绎 × 高ASMR · 真实吃 · 不浪费 · 治愈系一人食 · 综合可行 7.0/10',
+ logic:[
+  {t:'市场需求真实且叠加',d:'吃播是十年级别的常青品类，ASMR 踩在助眠/解压经济上升曲线上。一次内容同时给「爽感（看吃）+ 放松感（听声）」，双需求加成。',v:'需求端成立，且比单一吃播/单一ASMR更宽'},
+  {t:'竞争窗口在交叉点',d:'纯大胃王吃播、纯咀嚼音合集、短剧式探店都已有人做，但「治愈人设+高质量听觉+轻剧情」交叉点尚无统治性头部。',v:'机会在「演绎×感官」的交叉定位，不在任何一个单点'},
+  {t:'人设与生活场景天然匹配',d:'你的「独居打工人+奶油清新审美」就是内容本身——一人食、下班饭、精致小锅，可信度高、素材不枯竭、成本低。',v:'个人适配是最大加分项，人设即内容'},
+  {t:'制作成本可控但需批量',d:'比图文重：备菜+收音+拍摄+剪辑。解法是系列化+批量制作（一次备3天量），否则每天4小时（含PMP备考）撑不住。',v:'成本打 6 分，靠「系列化批量生产」对冲'},
+  {t:'合规红线天然可避开',d:'2021年《反食品浪费法》后平台严打假吃/催吐/暴食。坚持真实吃、适量做、光盘，红线天然避开，还能做成信任卖点。',v:'合规 7 分，只要守住底线就不踩雷'}
+ ],
+ scores:[
+  {lb:'市场需求',val:8,color:'var(--blue)'},
+  {lb:'竞争机会',val:6,color:'var(--orange)'},
+  {lb:'个人适配',val:8,color:'var(--purple)'},
+  {lb:'制作成本',val:6,color:'var(--green)'},
+  {lb:'合规安全',val:7,color:'var(--blue2)'}
+ ],
+ matrix:{
+  title:'赛道定位矩阵：演绎浓度 × 感官浓度',
+  note:'「演绎」越浓越费制作、越难持续；「感官」越浓越省力（核心是收音和节奏）。所以把演绎控制在「轻」：人设底色+场景仪式感，不做完整剧情。',
+  quads:[
+   {x:'L',y:'H',t:'纯ASMR咀嚼音',d:'已有人做，偏助眠向，头部稳定',color:'#FDF0E4',line:'#F5D9BF'},
+   {x:'R',y:'H',t:'剧情吃播 + ASMR',d:'我们在这里：轻演绎 × 高感官',color:'#E9F2FC',line:'#C9DFF5',us:true},
+   {x:'L',y:'L',t:'随手吃播',d:'同质化严重，没有记忆点',color:'#F3F0EA',line:'#E3DED2'},
+   {x:'R',y:'L',t:'短剧式探店/剧情吃播',d:'制作成本高、难持续',color:'#FBE9E7',line:'#F5CFCB'}
+  ]
+ },
+ series:[
+  {key:'A',name:'治愈一人食晚餐',freq:'一周2更',desc:'下班后一个人的精致晚餐，奶油色调+自然咀嚼声，立账号人设主阵地',plat:'小红书（主）+ 抖音',bg:'var(--blueBg)',fg:'var(--blueDeep)',role:'主阵地·定人设'},
+  {key:'B',name:'ASMR 纯享音',freq:'一周1更',desc:'备菜/切菜/剥壳/咀嚼/气泡声合集，不露脸也能更，素材复用率高',plat:'B站 + 抖音（助眠向）',bg:'var(--greenBg)',fg:'#3E7A56',role:'省力保更·拉完播'},
+  {key:'C',name:'轻剧情小剧场',freq:'一周1更',desc:'「加班到九点奖励自己」式场景开局，10秒戏+沉浸吃，追热点用',plat:'全平台（抖音优先）',bg:'var(--orangeBg)',fg:'#B4693C',role:'追热点·拉新粉'},
+  {key:'D',name:'爆款拆解 / 选题库',freq:'双周1更',desc:'拆解当周数据最好的视频，沉淀为下一个选题，增长飞轮',plat:'公众号 / 小红书图文',bg:'var(--purpleBg)',fg:'#6E52AC',role:'数据驱动·沉淀资产'}
+ ],
+ redlines:[
+  {t:'反浪费红线',ic:'🍽️',d:'真实吃、适量做、光盘。宁可每份量小，绝不拍「摆满一桌」——平台对浪费/假吃内容限流封号极严'},
+  {t:'身体红线',ic:'❤️',d:'不建议每天吃播，尤其别为效果反复高油高糖。每周4-5更是「量」，食材健康度要管住——轻食量定位让你能长期跑'},
+  {t:'标签禁区',ic:'🚫',d:'不碰「大胃王/暴食/催吐」词，搜索权重和推荐都会受影响；用「治愈/解压/沉浸」做关键词'}
+ ],
+ monetize:[
+  {stage:'0-1万粉',act:'攒声源素材库（咀嚼/切菜/气泡音分类存），不急着接单；素材后期能卖、能做课、能接助眠品牌'},
+  {stage:'1-5万粉',act:'食品/厨具/小家电商单（蒲公英+星图）+ 直播打赏带货，月收入可覆盖食材成本'},
+  {stage:'5万粉+',act:'助眠产品线（香薰/白噪音/床品，客单价高），或「手机拍出高质感ASMR」私域课程'},
+  {stage:'远期',act:'人设IP + 声源版权，是赛道的终极资产，比单条流量值钱得多'}
+ ],
+ rhythm:[
+  {w:'第1-7天',t:'定人设 + 设备调试',d:'拍3条测试音不发，只调收音和光线（入门领夹麦/桌面麦300元内搞定）。人设：独居打工人·下班治愈饭'},
+  {w:'第8-21天',t:'A系列连发',d:'每周2更，标题带「下班/独居/治愈」情绪词，观察哪类题材数据好，同步攒B系列声源素材'},
+  {w:'第22-30天',t:'加C系列剧情版',d:'把前两周数据最好的1条翻拍成剧情版，对比涨粉速度，确定账号主调'},
+  {w:'每周五',t:'数据复盘',d:'运营数据页复盘5指标：播放/完播/互动率/涨粉/收藏——收藏率是吃播赛道最准的爆款信号'}
+ ]
+};
+function renderHomeDecision(){
+ var el=$id('homeDecision');if(!el)return;
+ var html='<h3>赛道决策 <span class="tag">'+DECISION_CARD.date+' 已定</span><span style="font-weight:400;font-size:11px;color:var(--sub)">点「查看完整决策」当页展开，不跳页</span></h3>';
+ html+='<div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">';
+ html+='<div style="flex:1;min-width:200px"><div style="font-size:17px;font-weight:700;color:var(--blueDeep)">'+esc(DECISION_CARD.track)+'</div>';
+ html+='<div style="font-size:12px;color:var(--sub);margin-top:4px;line-height:1.6">'+esc(DECISION_CARD.tagline)+'</div></div>';
+ html+='<div style="flex:0 0 auto;text-align:center;background:var(--blueBg);border-radius:14px;padding:8px 14px"><b style="display:block;font-size:22px;color:var(--blueDeep)">'+DECISION_CARD.score+'<span style="font-size:11px;color:var(--sub)">/10</span></b><span style="font-size:10px;color:var(--sub)">综合可行</span></div>';
+ html+='</div>';
+ html+='<div class="btnrow" style="margin-top:12px"><button class="btn mini" onclick="openDecisionModal()">查看完整决策 ⇱</button><button class="btn mini ghost" onclick="scrollHomePrep()">开号筹备进度 ↓</button></div>';
+ el.innerHTML=html;
+}
+/* ---------- 赛道决策页（独立页 · 图形化） ---------- */
+function wrapCN(s,n){var a=[];for(var i=0;i<s.length;i+=n)a.push(s.slice(i,i+n));return a}
+function matrixSVG(){
+ var m=DECISION_CARD.matrix,qs=m.quads;
+ var rects=[{x1:40,y1:40,x2:255,y2:165},{x1:265,y1:40,x2:480,y2:165},{x1:40,y1:175,x2:255,y2:300},{x1:265,y1:175,x2:480,y2:300}];
+ var svg='<svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" style="max-width:520px;width:100%;display:block;margin:0 auto">';
+ svg+='<rect x="0" y="0" width="520" height="340" rx="16" fill="#FCFAF5"/>';
+ qs.forEach(function(q,i){
+  var r=rects[i],cx=r.x1+((r.x2-r.x1)/2);
+  svg+='<rect x="'+r.x1+'" y="'+r.y1+'" width="'+(r.x2-r.x1)+'" height="'+(r.y2-r.y1)+'" rx="12" fill="'+q.color+'" stroke="'+q.line+'" stroke-width="1"/>';
+  svg+='<text x="'+cx+'" y="'+(r.y1+26)+'" text-anchor="middle" font-size="13" font-weight="600" fill="#3A3F45">'+esc(q.t)+'</text>';
+  var lines=wrapCN(q.d,11);
+  lines.slice(0,2).forEach(function(ln,li){svg+='<text x="'+cx+'" y="'+(r.y1+45+li*15)+'" text-anchor="middle" font-size="10.5" fill="#8A919B">'+esc(ln)+'</text>'});
+ });
+ svg+='<line x1="260" y1="40" x2="260" y2="300" stroke="#D8D5CC" stroke-width="1.2" stroke-dasharray="4 3"/>';
+ svg+='<line x1="40" y1="170" x2="480" y2="170" stroke="#D8D5CC" stroke-width="1.2" stroke-dasharray="4 3"/>';
+ svg+='<text x="260" y="326" text-anchor="middle" font-size="11" fill="#8A919B">演绎浓度（低 ←————→ 高）</text>';
+ svg+='<text x="28" y="95" font-size="11" fill="#8A919B" transform="rotate(-90 28 95)">↑ 感官浓度（高）</text>';
+ svg+='<text x="28" y="250" font-size="11" fill="#8A919B" transform="rotate(-90 28 250)">感官浓度（低）</text>';
+ svg+='<circle cx="420" cy="125" r="11" fill="#4A90D9" stroke="#fff" stroke-width="3"/>';
+ svg+='<circle cx="420" cy="125" r="16" fill="none" stroke="#4A90D9" stroke-width="1" opacity=".45"/>';
+ svg+='<text x="420" y="108" text-anchor="middle" font-size="10.5" font-weight="600" fill="#2E6CB8">★ 我们</text>';
+ svg+='</svg>';
+ return svg;
+}
+/* ---------- 赛道决策完整内容（当页弹窗） ---------- */
+function openDecisionModal(){
+ var D=DECISION_CARD,html='<h3>赛道决策 · 一页纸 <span class="tag">'+D.date+' 已定</span></h3><p style="font-size:12px;color:var(--sub);margin-bottom:10px">按 为什么选它 → 可行性 → 定位 → 内容 → 红线 → 变现 → 节奏 的顺序梳理，建议每周五数据复盘后回看一遍。</p><div class="dec-scroll" style="max-height:64vh;overflow-y:auto;padding-right:4px">';
+ /* hero */
+ html+='<div class="dec-hero" id="dc-hero"><div class="bigscore"><b>'+D.score+'<span style="font-size:13px">/10</span></b><span>综合可行</span></div>';
+ html+='<div class="nm">'+esc(D.track)+' <span class="tag">已定 · '+D.date+'</span></div>';
+ html+='<div class="tl">'+esc(D.tagline)+'</div>';
+ html+='<div class="keys"><i>轻演绎 × 高ASMR</i><i>治愈系一人食</i><i>真实吃 · 不浪费</i><i>每周4-5更</i><i>300元设备起步</i></div>';
+ html+='<div class="dec-actions"><button class="btn mini" onclick="decJump(\'dc-rhythm\')">🚀 看30天冷启动节奏</button><button class="btn mini ghost" onclick="closeModal();scrollHomePrep()">去开号筹备清单</button></div></div>';
+ html+='<div class="dec-tip">💡 每周五数据复盘后回看一遍本页，对照「节奏」微调下周排程。</div>';
+ /* 决策逻辑链 */
+ html+='<div class="sec" id="dc-logic"><h3><span class="t"><span class="sec-num">①</span>为什么选它：决策推理链</span><span class="tag">5步推演</span></h3>';
+ html+='<div class="logic-list">'+D.logic.map(function(l,i){
+  return '<div class="logic-item"><div class="no">'+(i+1)+'</div><div class="bd"><div class="t"><em>'+esc(l.t)+'</em></div><div class="d">'+esc(l.d)+'</div><div class="verdict">✔ '+esc(l.v)+'</div></div></div>';
+ }).join('')+'</div></div>';
+ /* 可行性评估 */
+ html+='<div class="sec" id="dc-score"><h3><span class="t"><span class="sec-num">②</span>可行性评估</span><span class="tag">综合 '+D.score+'/10</span></h3>';
+ D.scores.forEach(function(s){html+='<div class="scoreline"><span class="lb">'+s.lb+'</span><div class="br"><div class="bar"><i style="width:'+(s.val*10)+'%;background:'+s.color+'"></i></div></div><span class="num">'+s.val.toFixed(1)+'</span></div>'});
+ html+='<div style="font-size:11px;color:var(--sub);margin-top:8px">结论：需求与适配是强项（8分），竞争窗口在交叉点（6分），成本靠系列化批量生产对冲（6分），合规守住底线即安全（7分）。</div></div>';
+ /* 定位矩阵 */
+ html+='<div class="sec" id="dc-matrix"><h3><span class="t"><span class="sec-num">③</span>定位矩阵</span><span class="tag">演绎浓度 × 感官浓度</span></h3>';
+ html+='<div class="matrix-wrap"><div class="mtitle">'+esc(D.matrix.title)+'</div>'+matrixSVG()+'</div>';
+ html+='<div style="font-size:12px;color:var(--sub);line-height:1.7">'+esc(D.matrix.note)+'</div></div>';
+ /* 内容系列 */
+ html+='<div class="sec" id="dc-series"><h3><span class="t"><span class="sec-num">④</span>内容系列矩阵</span><span class="tag">每周4-5更 · 批量制作</span></h3>';
+ html+='<div class="grid2">'+D.series.map(function(sr){
+  return '<div class="card" style="cursor:default;padding:12px"><h4>'+sr.key+' · '+esc(sr.name)+' <span class="chip" style="background:'+sr.bg+';color:'+sr.fg+'">'+sr.freq+'</span></h4><div class="d">'+esc(sr.desc)+'</div><div class="m"><span class="chip" style="background:'+sr.bg+';color:'+sr.fg+'">'+esc(sr.plat)+'</span><span class="chip n">'+esc(sr.role)+'</span></div></div>';
+ }).join('')+'</div></div>';
+ /* 红线 + 变现 */
+ html+='<div class="sec" id="dc-redline"><h3><span class="t"><span class="sec-num">⑤</span>三条红线</span></h3>';
+ html+='<div class="redline-grid">'+D.redlines.map(function(r){
+  return '<div class="redline-item"><div class="ic">'+r.ic+'</div><div class="bd"><div class="t">'+esc(r.t)+'</div><div class="d">'+esc(r.d)+'</div></div></div>';
+ }).join('')+'</div></div>';
+ html+='<div class="sec"><h3><span class="t"><span class="sec-num">⑥</span>变现路径</span><span class="tag">按粉丝阶段推进</span></h3>';
+ var sc=[{bg:'#F1EFE8',fg:'#5F5E5A'},{bg:'var(--blueBg)',fg:'var(--blueDeep)'},{bg:'var(--orangeBg)',fg:'#B4693C'},{bg:'var(--greenBg)',fg:'#3E7A56'}];
+ html+='<div class="flow">'+D.monetize.map(function(m,i){
+  return '<div class="fs"><span class="stage" style="background:'+sc[i].bg+';color:'+sc[i].fg+'">'+m.stage+'</span><div class="act">'+esc(m.act)+'</div></div>';
+ }).join('')+'</div>';
+ html+='<div style="font-size:11px;color:var(--sub);margin-top:10px">终极资产 = 人设IP + 声源版权，比单条流量值钱得多。</div></div>';
+ /* 30天节奏 */
+ html+='<div class="sec" id="dc-rhythm"><h3><span class="t"><span class="sec-num">⑦</span>30天冷启动节奏</span><span class="tag">结合备考作息</span></h3>';
+ html+='<div class="timeline">'+D.rhythm.map(function(r){return '<div class="tlitem"><h5>'+r.w+' · '+esc(r.t)+'</h5><p>'+esc(r.d)+'</p></div>'}).join('')+'</div></div>';
+ html+='</div>';
+ html+='<div class="btnrow"><button class="btn mini ghost" onclick="decJump(\'dc-rhythm\')">回到30天节奏 ↑</button><button class="btn mini ghost" onclick="closeModal()">关闭</button></div>';
+ openModal(html);
+}
+function decJump(id){
+ var el=$id(id);if(!el)return;
+ var box=document.querySelector('#modalBox .dec-scroll');
+ if(box){box.scrollTop+=el.getBoundingClientRect().top-box.getBoundingClientRect().top-10}
+ else el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function renderHomeCalendar(){
+ var el=$id('homeCalendar');if(!el)return;
+ var up=PRELOAD.calendar.filter(function(c){var dd=daysTo(c.d);return dd>=0&&dd<=c.lead}).sort(function(a,b){return a.d.localeCompare(b.d)}).slice(0,5);
+ var html='<h3>近期节点提醒 <span class="tag">提前'+Math.max.apply(null,PRELOAD.calendar.map(function(c){return c.lead}))+'天起提醒</span></h3>';
+ if(!up.length)html+='<div class="empty">近期无临近节点，先专注日常积累</div>';
+ else html+=up.map(function(c){
+  var dd=daysTo(c.d),soon=dd<=3;
+  return '<div class="cal-item'+(soon?' soon':'')+'"><div class="dt"><b>'+c.d.slice(5,7)+'/'+c.d.slice(8,10)+'</b><span>'+weekCN(c.d)+'</span></div><div class="bd"><div class="t">'+esc(c.name)+' '+typeChip(c)+'</div><div class="d">'+esc(c.idea)+'</div></div><div class="heat" style="flex:0 0 auto;font-size:11px;color:var(--sub)">'+(dd<=0?'就是今天':'还有'+dd+'天')+'</div></div>';
+ }).join('');
+ el.innerHTML=html;
+}
+function renderHomeNext(){
+ var el=$id('homeNext');if(!el)return;var html='';
+ if(state.decided){
+  var t=trackInfo(state.chosenTrack);
+  html='<div class="listitem"><div class="ic" style="background:'+t.light+'">★</div><div class="bd"><div class="t">运营期启动：先完成「开号筹备」清单</div><div class="d">选定的【'+esc(t.name)+'】赛道，从灵感库挑1条最有把握的 → 大纲工坊出脚本 → 排程发布</div></div></div>';
+  html+='<div class="btnrow"><button class="btn mini" onclick="homeStat(\'schedule\')">查看发布排程</button><button class="btn mini ghost" onclick="scrollHomePrep()">开号筹备进度 ↓</button></div>';
+ }else{
+  var left=Math.max(0,daysTo(state.decideBy));
+  var steps=[
+   ['①','看「赛道对比」：数据+建议双轨，先建立全局判断','homeStat(\'track\')'],
+   ['②','逐条读「赛道体检卡」：信号/案例/评分，划掉没感觉的','homeStat(\'track\')'],
+   ['③','每天存3条灵感：刷到就粘贴链接，或直接输入想法','homeStat(\'insp\')'],
+   ['④','随手过「开号筹备」：昵称/头像/简介先想3个备选','scrollHomePrep()'],
+   ['⑤',left+'天内定赛道：定了就发，和考试一起全力发力','homeStat(\'track\')']
+  ];
+  html=steps.map(function(s){return '<div class="listitem"><div class="ic" style="background:var(--blueBg);color:var(--blueDeep)">'+s[0]+'</div><div class="bd"><div class="t">'+s[1]+'</div></div></div>'}).join('');
+  html+='<div class="btnrow"><button class="btn mini" onclick="'+steps[0][2]+'">查看赛道决策</button></div>';
+ }
+ el.innerHTML=html;
+}
+function renderHomePrep(){
+ var el=$id('homePrep');if(!el)return;
+ initChecklist();
+ var total=0,done=0;
+ PRELOAD.setup.forEach(function(g,gi){g.items.forEach(function(){total++});(state.checklist[gi]||[]).forEach(function(v){if(v&&v.checked)done++})});
+ var pct=total?Math.round(done/total*100):0;
+ var tag=$id('homePrepPct');if(tag)tag.textContent=done+'/'+total+'（'+pct+'%）';
+ var html='<div class="bar" style="margin-bottom:10px"><i style="width:'+pct+'%;background:var(--green)"></i></div>';
+ html+=PRELOAD.setup.map(function(g,gi){
+  var d=(state.checklist[gi]||[]).filter(function(v){return v&&v.checked}).length;
+  return '<div style="margin-bottom:10px"><div style="font-size:12px;font-weight:600;margin-bottom:4px;color:var(--sub)">'+esc(g.cat)+' <span class="chip n">'+d+'/'+g.items.length+'</span></div><div class="checklist">'+g.items.map(function(it,j){
+   var item=state.checklist[gi]&&state.checklist[gi][j]||{checked:false,note:''},on=item.checked;
+   return '<label><input type="checkbox" '+(on?'checked':'')+' onchange="togglePrep('+gi+','+j+')"><span class="'+(on?'done':'')+'">'+esc(it)+'</span></label>'+
+    '<textarea class="prep-note" placeholder="记录当前想法，填写后自动保存" onchange="savePrepNote('+gi+','+j+',this.value)">'+esc(item.note||'')+'</textarea>';
+  }).join('')+'</div></div>';
+ }).join('');
+ el.innerHTML=html;
+}
+function scrollHomePrep(){var el=$id('homePrepWrap');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+/* 首页统计卡片：当页弹窗预览，不跳页、不嵌套弹窗 */
+function homeStat(k){
+ var html='<h3>',body='',foot='';
+ if(k==='insp'){
+  var d=dailyHotItems();
+  var items=(d.items||[]).slice(0,8);
+  html+='今日热点 <span class="tag">'+items.length+' 条</span><span style="font-weight:400;font-size:11px;color:var(--sub);margin-left:6px">'+esc(d.trackName||'演绎类吃播 ASMR')+'</span>';
+  if(items.length){
+   body=items.map(function(h,i){
+    var has=state.inspirations.some(function(x){return x.text.indexOf(h.topic)>-1});
+    var link=hotSearchUrl(h.platform,h.topic);
+    return '<div class="listitem"><div class="ic" style="background:'+trackInfo('eatASMR').light+';font-size:11px;color:'+trackInfo('eatASMR').color+'">'+(i+1)+'</div><div class="bd"><a class="hot-link" href="'+link+'" target="_blank" rel="noopener">'+esc(h.topic)+'</a> <span class="chip" style="background:'+trackInfo('eatASMR').light+';color:'+trackInfo('eatASMR').color+'">'+esc(h.platform||'综合')+'</span> <span class="chip n">'+esc(h.stage)+'</span><div class="d">'+esc(h.note)+'</div><div style="font-size:11px;color:#4A90D9;margin-top:2px">💡 '+esc(h.action)+'</div></div><div style="flex:0 0 auto">'+(has?'<button class="btn mini ghost" disabled style="opacity:.6">已导入</button>':'<button class="btn mini" onclick="importDailyHotItem('+i+');homeStat(\'insp\')">导入</button>')+'</div></div>';
+   }).join('');
+   foot='<button class="btn mini" onclick="importDailyHotAll();homeStat(\'insp\')">全部导入灵感库</button>';
+  }else{
+   body='<div class="empty">暂无今日热点。早报 8:00 自动搜索生成；也可用下方首页卡片「导入本地 daily_hot.json」按钮手动导入。</div>';
+  }
+ }
+ else if(k==='pool'){
+  html+='选题速览 <span class="tag">'+state.topics.length+' 条</span>';
+  body=state.topics.length?state.topics.slice().reverse().slice(0,8).map(function(t){
+   var stm={draft:'草稿',writing:'写脚本',done:'已发布'};
+   return '<div class="listitem"><div class="ic" style="background:'+trackInfo(t.track).light+';font-size:11px;color:'+trackInfo(t.track).color+'">题</div><div class="bd"><div class="t">'+esc(t.title)+'</div><div class="d">'+trackChip(t.track)+' <span class="chip n">'+stm[t.status]+'</span> · '+t.time+'</div></div></div>';
+  }).join(''):'<div class="empty">选题池空的。去「创作」页从灵感转选题或手动添加。</div>';
+ }
+ else if(k==='done'){
+  var done=state.records.length,pl=0,lf=0;
+  state.records.forEach(function(r){pl+=Number(r.plays)||0;lf+=Number(r.follows)||0});
+  html+='已发布数据 <span class="tag">'+done+' 条记录</span>';
+  body='<div class="statrow"><div class="stat"><b>'+done+'</b><span>记录数</span></div><div class="stat"><b>'+(pl/10000).toFixed(1)+'w</b><span>总播放</span></div><div class="stat"><b>'+lf+'</b><span>总涨粉</span></div></div>';
+  body+=done?state.records.slice().reverse().slice(0,6).map(function(x){
+   return '<div class="listitem"><div class="ic" style="background:var(--redBg);font-size:11px;color:#B04A40">数</div><div class="bd"><div class="t">'+esc(x.title)+'</div><div class="d">'+x.date+' · 播放 '+x.plays+'</div></div></div>';
+  }).join(''):'<div class="empty">发布第一条后，去「运营」页录入数据。</div>';
+ }
+ else if(k==='creator'){
+  html+='对标账号 <span class="tag">'+state.creators.length+' 个</span>';
+  body=state.creators.length?state.creators.slice().reverse().slice(0,8).map(function(c){
+   return '<div class="listitem"><div class="ic" style="background:'+trackInfo(c.track).light+';font-size:11px;color:'+trackInfo(c.track).color+'">对</div><div class="bd"><div class="t">'+esc(c.name)+'</div><div class="d">'+trackChip(c.track)+' · '+(c.plat||'未选平台')+' · '+c.videos.length+' 条拆解</div></div></div>';
+  }).join(''):'<div class="empty">还没添加对标账号。去「情报」页添加并拆解。</div>';
+ }
+ else if(k==='track'){
+  var t=trackInfo(state.chosenTrack);
+  html+='赛道决策 <span class="tag">已定</span>';
+  body='<div class="heart" style="margin-bottom:10px"><div class="big">'+esc(t.name)+'</div><div class="small">'+esc(DECISION_CARD.tagline)+'</div></div>';
+  body+='<div class="scoreline"><span class="lb">综合可行</span><div class="br"><div class="bar"><i style="width:'+DECISION_CARD.score*10+'%;background:var(--blue)"></i></div></div><span class="num">'+DECISION_CARD.score+'</span></div>';
+ }
+ else if(k==='schedule'){
+  html+='发布排程 <span class="tag">'+state.schedule.length+' 条</span>';
+  body=state.schedule.length?state.schedule.slice().sort(function(a,b){return (a.date+b.time).localeCompare(b.date+b.time)}).slice(0,8).map(function(s){
+   var dd=daysTo(s.date);
+   var st=dd<0?'<span class="chip n">已过期</span>':dd===0?'<span class="chip o">今天</span>':'<span class="chip n">还有'+dd+'天</span>';
+   return '<div class="listitem"><div class="ic" style="background:var(--blueBg);font-size:11px;color:var(--blueDeep)">排</div><div class="bd"><div class="t">'+esc(s.title)+'</div><div class="d">'+esc(s.platform)+' · '+fmtDateCN(s.date)+' '+esc(s.time)+' '+st+'</div></div></div>';
+  }).join(''):'<div class="empty">还没有排程。去「运营」页添加发布排程。</div>';
+ }
+ openModal(html+body+'<div class="btnrow" style="margin-top:14px">'+foot+'<button class="btn mini ghost" onclick="closeModal()">关闭</button></div>');
+}
+
+function trackTotalScore(t){return Math.round((t.scores.speed*0.3+t.scores.monetize*0.3+t.scores.interest*0.2+t.scores.cost*0.1+t.scores.barrier*0.1)*10)/10}
+function openTrackModal(){showTrackList()}
+function showTrackList(){
+ var html='<h3>候选赛道体检卡 <span class="tag">'+PRELOAD.tracks.length+' 个</span></h3><p style="font-size:12px;color:var(--sub);margin-bottom:10px">点击任意赛道查看完整体检卡：信号、案例、评分和开号建议。</p><div style="max-height:60vh;overflow-y:auto;padding-right:4px">';
+ html+=PRELOAD.tracks.slice().sort(function(a,b){return trackTotalScore(b)-trackTotalScore(a)}).map(function(t){
+  return '<div class="card" onclick="trackCardModal(\''+t.id+'\')" style="margin-bottom:10px;cursor:pointer"><h4>'+esc(t.name)+' <span class="chip" style="background:'+t.light+';color:'+t.color+'">综合 '+trackTotalScore(t).toFixed(1)+'</span></h4><div class="d">'+esc(t.desc)+'</div><div class="m" style="margin-top:6px"><b>爆款案例：</b>'+esc(t.cases[0].t)+'</div></div>';
+ }).join('');
+ html+='</div><div class="btnrow"><button class="btn mini ghost" onclick="closeModal()">关闭</button></div>';
+ openModal(html);
+}
+function openCalendarModal(){
+ var html='<h3>2026 下半年内容节点日历</h3><p style="font-size:12px;color:var(--sub);margin-bottom:10px">共 '+PRELOAD.calendar.length+' 个节点，按时间排序。标红的是临近节点，可作选题参考。</p>';
+ html+='<div style="max-height:58vh;overflow-y:auto;padding-right:4px">';
+ html+=PRELOAD.calendar.slice().sort(function(a,b){return a.d.localeCompare(b.d)}).map(function(c){
+  var dd=daysTo(c.d),soon=dd>=0&&dd<=c.lead,past=dd<0;
+  return '<div class="listitem" style="'+(past?'opacity:.55':'')+'"><div class="dt" style="flex:0 0 64px;background:'+(soon?'var(--redBg)':'var(--blueBg)')+';color:'+(soon?'var(--red)':'var(--blueDeep)')+'"><b>'+c.d.slice(5,7)+'/'+c.d.slice(8,10)+'</b><span>'+weekCN(c.d)+'</span></div><div class="bd"><div class="t">'+esc(c.name)+' '+typeChip(c)+'</div><div class="d">'+esc(c.idea)+'</div></div><div style="flex:0 0 auto;font-size:11px;color:var(--sub)">'+(dd<0?'已过':dd===0?'就是今天':'还有'+dd+'天')+'</div></div>';
+ }).join('');
+ html+='</div><div class="btnrow"><button class="btn mini ghost" onclick="closeModal()">关闭</button></div>';
+ openModal(html);
+}
+
+/* ===================== 赛道体检卡（当页弹窗） ===================== */
+function trackCardHTML(t){
+ var chosen=state.decided&&state.chosenTrack===t.id;
+ var head='<div class="trackcard">';
+ head+='<div class="hd"><span class="nm" style="color:'+t.color+'">'+esc(t.name)+'</span><span class="st '+(chosen?'c':'p')+'">'+(chosen?'当前已选':'候选')+'</span></div>';
+ head+='<div class="d" style="font-size:12px;color:var(--sub);margin-bottom:10px">'+esc(t.desc)+'</div>';
+ head+='<div style="margin-bottom:8px">'+scoreBar('涨粉速度',t.scores.speed,t.color)+scoreBar('变现潜力',t.scores.monetize,t.color)+scoreBar('兴趣持久',t.scores.interest,t.color)+scoreBar('成本友好',t.scores.cost,t.color)+scoreBar('门槛友好',t.scores.barrier,t.color)+'</div>';
+ head+='<div style="font-size:12px;color:var(--sub);margin:8px 0 4px"><b>近期信号</b></div>'+t.signals.map(function(s){return '<div class="listitem" style="padding:6px 2px"><div class="bd"><div class="d">· '+esc(s.d)+'</div><div class="t" style="font-size:12px">'+esc(s.s)+'</div></div></div>'}).join('');
+ head+='<div style="font-size:12px;color:var(--sub);margin:8px 0 4px"><b>爆款案例方向</b></div>'+t.cases.map(function(c){return '<div style="font-size:12px;padding:3px 0">· '+esc(c.t)+'</div>'}).join('');
+ head+='<div style="font-size:12px;color:var(--sub);margin:8px 0 4px"><b>为什么建议你考虑</b></div><div style="font-size:12px;background:var(--bg);border-radius:10px;padding:10px">'+esc(t.why)+'</div>';
+ head+='<div class="btnrow">'+(chosen?'<button class="btn mini ghost" onclick="closeModal();resetTrack()">重新考虑</button>':'<button class="btn mini" style="background:'+t.color+'" onclick="closeModal();chooseTrack(\''+t.id+'\')">选定这个赛道</button>')+'</div></div>';
+ return head;
+}
+function trackCardModal(id){
+ var t=trackInfo(id);if(!t)return;
+ openModal('<h3>赛道体检卡 <span class="tag">'+esc(t.name)+'</span></h3><div style="max-height:62vh;overflow-y:auto;padding-right:4px">'+trackCardHTML(t)+'</div><div class="btnrow"><button class="btn mini ghost" onclick="openTrackModal()">← 返回候选列表</button></div>');
+}
+function chooseTrack(id){
+ var t=trackInfo(id);
+ openModal('<h3>选定赛道：'+esc(t.name)+'</h3><p style="font-size:13px;color:var(--sub)">选定后工作台切换为「运营期」形态：首页改为该赛道速览。之后仍可「重新考虑」改选。</p><div class="btnrow"><button class="btn green" onclick="confirmChoose(\''+id+'\')">确认选定</button><button class="btn ghost" onclick="closeModal()">再想想</button></div>');
+}
+function confirmChoose(id){
+ state.chosenTrack=id;state.decided=true;saveState();closeModal();
+ renderHome();toast('已选定【'+trackInfo(id).name+'】，切换为运营期');
+}
+function resetTrack(){
+ openModal('<h3>重新考虑赛道？</h3><p style="font-size:13px;color:var(--sub)">已选赛道将被清空，回到探索期双轨判断。灵感/选题/数据全部保留，不受影响。</p><div class="btnrow"><button class="btn orange" onclick="confirmReset()">清空并重新探索</button><button class="btn ghost" onclick="closeModal()">保留</button></div>');
+}
+function confirmReset(){state.decided=false;state.chosenTrack=null;saveState();closeModal();renderHome();toast('已回到探索期')}
+
+/* ===================== 灵感 · 采集入库 ===================== */
+function renderCollect(){
+ var el=$id('sp-collect');if(!el)return;
+ var html='<div class="heart"><div class="big">采集入库：粘贴链接 / 内容，自动整理</div><div class="small">识别平台 + 自动匹配赛道 + 自动去重。刷到好内容就丢进来，不用手动整理。</div></div>';
+ html+='<div class="sec" style="border-color:rgba(74,144,217,.25);background:#FDFBFF"><textarea id="impText" placeholder="粘贴链接即可，例如：https://www.xiaohongshu.com/explore/xxx&#10;也可以粘贴【标题】+ 链接 + 想存的话，整段丢进来" style="min-height:84px"></textarea><div class="btnrow"><button class="btn mini" onclick="importClipboard()">自动整理入库</button><button class="btn mini ghost" onclick="manualCollect()">手动填写</button><button class="btn mini ghost" onclick="showCollectGuide()">采集说明</button></div></div>';
+ html+='<div class="warnbox">💡 采集后自动整理：平台（小红书/抖音/视频号/B站…）→ 赛道（匹配关键词）→ 去重。存进「灵感库」tab，随时一键转选题。</div>';
+ el.innerHTML=html;
+}
+/* ===================== 灵感 · 灵感库 ===================== */
+function renderLib(){
+ var el=$id('sp-lib');if(!el)return;
+ var html='<div class="sec"><h3>我的灵感库 <span class="tag">'+state.inspirations.length+' 条</span><span style="font-weight:400;font-size:11px;color:var(--sub)"> · 点「转选题」直接进创作页选题池</span></h3>';
+ if(!state.inspirations.length)html+='<div class="empty">还没有灵感。去「采集入库」粘贴链接，或点底部「＋ 采集」。</div>';
+ else html+=state.inspirations.slice().reverse().map(function(x){
+  var plat=platOf(x.url)||(x.platform?{name:x.platform,color:'#8A919B'}:null);
+  var isTopic=state.topics.some(function(t){return t.fromId===x.id});
+  return '<div class="listitem"><div class="ic" style="background:'+trackInfo(x.track).light+';font-size:11px;color:'+trackInfo(x.track).color+'">灵</div><div class="bd"><div class="t">'+esc(x.text)+'</div><div class="d">'+trackChip(x.track)+' '+(plat?platChip(plat):'')+' '+esc(x.src||'')+' · '+x.time+(x.tag?' · <span class="chip n">'+esc(x.tag)+'</span>':'')+'</div></div><div class="act" style="display:flex;flex-direction:column;gap:4px;flex:0 0 auto">'+(x.url?'<a class="btn mini ghost" href="'+esc(x.url)+'" target="_blank" rel="noopener" style="text-decoration:none">打开原文 ↗</a>':'')+(isTopic?'<button class="btn mini ghost" disabled style="opacity:.6">已转选题</button>':'<button class="btn mini green" onclick="inspToTopic(\''+x.id+'\')">转选题</button>')+(x.url?'<button class="btn mini ghost" onclick="aiReadInsp(\''+x.id+'\')">让AI整理</button>':'')+'<button class="btn mini ghost" onclick="delInsp(\''+x.id+'\')">删除</button></div></div>';
+ }).join('');
+ html+='</div>';
+ el.innerHTML=html;
+}
+function addInsp(){
+ var txt=$id('inspText').value.trim();if(!txt){toast('先写点内容');return}
+ var src=$id('inspSrc').value.trim();
+ var m=src.match(/https?:\/\/[^\s]+/);
+ var url=m?m[0]:'';
+ var plat=platOf(url);
+ state.inspirations.push({id:uid(),text:txt,track:$id('inspTrack').value,src:src,url:url,platform:plat?plat.name:'',tag:$id('inspTag').value.trim(),time:todayStr()});
+ saveState();renderLib();toast('已加入灵感库');
+ $id('inspText').value='';$id('inspSrc').value='';$id('inspTag').value='';
+}
+function delInsp(id){
+ var i=state.inspirations.findIndex(function(x){return x.id===id});if(i<0)return;
+ state.inspirations.splice(i,1);saveState();renderLib();toast('已删除');
+}
+function inspToTopic(id){
+ var x=state.inspirations.find(function(x){return x.id===id});if(!x)return;
+ if(state.topics.some(function(t){return t.fromId===id})){toast('这条已是选题');return}
+ state.topics.push({id:uid(),title:x.text.length>40?x.text.slice(0,40)+'…':x.text,track:x.track==='all'?'all':x.track,status:'draft',from:'灵感',fromId:id,time:todayStr()});
+ saveState();renderLib();renderPool();toast('已转入选题池');
+}
+function importClipboard(){
+ var el=$id('collText')||$id('impText');
+ var raw=el.value.trim();if(!raw){toast('先粘贴链接或内容');return}
+ if(smartImport(raw)){el.value='';closeModal();renderLib()}
+}
+function manualCollect(){
+ openModal('<h3>手动添加灵感</h3><div class="form-stack"><div class="form-field full"><label>灵感内容</label><textarea id="mText" placeholder="写点什么：看到的、想到的、想拍的&#10;例如：下班后一个人吃小火锅的咀嚼音场景可以拍"></textarea></div><div class="form-field full"><label>链接（可选）</label><input id="mUrl" type="text" placeholder="https://... 粘贴原文链接，自动识别平台"></div><div class="form-line"><div class="form-field"><label>赛道</label><select id="mTrack"><option value="eatASMR">演绎类吃播 ASMR</option>'+PRELOAD.tracks.map(function(t){return '<option value="'+t.id+'">'+esc(t.name)+'</option>'}).join('')+'</select></div><div class="form-field"><label>标签（可选）</label><input id="mTag" type="text" placeholder="如：对标 / 选题 / 可拍"></div></div></div><div class="btnrow" style="margin-top:14px"><button class="btn" onclick="manualSave()">保存</button><button class="btn ghost" onclick="closeModal()">取消</button></div>');
+}
+function manualSave(){
+ var txt=$id('mText').value.trim();if(!txt){toast('写点内容');return}
+ var url=$id('mUrl').value.trim();
+ if(url&&!state.inspirations.some(function(x){return x.url===url})){
+  var plat=platOf(url);
+  state.inspirations.push({id:uid(),text:txt,track:$id('mTrack').value,url:url,platform:plat?plat.name:'',src:plat?plat.name:'手动',tag:$id('mTag').value.trim(),time:todayStr()});
+ }else{
+  state.inspirations.push({id:uid(),text:txt,track:$id('mTrack').value,url:'',platform:'',src:'手动',tag:$id('mTag').value.trim(),time:todayStr()});
+ }
+ saveState();renderLib();closeModal();toast('已加入灵感库');
+}
+function aiReadInsp(id){
+ var x=state.inspirations.find(function(x){return x.id===id});if(!x||!x.url)return;
+ copyText(x.url,'链接已复制');
+ openModal('<h3>让 AI 整理这条链接</h3><p style="font-size:12px;color:var(--sub);margin-bottom:10px">链接已复制到剪贴板。回到当前对话（创作情报中枢所在会话），把链接直接粘贴发给我，我会抓取网页内容，整理出标题/摘要/赛道标签回填到这条灵感。</p><div class="qitem" style="word-break:break-all"><pre style="margin-bottom:0">'+esc(x.url)+'</pre></div><textarea id="aiUrlSrc" style="position:fixed;opacity:0;height:1px">'+esc(x.url)+'</textarea><div class="btnrow"><button class="btn mini" onclick="copyText(document.getElementById(\'aiUrlSrc\').value,\'已再次复制\')">再复制一次</button><button class="btn mini ghost" onclick="closeModal()">知道了</button></div>');
+}
+
+/* ===================== 探索 · 开号筹备 ===================== */
+function renderPrep(){
+ var el=$id('sp-prep');if(!el)return;
+ initChecklist();
+ var total=0,done=0;
+ PRELOAD.setup.forEach(function(g,gi){g.items.forEach(function(){total++});state.checklist[gi].forEach(function(v){if(v&&v.checked)done++})});
+ var pct=total?Math.round(done/total*100):0;
+ var html='<div class="heart"><div class="big">开号筹备进度 '+done+'/'+total+'（'+pct+'%）</div><div class="small">探索期就可以开始做：昵称/头像/简介先想3个备选，想清楚比做快更重要。</div><div class="bar" style="margin-top:10px"><i style="width:'+pct+'%;background:var(--green)"></i></div></div>';
+ html+=PRELOAD.setup.map(function(g,gi){
+  var n=g.items.length,d=state.checklist[gi].filter(function(v){return v&&v.checked}).length;
+  return '<div class="sec"><h3>'+esc(g.cat)+' <span class="tag">'+d+'/'+n+'</span></h3><div class="checklist">'+g.items.map(function(it,j){
+   var item=state.checklist[gi][j],on=item&&item.checked;
+   return '<label><input type="checkbox" '+(on?'checked':'')+' onchange="togglePrep('+gi+','+j+')"><span class="'+(on?'done':'')+'">'+esc(it)+'</span></label>'+
+    '<textarea class="prep-note" placeholder="记录当前想法（如昵称备选、头像风格、简介文案等），填写后自动保存" onchange="savePrepNote('+gi+','+j+',this.value)">'+esc(item.note||'')+'</textarea>';
+  }).join('')+'</div></div>';
+ }).join('');
+ html+='<div class="warnbox">💡 筹备小贴士：昵称 = 好记 + 赛道词（先列3个让朋友投票）；简介 = 你是谁 + 提供什么价值 + 更新频率。第一条内容别求完美，发了才算开始。</div>';
+ el.innerHTML=html;
+}
+function togglePrep(gi,j){
+ initChecklist();
+ state.checklist[gi][j].checked=!state.checklist[gi][j].checked;
+ saveState();
+ if($id('sp-prep')) renderPrep();
+ if($id('homePrep')) renderHomePrep();
+}
+function savePrepNote(gi,j,note){
+ initChecklist();
+ state.checklist[gi][j].note=note;
+ saveState();
+ toast('想法已保存');
+}
+
+/* ===================== 灵感 · 灵感流 ===================== */
+function renderFlow(){
+ var el=$id('sp-flow');if(!el)return;
+ var flow=PRELOAD.trackHot.slice().sort(function(a,b){return b.heat-a.heat});
+ var saved={};state.inspirations.forEach(function(x){saved[x.fromHot]=true});
+ var html='<div class="heart"><div class="big">今日灵感流</div><div class="small">基于平台情报自动整理的话题方向。看到有感觉的 → 收藏进灵感库；存够10条，选题池自然就有了。</div></div>';
+ /* 今日热点区 */
+ var d=dailyHotItems();
+ var hotItems=(d.items||[]).slice(0,4);
+ html+='<div class="sec" style="border-color:rgba(74,144,217,.35);background:#F5FAFF"><h3>🔥 今日热点 <span class="tag">'+esc(d.trackName||'演绎类吃播 ASMR')+'</span><span style="font-weight:400;font-size:11px;color:var(--sub);margin-left:6px">'+esc(d.date||todayStr())+'</span></h3>';
+ if(!hotItems.length){
+  html+='<div class="empty">暂无今日热点。早报 8:00 会自动搜索生成；或点下方按钮导入本地 daily_hot.json。</div>';
+ }else{
+  html+=hotItems.map(function(h){
+   return '<div class="listitem"><div class="ic" style="background:var(--blueBg);font-size:11px;color:var(--blueDeep)">热</div><div class="bd"><div class="t">'+esc(h.topic)+' <span class="chip" style="background:'+trackInfo('eatASMR').light+';color:'+trackInfo('eatASMR').color+'">'+esc(h.platform||'综合')+'</span> <span class="chip n">'+esc(h.stage)+'</span></div><div class="d">'+esc(h.note)+'</div><div style="font-size:11px;color:#4A90D9;margin-top:2px">💡 '+esc(h.action)+'</div></div><div style="flex:0 0 auto"><button class="btn mini" onclick="importDailyHotItem('+d.items.indexOf(h)+')">收藏</button></div></div>';
+  }).join('');
+ }
+ html+='<div class="btnrow" style="margin-top:8px"><button class="btn mini" onclick="openDailyHotModal()">查看全部 & 导入</button><button class="btn mini ghost" onclick="openDailyHotFile()">导入本地 JSON</button></div></div>';
+ html+='<div class="sec" style="border-color:rgba(255,154,77,.35);background:#FFFBF5"><h3>🎲 ASMR 选题引擎 <span class="tag">按你的系列矩阵摇</span><button class="btn mini ghost" style="margin-left:8px" onclick="asmrRoll()">再摇一组</button></h3><div id="asmrEngine">'+asmrEngineHTML()+'</div><div style="font-size:11px;color:var(--sub);margin-top:8px">对应决策页的 A治愈晚餐 / B纯享音 / C轻剧情 / D爆款拆解 四个系列。摇到喜欢的 → 收藏进灵感库 → 一键转选题。</div></div>';
+ html+=flow.map(function(h){
+  var has=saved[h.topic];
+  return '<div class="listitem"><div class="ic" style="background:'+trackInfo(h.track).light+';color:'+trackInfo(h.track).color+'">'+(h.heat/10|0)+'</div><div class="bd"><div class="t">'+esc(h.topic)+' '+trackChip(h.track)+' '+trendArrow(h.trend)+' <span style="font-size:11px;color:var(--sub)">'+esc(h.stage)+'</span></div><div class="d">'+esc(h.note)+'</div></div><div style="flex:0 0 auto">'+(has?'<button class="btn mini ghost" disabled style="opacity:.6">已收藏</button>':'<button class="btn mini" onclick="flowSave(\''+h.topic+'\',\''+h.track+'\',\''+h.heat+'\',\''+esc(h.note).replace(/'/g,"\\'")+'\')">收藏</button>')+'</div></div>';
+ }).join('');
+ html+='<div class="warnbox">💡 收藏的灵感都在「灵感库」tab 统一管理，可一键转选题。当前已收藏 '+state.inspirations.length+' 条。</div>';
+ el.innerHTML=html;
+}
+function asmrEngineHTML(){
+ var cats=Object.keys(PRELOAD.asmrIdeas);
+ var html='';
+ cats.forEach(function(cat){
+  var list=PRELOAD.asmrIdeas[cat];
+  var pick=list[Math.floor(Math.random()*list.length)];
+  var parts=cat.split('·');
+  html+='<div class="listitem"><div class="ic" style="background:var(--orangeBg);font-size:11px;color:#B4693C">'+(parts[0]||'?')+'</div><div class="bd"><div class="t">'+esc(pick)+'</div><div class="d">'+(parts[1]?esc(parts[1]):'')+' 系列</div></div><div style="flex:0 0 auto"><button class="btn mini" onclick="asmrSave(\''+esc(pick).replace(/'/g,"\\'")+'\')">收藏</button></div></div>';
+ });
+ return html;
+}
+function asmrRoll(){var el=$id('asmrEngine');if(el)el.innerHTML=asmrEngineHTML()}
+function asmrSave(txt){
+ if(state.inspirations.some(function(x){return x.text===txt})){toast('这条已在灵感库');return}
+ state.inspirations.push({id:uid(),text:txt,track:'eatASMR',src:'ASMR选题引擎',time:todayStr()});
+ saveState();renderFlow();renderLib();toast('已收藏进灵感库');
+}
+function flowSave(topic,track,heat,note){
+ if(state.inspirations.some(function(x){return x.fromHot===topic})){toast('已在灵感库');return}
+ state.inspirations.push({id:uid(),text:'【情报方向】'+topic+'：'+note,track:track,src:'系统灵感流',fromHot:topic,time:todayStr()});
+ saveState();renderFlow();renderLib();toast('已收藏进灵感库');
+}
+
+/* ===================== 创作 · 选题池 ===================== */
+function renderPool(){
+ var el=$id('sp-pool');if(!el)return;
+ var stm={draft:'草稿',writing:'写脚本',done:'已发布'};
+ var html='<div class="sec"><h3>新增选题</h3><div class="form-stack"><div><label class="fl">选题标题</label><input id="poolTitle" type="text" placeholder="例如：下班后一个人的治愈小火锅｜咀嚼音ASMR"></div><div class="form-line"><div class="field"><label>赛道</label><select id="poolTrack"><option value="eatASMR">演绎类吃播 ASMR</option>'+PRELOAD.tracks.map(function(t){return '<option value="'+t.id+'">'+esc(t.name)+'</option>'}).join('')+'</select></div><div class="field"><label>标签（可选）</label><input id="poolTag" type="text" placeholder="如：治愈晚餐 / 纯享音 / 轻剧情"></div></div></div><div class="btnrow" style="margin-top:14px"><button class="btn" onclick="addTopic()">加入选题池</button></div></div>';
+ html+='<div class="sec"><h3>选题池 <span class="tag">'+state.topics.length+' 条 · 草稿→写脚本→已发布</span></h3>';
+ if(!state.topics.length)html+='<div class="empty">选题池是空的。从灵感流收藏 → 转选题，或直接手动添加。</div>';
+ else html+=state.topics.slice().reverse().map(function(t){
+  var badge={draft:'chip',writing:'chip.o',done:'chip.g'}[t.status];
+  var btnTxt={draft:'进入写脚本',writing:'继续写脚本',done:'完成'}[t.status];
+  var btnCls={draft:'btn mini',writing:'btn mini',done:'btn mini ghost'}[t.status];
+  var nextFn={draft:'topicNext',writing:'topicNext',done:'topicDone'}[t.status];
+  var scriptTag=t.script?' <span class="chip g">已生成脚本</span>':'';
+  return '<div class="listitem"><div class="ic" style="background:'+trackInfo(t.track).light+';font-size:11px;color:'+trackInfo(t.track).color+'">题</div><div class="bd"><div class="t">'+esc(t.title)+'</div><div class="d">'+trackChip(t.track)+' <span class="'+badge+'">'+stm[t.status]+'</span>'+scriptTag+(t.from?' · 来源：'+esc(t.from):'')+' · '+t.time+'</div></div><div style="flex:0 0 auto;display:flex;gap:4px;flex-direction:column"><button class="'+btnCls+'" onclick="'+nextFn+'(\''+t.id+'\')">'+btnTxt+'</button><button class="btn mini ghost" onclick="delTopic(\''+t.id+'\')">删除</button></div></div>';
+ }).join('')+'</div>';
+ el.innerHTML=html;
+}
+function addTopic(){
+ var title=$id('poolTitle').value.trim();if(!title){toast('先填选题');return}
+ state.topics.push({id:uid(),title:title,track:$id('poolTrack').value,tag:$id('poolTag').value.trim(),status:'draft',from:'手动',time:todayStr()});
+ saveState();renderPool();toast('已加入选题池');$id('poolTitle').value='';$id('poolTag').value='';
+}
+var currentWorkshopTopicId=null;
+var lastWorkshopResult=null;
+function topicNext(id){
+ var t=state.topics.find(function(t){return t.id===id});if(!t)return;
+ currentWorkshopTopicId=id;
+ openModal('<h3>写脚本：'+esc(t.title)+'</h3><p style="font-size:12px;color:var(--sub);margin-bottom:10px">选题已自动带入，直接在下面填完信息 → 生成脚本框架，不用跳页。</p>'+workshopFormHTML(t.title,'modal')+'<div class="btnrow" style="margin-top:8px"><button class="btn mini ghost" onclick="closeModal()">稍后再说</button></div>');
+}
+function topicDone(id){
+ var t=state.topics.find(function(t){return t.id===id});if(!t)return;
+ t.status=t.status==='draft'?'writing':'done';saveState();renderPool();toast(t.status==='writing'?'已进入写脚本':'已完成');
+}
+function delTopic(id){
+ var i=state.topics.findIndex(function(x){return x.id===id});if(i<0)return;
+ state.topics.splice(i,1);saveState();renderPool();toast('已删除');
+}
+
+/* ===================== 创作 · 大纲工坊 ===================== */
+function workshopFormHTML(presetTitle,suffix){
+ suffix=suffix||'page';
+ var opts=function(sel){
+  return sel.map(function(t){return '<option value="'+t.id+'">'+esc(t.name)+'</option>'}).join('');
+ };
+ var html='<div class="form-grid"><div class="form-field full"><label>① 你的选题（一句话）</label><input id="wsTitle_'+suffix+'" placeholder="如：下班后一个人的治愈小火锅，咀嚼音ASMR" value="'+esc(presetTitle||'')+'"></div><div class="form-field"><label>② 赛道</label><select id="wsTrack_'+suffix+'"><option value="eatASMR">演绎类吃播 ASMR</option>'+opts(PRELOAD.tracks)+'</select></div><div class="form-field"><label>③ 内容形态</label><select id="wsForm_'+suffix+'"><option value="video">沉浸式吃播视频（1-3分钟）</option><option value="short">短视频竖版（30-60秒）</option><option value="image">图文笔记（小红书）</option><option value="series">系列内容（第一集）</option></select></div><div class="form-field full"><label>④ 目标人群（可留空）</label><input id="wsPeople_'+suffix+'" placeholder="如：25-35岁独居打工人、深夜助眠党"></div></div><div class="btnrow"><button class="btn" onclick="workshopGen(\''+suffix+'\')">生成脚本框架</button></div>';
+ return html;
+}
+function renderWorkshop(){
+ currentWorkshopTopicId=null;
+ var el=$id('sp-workshop');if(!el)return;
+ var html='<div class="heart"><div class="big">大纲工坊：问答式把选题变成脚本</div><div class="small">填4个信息 → 生成内容骨架 + 可直接扔给AI的完整提示词。不用自己从零憋脚本。</div></div>';
+ html+='<div class="sec">'+workshopFormHTML('','page')+'</div>';
+ html+='<div class="sec"><h3>脚本结构速查 <span class="tag">3秒钩子法</span></h3><div class="fomula"><div class="f">钩子 → 痛点 → 方案 → 结果 → 引导</div><div class="e">前3秒必须抓住注意力（悬念/痛点/反常识）；中间2-3个信息点每个≤15秒；结尾用行动引导。</div></div><div class="fomula"><div class="f">视频号/B站：信任优先</div><div class="e">开头亮身份+给承诺，讲人话、讲实例，收藏/转发引导比点赞更重要。</div></div></div>';
+ el.innerHTML=html;
+}
+function workshopGen(suffix){
+ suffix=suffix||'page';
+ var title=$id('wsTitle_'+suffix).value.trim();if(!title){toast('先填选题');return}
+ var track=$id('wsTrack_'+suffix).value,form=$id('wsForm_'+suffix).value,people=$id('wsPeople_'+suffix).value.trim()||'目标人群';
+ var tName=trackInfo(track).name;
+ var tpl;
+ if(form==='video')tpl=PRELOAD.scripts[0];
+ else if(form==='short')tpl=PRELOAD.scripts[1];
+ else if(form==='image')tpl=PRELOAD.scripts[3];
+ else tpl=PRELOAD.scripts[5];
+ var ap=PRELOAD.prompts['脚本撰写'][0];
+ var promptText=ap.p.replace('{选题}',title).replace('{赛道}',tName).replace('{人群}',people).replace('{时长}','30-60秒');
+ var formLabel=form==='video'?'沉浸式吃播':form==='short'?'短视频口播':form==='image'?'图文笔记':'系列第一集';
+ lastWorkshopResult={title:title,track:track,form:form,people:people,skeleton:tpl.tpl,prompt:promptText};
+ var html='<h3>脚本框架：'+esc(title)+'</h3><div style="font-size:12px;color:var(--sub);margin-bottom:10px">'+trackChip(track)+' · '+esc(formLabel)+'</div>';
+ html+='<label class="fl">内容骨架（按这个结构填充）</label><pre style="background:var(--bg);border-radius:10px;padding:10px;font-size:12px;white-space:pre-wrap;color:#4A5058;font-family:inherit">'+esc(tpl.tpl)+'</pre>';
+ html+='<label class="fl">AI完整提示词（复制到豆包/Kimi/DeepSeek等任意AI对话生成完整脚本）</label><pre style="background:var(--blueBg);border-radius:10px;padding:10px;font-size:12px;white-space:pre-wrap;color:#2E4A66;font-family:inherit;max-height:240px;overflow-y:auto">'+esc(promptText)+'</pre>';
+ html+='<div class="btnrow"><button class="btn mini" onclick="saveWorkshopTopic()">'+(currentWorkshopTopicId?'保存到该选题':'保存为新选题')+'</button><button class="btn mini" onclick="copyText(document.getElementById(\'wsCopySrc_'+suffix+'\').value,\'提示词已复制\')">复制AI提示词</button><button class="btn mini ghost" onclick="copyText(document.getElementById(\'wsCopyTpl_'+suffix+'\').value,\'骨架已复制\')">复制骨架</button></div>';
+ html+='<textarea id="wsCopySrc_'+suffix+'" style="position:fixed;opacity:0;height:1px">'+esc(promptText)+'</textarea><textarea id="wsCopyTpl_'+suffix+'" style="position:fixed;opacity:0;height:1px">'+esc(tpl.tpl)+'</textarea>';
+ openModal(html);
+}
+function saveWorkshopTopic(){
+ var r=lastWorkshopResult;if(!r){toast('没有可保存的脚本');return}
+ var now=todayStr();
+ if(currentWorkshopTopicId){
+  var t=state.topics.find(function(x){return x.id===currentWorkshopTopicId});
+  if(!t){toast('选题不存在');return}
+  t.title=r.title;t.track=r.track;t.status='writing';t.script={form:r.form,people:r.people,skeleton:r.skeleton,prompt:r.prompt};
+  if(!t.scriptTime)t.scriptTime=now;
+  toast('已保存脚本到选题');
+ }else{
+  state.topics.push({id:uid(),title:r.title,track:r.track,status:'writing',from:'大纲工坊',time:now,script:{form:r.form,people:r.people,skeleton:r.skeleton,prompt:r.prompt},scriptTime:now});
+  toast('已保存为新选题');
+ }
+ saveState();renderPool();
+}
+
+/* ===================== 创作 · 提示词库 ===================== */
+function renderPrompts(){
+ var el=$id('sp-prompts');if(!el)return;
+ var cats=Object.keys(PRELOAD.prompts);
+ var html='<div class="heart"><div class="big">提示词库：复制 → 粘贴到任意AI对话即用</div><div class="small">9大创作场景模板，带 {占位符}，替换成你的内容就能用。覆盖：标题→脚本→配文→标签→复盘全流程。</div></div>';
+ html+='<div class="subnav" style="margin-bottom:12px">'+cats.map(function(c){return '<a data-c="'+c+'" class="'+(c==='标题生成'?'on':'')+'" onclick="promptTab(\''+c+'\')">'+esc(c)+'</a>'}).join('')+'</div>';
+ html+='<div id="promptList" class="promptlist">'+promptCards(cats[0])+'</div>';
+ el.innerHTML=html;
+}
+function promptTab(c){
+ var el=$id('sp-prompts');
+ el.querySelectorAll('.subnav a').forEach(function(a){a.classList.toggle('on',a.dataset.c===c)});
+ $id('promptList').innerHTML=promptCards(c);
+}
+function promptCards(c){
+ var list=PRELOAD.prompts[c]||[];
+ return list.map(function(x,i){
+  return '<div class="qitem"><div class="q">'+(i+1)+'. '+esc(x.t)+'</div><pre>'+esc(x.p)+'</pre><div class="btnrow" style="margin-top:0"><button class="btn mini" onclick="copyText(this.previousElementSibling.textContent)">复制模板</button><button class="btn mini ghost" onclick="fillPrompt(this, '+i+', \''+c+'\')">一键填占位符</button></div></div>';
+ }).join('');
+}
+function fillPrompt(btn,i,c){
+ var tpl=PRELOAD.prompts[c][i].p;
+ var phs=[];
+ var m;var re=/\{([^}]+)\}/g;
+ while((m=re.exec(tpl))){if(phs.indexOf(m[1])<0)phs.push(m[1])}
+ var html='<h3>填写占位符：'+esc(PRELOAD.prompts[c][i].t)+'</h3><div class="form-stack">';
+ phs.forEach(function(p,idx){
+  html+='<div class="form-field full"><label>'+esc(p)+'</label><input id="pf_'+idx+'" placeholder="填写 '+esc(p)+'"></div>';
+ });
+ html+='</div><div class="btnrow"><button class="btn" onclick="promptFilled('+i+',\''+c+'\','+phs.length+')">生成提示词</button></div>';
+ openModal(html);
+}
+function promptFilled(i,c,n){
+ var tpl=PRELOAD.prompts[c][i].p;
+ var out=tpl;
+ for(var k=0;k<n;k++){var v=$id('pf_'+k).value.trim()||'______';out=out.replace('{'+v.replace(/\{|\}/g,'')+'}','')}
+ for(var k=0;k<n;k++){var v=$id('pf_'+k).value.trim()||'______';out=out.replace(/\{([^}]+)\}/,v)}
+ closeModal();
+ openModal('<h3>你的提示词</h3><pre style="background:var(--blueBg);border-radius:10px;padding:12px;font-size:12px;white-space:pre-wrap;color:#2E4A66;font-family:inherit;max-height:50vh;overflow-y:auto">'+esc(out)+'</pre><div class="btnrow"><button class="btn mini" onclick="copyText(this.parentElement.previousElementSibling.textContent,\'已复制\')">复制</button></div>');
+}
+
+/* ===================== 创作 · 素材库 ===================== */
+function renderMaterial(){
+ var el=$id('sp-material');if(!el)return;
+ var tabs=[['titles','标题公式'],['scripts','脚本模板'],['music','音乐'],['sounds','音效'],['refs','对标参考']];
+ var cur=UI.mat;
+ var html='<div class="subnav" style="margin-bottom:12px">'+tabs.map(function(t){return '<a data-c="'+t[0]+'" class="'+(t[0]===cur?'on':'')+'" onclick="matTab(\''+t[0]+'\')">'+t[1]+'</a>'}).join('')+'</div><div id="matBody">'+matBody(cur)+'</div>';
+ el.innerHTML=html;
+}
+function matTab(c){UI.mat=c;renderMaterial()}
+function toggleSound(box,k){
+ state.soundBank=state.soundBank||{};
+ state.soundBank[k]=!!box.checked;
+ saveState();renderMaterial();
+}
+function matBody(c){
+ if(c==='titles'){
+  return '<div class="sec"><h3>标题公式 <span class="tag">'+PRELOAD.titles.length+' 条</span></h3>'+PRELOAD.titles.map(function(t){return '<div class="fomula"><div class="f">'+esc(t.f)+'</div><div class="e">'+esc(t.e)+'</div></div>'}).join('')+'</div>';
+ }
+ if(c==='scripts'){
+  return '<div class="sec"><h3>脚本模板 <span class="tag">'+PRELOAD.scripts.length+' 套</span></h3>'+PRELOAD.scripts.map(function(s){return '<div class="qitem"><div class="q">'+esc(s.name)+'</div><pre>'+esc(s.tpl)+'</pre><button class="btn mini ghost" style="margin-top:0" onclick="copyText(this.previousElementSibling.textContent)">复制模板</button></div>'}).join('')+'</div>';
+ }
+ if(c==='music'){
+  return '<div class="sec"><h3>音乐素材 <span class="tag">链接收藏模式</span></h3><p style="font-size:12px;color:var(--sub);margin-bottom:10px">点开「来源」直接去平台搜，收藏后回灵感库存链接。</p>'+PRELOAD.music.map(function(m){return '<div class="listitem"><div class="ic" style="background:var(--purpleBg);font-size:11px;color:#6E52AC">乐</div><div class="bd"><div class="t">'+esc(m.name)+'</div><div class="d">来源：'+esc(m.src)+'<br>'+esc(m.note)+'</div><div class="m">'+m.tag.map(function(t){return '<span class="chip n">'+esc(t)+'</span>'}).join('')+'</div></div></div>'}).join('')+'</div>';
+ }
+ if(c==='sounds'){
+  var bank=state.soundBank||{};
+  var all=[];Object.keys(PRELOAD.asmrSounds).forEach(function(cat){all=all.concat(PRELOAD.asmrSounds[cat])});
+  var doneN=all.filter(function(s){return bank[s.name]}).length;
+  var pct=all.length?Math.round(doneN/all.length*100):0;
+  var html='<div class="heart"><div class="big">ASMR 声源素材库 <span class="tag">已录 '+doneN+'/'+all.length+'</span></div><div class="small">吃播 ASMR 的「原材料」，按 咀嚼/切菜/气泡/环境音 四类攒。每拍一条 B 系列纯享音顺手录 3-5 个声源，素材库越滚越厚——这是你的核心资产。</div><div class="bar" style="margin-top:10px"><i style="width:'+pct+'%;background:var(--green)"></i></div></div>';
+  Object.keys(PRELOAD.asmrSounds).forEach(function(cat){
+   var list=PRELOAD.asmrSounds[cat];
+   var d=list.filter(function(s){return bank[s.name]}).length;
+   html+='<div class="sec"><h3>'+esc(cat)+' <span class="tag">'+d+'/'+list.length+'</span></h3>';
+   html+=list.map(function(s){
+    var on=bank[s.name];
+    return '<div class="listitem"><div class="ic" style="background:var(--orangeBg);font-size:11px;color:#B4693C">声</div><div class="bd"><div class="t">'+esc(s.name)+(on?' <span class="chip" style="background:var(--greenBg);color:#3E7A56">已录</span>':' <span class="chip o">待录</span>')+'</div><div class="d">🎙 '+esc(s.need)+'</div></div><div style="flex:0 0 auto"><label style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--sub);cursor:pointer"><input type="checkbox" '+(on?'checked':'')+' onchange="toggleSound(this,\''+s.name.replace(/'/g,"\\'")+'\')">已录</label></div></div>';
+   }).join('');
+   html+='</div>';
+  });
+  return html;
+ }
+ if(c==='refs'){
+  return '<div class="sec"><h3>对标参考方向 <span class="tag">情报页可自定义管理</span></h3>'+PRELOAD.refs.map(function(r){return '<div class="trackcard"><div class="hd"><span class="nm" style="color:'+trackInfo(r.track).color+'">'+esc(r.name)+'</span><span class="chip" style="background:'+trackInfo(r.track).light+';color:'+trackInfo(r.track).color+'">'+esc(r.platform)+'</span></div><div class="d" style="font-size:12px;color:var(--sub);white-space:pre-line">'+esc(r.why)+'</div><div class="m" style="margin-top:6px">'+r.tags.map(function(t){return '<span class="chip n">'+esc(t)+'</span>'}).join('')+'</div></div>'}).join('')+'<div class="btnrow"><button class="btn mini ghost" onclick="goSub(\'intel\',\'creators\')">到情报页管理对标账号 →</button></div></div>';
+ }
+ return '';
+}
+
+/* ===================== 情报 · 平台热点 ===================== */
+function renderHot(){
+ var el=$id('sp-hot');if(!el)return;
+ var plats=Object.keys(PRELOAD.platforms);
+ var cur=UI.hot;
+ var html='<div class="subnav" style="margin-bottom:12px">'+plats.map(function(p){return '<a data-c="'+p+'" class="'+(p===cur?'on':'')+'" onclick="hotTab(\''+p+'\')">'+esc(p)+'</a>'}).join('')+'</div><div id="hotBody">'+hotBody(cur)+'</div>';
+ el.innerHTML=html;
+}
+function hotTab(c){UI.hot=c;renderHot()}
+function hotBody(p){
+ var list=PRELOAD.platforms[p]||[];
+ var html='<div class="sec"><h3>'+esc(p)+' · 当前热点 <span class="tag">'+list.length+' 条</span></h3>';
+ if(!list.length)html+='<div class="empty">暂无数据</div>';
+ else html+=list.map(function(h,i){
+  var link=h.url?h.url:hotSearchUrl(p,h.t);
+  return '<div class="hotitem"><div class="rk">'+(i+1)+'</div><div class="bd"><div class="t" style="font-size:13px"><a class="hot-link" href="'+link+'" target="_blank" rel="noopener">'+esc(h.t)+'</a></div><div class="m" style="margin-top:4px">'+trackChip(h.track)+' <span class="chip n">'+esc(h.src)+'</span></div><div style="margin-top:6px">'+heatBar(h.heat)+'</div></div><div class="heat" style="font-size:12px;font-weight:600;color:var(--blueDeep)">'+h.heat+'</div></div>';
+ }).join('');
+ html+='</div><div class="warnbox">⚠️ 热点数据为系统定期整理，非实时接口。实时热点建议用各平台榜单页 + 点右上角「＋ 采集」粘贴链接入库。点击顶部「同步」可查看采集说明。</div>';
+ return html;
+}
+
+/* ===================== 情报 · 潜力创作者 ===================== */
+function renderCreators(){
+ var el=$id('sp-creators');if(!el)return;
+ var html='<div class="heart"><div class="big">潜力创作者 / 对标账号</div><div class="small">参考方向来自平台情报整理；下方可自定义添加你刷到的对标账号。判断标准：近3个月涨粉快 + 内容你能模仿 + 赛道吻合。</div></div>';
+ html+='<div class="sec"><h3>参考方向（系统预置）</h3>'+PRELOAD.refs.map(function(r){
+  return '<div class="trackcard"><div class="hd"><span class="nm" style="color:'+trackInfo(r.track).color+'">'+esc(r.name)+'</span><span class="chip" style="background:'+trackInfo(r.track).light+';color:'+trackInfo(r.track).color+'">'+esc(r.platform)+'</span></div><div class="d" style="font-size:12px;color:var(--sub);white-space:pre-line">'+esc(r.why)+'</div></div>';
+ }).join('')+'</div>';
+ html+='<div class="sec"><h3>添加对标账号</h3><div class="form-grid">';
+ html+='<div class="form-field"><label>账号名</label><input id="crName" type="text" placeholder="如：一个人的治愈晚餐"></div>';
+ html+='<div class="form-field"><label>主页链接（可选）</label><input id="crUrl" type="url" placeholder="https://..."></div>';
+ html+='<div class="form-field"><label>赛道</label><select id="crTrack"><option value="eatASMR">演绎类吃播 ASMR</option>'+PRELOAD.tracks.map(function(t){return '<option value="'+t.id+'">'+esc(t.name)+'</option>'}).join('')+'</select></div>';
+ html+='<div class="form-field"><label>平台</label><select id="crPlat"><option value="">请选择</option><option value="小红书">小红书</option><option value="抖音">抖音</option><option value="视频号">视频号</option><option value="B站">B站</option><option value="公众号">公众号</option><option value="知乎">知乎</option><option value="微博">微博</option></select></div>';
+ html+='<div class="form-field"><label>粉丝量（可选）</label><input id="crFans" type="text" placeholder="如：12.5万 / 填数字"></div>';
+ html+='<div class="form-field"><label>平均点赞（可选）</label><input id="crAvgLike" type="text" placeholder="如：2300"></div>';
+ html+='<div class="form-field"><label>更新频率（可选）</label><input id="crFreq" type="text" placeholder="如日更 / 周3更"></div>';
+ html+='<div class="form-field"><label>内容标签（可选）</label><input id="crTags" type="text" placeholder="如：治愈晚餐、纯享音、助眠、一人食"></div>';
+ html+='<div class="form-field full"><label>值得学什么（可选）</label><textarea id="crNote" placeholder="如：咀嚼声层次好、封面色调统一、前3秒情绪钩子"></textarea></div>';
+ html+='<div class="form-field full"><label>可避开的问题（可选）</label><textarea id="crWeak" placeholder="如：收音忽大忽小、剧情太长冲淡ASMR、食物量少显得假"></textarea></div>';
+ html+='<div class="form-field full"><label>可迁移点（可选）</label><textarea id="crCopy" placeholder="如：把她的「下班仪式感晚餐」改成「周末独处早午餐」拍一条"></textarea></div>';
+ html+='</div><div class="btnrow" style="margin-top:14px"><button class="btn" onclick="addCreator()">保存对标</button></div></div>';
+ html+='<div class="sec"><h3>我的对标库 <span class="tag">'+state.creators.length+' 个</span><button class="btn mini" style="margin-left:8px" onclick="weeklyReport()">📊 生成对标周报</button></h3>';
+ if(!state.creators.length)html+='<div class="empty">还没添加，刷到好的就把主页链接粘贴进上方「＋ 采集」入库</div>';
+ else html+=state.creators.slice().reverse().map(function(c){
+  var score=creatorAvgScore(c);
+  return '<div class="creator-card" onclick="openCreatorDetail(\''+c.id+'\')">'+
+   '<div class="av" style="background:'+trackInfo(c.track).light+';color:'+trackInfo(c.track).color+'">'+platEmoji(c.plat)+'</div>'+
+   '<div class="bd"><div class="t">'+esc(c.name)+trackChip(c.track)+'<span class="chip n">'+esc(c.plat||'未选平台')+'</span></div>'+
+   '<div class="d">'+(c.fans?'粉丝 '+esc(c.fans)+' · ':'')+(c.avgLike?'均赞 '+esc(c.avgLike)+' · ':'')+'视频/笔记 '+c.videos.length+' 条'+(c.note?' · '+esc(c.note.slice(0,28)):'')+'</div>'+
+   '<div class="tags">'+(c.contentTags?c.contentTags.split(/[,，]/).filter(Boolean).slice(0,4).map(function(t){return '<span class="chip n">'+esc(t.trim())+'</span>'}).join(''):'')+'</div></div>'+
+   '<div class="meta"><div class="score">'+(score?score.toFixed(1):'-')+'</div><div class="score-label">爆款均分</div></div></div>';
+ }).join('')+'</div>';
+ el.innerHTML=html;
+}
+function creatorAvgScore(c){if(!c.videos||!c.videos.length)return 0;var sum=c.videos.reduce(function(a,v){return a+calcBoomScore(v)},0);return sum/c.videos.length}
+function creatorAvgEngage(c){if(!c.videos||!c.videos.length)return 0;var sum=c.videos.reduce(function(a,v){return a+calcEngage(v)},0);return sum/c.videos.length}
+function addCreator(){
+ var name=$id('crName').value.trim();if(!name){toast('填个账号名');return}
+ state.creators.push({id:uid(),name:name,url:$id('crUrl').value.trim(),track:$id('crTrack').value,plat:$id('crPlat').value.trim(),note:$id('crNote').value.trim(),fans:$id('crFans').value.trim(),avgLike:$id('crAvgLike').value.trim(),updateFreq:$id('crFreq').value.trim(),contentTags:$id('crTags').value.trim(),weakness:$id('crWeak').value.trim(),copyPoints:$id('crCopy').value.trim(),videos:[],time:todayStr()});
+ saveState();renderCreators();toast('已保存对标账号');
+ ['crName','crUrl','crPlat','crNote','crFans','crAvgLike','crFreq','crTags','crWeak','crCopy'].forEach(function(id){var el=$id(id);if(el)el.value=''});
+ $id('crTrack').value='all';
+}
+function delCreator(id){
+ var i=state.creators.findIndex(function(x){return x.id===id});if(i<0)return;
+ if(!confirm('确定删除这个对标账号？'))return;
+ state.creators.splice(i,1);saveState();renderCreators();toast('已删除');
+}
+/* ---------- 对标账号周报 ---------- */
+function daysAgoStr(n){var d=new Date();d.setDate(d.getDate()-n);return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function weeklyReport(){
+ var cs=state.creators;
+ if(!cs.length){toast('先添加对标账号');return}
+ var wk=daysAgoStr(7);
+ var html='<h3>📊 对标账号周报 <span class="tag">近7天</span></h3><p style="font-size:12px;color:var(--sub);margin-bottom:10px">汇总你拆解过的对标账号近期动态，提炼「本周可模仿点清单」。</p>';
+ /* 各账号汇总 */
+ cs.slice().reverse().forEach(function(c){
+  var nv=(c.videos||[]).filter(function(v){return v.time&&v.time>=wk});
+  var all=(c.videos||[]).length;
+  html+='<div style="background:var(--bg);border-radius:12px;padding:10px 12px;margin-bottom:10px"><div style="font-size:13px;font-weight:600">'+esc(c.name)+' <span class="chip n">'+(c.plat||'未选平台')+'</span><span class="chip" style="background:var(--greenBg);color:#3E7A56">近7天 +'+nv.length+' 条</span></div>';
+  html+='<div style="font-size:12px;color:var(--sub);margin:4px 0">累计拆解 '+all+' 条'+(c.updateFreq?' · 更新频率 '+esc(c.updateFreq):'')+(c.fans?' · 粉丝 '+esc(c.fans):'')+'</div>';
+  if(nv.length){
+   html+='<div style="font-size:12px">本周新增：'+nv.map(function(v){return '「'+esc(v.title||'未命名')+'」'+(v.score?' <b style="color:var(--blueDeep)">爆款'+v.score+'</b>':'')}).join('、')+'</div>';
+  }else{
+   html+='<div style="font-size:12px;color:var(--sub)">本周未记录新增（在账号详情里添加视频/笔记拆解）</div>';
+  }
+  if(c.copyPoints)html+='<div style="font-size:12px;margin-top:4px">📌 可迁移：'+esc(c.copyPoints)+'</div>';
+  html+='</div>';
+ });
+ /* 可模仿点聚合 */
+ var copyable=[];
+ cs.forEach(function(c){(c.videos||[]).forEach(function(v){if(v.copyable)copyable.push({c:c.name,copy:v.copyable})})});
+ var weak=[];
+ cs.forEach(function(c){if(c.weakness)weak.push({c:c.name,w:c.weakness})});
+ html+='<div style="background:var(--blueBg);border-radius:12px;padding:10px 12px;margin-bottom:10px"><div style="font-size:13px;font-weight:600;color:var(--blueDeep)">🎯 本周可模仿点清单</div>';
+ if(copyable.length)html+=copyable.map(function(x){return '<div style="font-size:12px;padding:3px 0">· <b>'+esc(x.c)+'</b>：'+esc(x.copy)+'</div>'}).join('');
+ else html+='<div style="font-size:12px;color:var(--sub)">还没有标记「可迁移点」。在账号的视频拆解里填上，周报会自动汇总。</div>';
+ html+='</div>';
+ if(weak.length){
+  html+='<div style="background:var(--orangeBg);border-radius:12px;padding:10px 12px"><div style="font-size:13px;font-weight:600;color:#B4693C">⚠️ 注意避开</div>'+weak.map(function(x){return '<div style="font-size:12px;padding:3px 0">· <b>'+esc(x.c)+'</b>：'+esc(x.w)+'</div>'}).join('')+'</div>';
+ }
+ var txt='📊 对标账号周报（近7天）\n';
+ cs.slice().reverse().forEach(function(c){
+  txt+='\n【'+c.name+'】'+(c.plat?'('+c.plat+')':'')+(c.fans?' 粉丝'+c.fans:'')+(c.updateFreq?' 更新'+c.updateFreq:'')+'\n';
+  (c.videos||[]).filter(function(v){return v.time&&v.time>=wk}).forEach(function(v){txt+='· '+v.title+(v.score?' 爆款'+v.score:'')+'\n'});
+  if(c.copyPoints)txt+='可迁移：'+c.copyPoints+'\n';
+ });
+ if(copyable.length){txt+='\n🎯 可模仿点：\n';copyable.forEach(function(x){txt+='· '+x.c+'：'+x.copy+'\n'})}
+ if(weak.length){txt+='\n⚠️ 注意避开：\n';weak.forEach(function(x){txt+='· '+x.c+'：'+x.w+'\n'})}
+ html+='<textarea id="wrCopySrc" style="position:fixed;opacity:0;height:1px">'+esc(txt)+'</textarea>';
+ html+='<div class="btnrow"><button class="btn mini" onclick="copyText(document.getElementById(\'wrCopySrc\').value,\'周报已复制\')">复制周报</button><button class="btn mini ghost" onclick="closeModal()">关闭</button></div>';
+ openModal(html);
+}
+
+/* ===================== 情报 · 对标详情 / 单视频拆解 ===================== */
+var CREATOR_TAB='videos';
+function openCreatorDetail(id,tab){
+ var c=state.creators.find(function(x){return x.id===id});if(!c)return;
+ CREATOR_TAB=tab||'videos';
+ openModal(creatorDetailHTML(c));
+}
+function creatorDetailHTML(c){
+ var avgScore=creatorAvgScore(c),avgEng=creatorAvgEngage(c);
+ var html='<div class="detail-head"><div class="av" style="background:'+trackInfo(c.track).light+';color:'+trackInfo(c.track).color+'">'+platEmoji(c.plat)+'</div><div class="info"><h3>'+esc(c.name)+'</h3><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px">'+trackChip(c.track)+'<span class="chip n">'+esc(c.plat||'未选平台')+'</span>'+(c.url?'<a href="'+esc(c.url)+'" target="_blank" style="font-size:12px;color:var(--blueDeep)">主页 →</a>':'')+'</div>';
+ html+='<div class="metric-grid"><div class="metric-box"><b>'+fmtNum(c.fans)+'</b><span>粉丝量</span></div><div class="metric-box"><b>'+fmtNum(c.avgLike)+'</b><span>平均点赞</span></div><div class="metric-box"><b>'+c.videos.length+'</b><span>拆解视频</span></div><div class="metric-box"><b>'+(avgScore?avgScore.toFixed(1):'-')+'</b><span>爆款均分</span></div></div></div></div>';
+ html+='<div class="pill-tabs"><a class="'+(CREATOR_TAB==='profile'?'on':'')+'" onclick="creatorTab(\'profile\',\''+c.id+'\')">账号拆解</a><a class="'+(CREATOR_TAB==='videos'?'on':'')+'" onclick="creatorTab(\'videos\',\''+c.id+'\')">视频/笔记案例</a></div>';
+ if(CREATOR_TAB==='profile'){
+  html+='<div class="sec" style="padding:14px">';
+  html+=kvRow('更新频率',c.updateFreq||'-')+kvRow('内容标签',c.contentTags||'-');
+  html+=blockRow('值得学什么',c.note)+blockRow('可避开的问题',c.weakness)+blockRow('可迁移点',c.copyPoints);
+  html+='<div class="btnrow"><button class="btn mini" onclick="editCreator(\''+c.id+'\')">编辑账号拆解</button><button class="btn mini ghost" onclick="delCreator(\''+c.id+'\')">删除账号</button></div>';
+  html+='</div>';
+ }else{
+  html+='<div class="btnrow" style="margin-bottom:10px"><button class="btn mini" onclick="openVideoForm(\''+c.id+'\')">＋ 添加视频/笔记拆解</button></div>';
+  if(!c.videos.length)html+='<div class="empty-mini">还没拆解单条内容，点击上方按钮添加爆款案例</div>';
+  else html+=c.videos.slice().reverse().map(function(v,i){return videoCardHTML(c,v,i)}).join('');
+ }
+ return html;
+}
+function kvRow(k,v){return '<div class="kv"><span class="k">'+esc(k)+'</span><span>'+esc(v)+'</span></div>'}
+function blockRow(lb,txt){return '<div style="margin:10px 0"><div style="font-size:12px;color:var(--sub);margin-bottom:4px;font-weight:500">'+esc(lb)+'</div><div style="font-size:13px;color:var(--ink);line-height:1.6;background:var(--bg);border-radius:10px;padding:10px;white-space:pre-wrap">'+esc(txt||'未填写')+'</div></div>'}
+function videoCardHTML(c,v,i){
+ var eng=calcEngage(v),score=calcBoomScore(v);
+ return '<div class="video-card">'+
+  '<div class="hd"><div class="t">'+(v.url?'<a href="'+esc(v.url)+'" target="_blank" style="color:var(--ink);text-decoration:none">'+esc(v.title||'未命名')+'</a>':esc(v.title||'未命名'))+'</div>'+platChip({name:v.platform||c.plat||'未选',color:'#8A919B'})+'</div>'+
+  '<div class="metrics"><span>播放 <b>'+fmtNum(v.views)+'</b></span><span>赞 <b>'+fmtNum(v.likes)+'</b></span><span>评 <b>'+fmtNum(v.comments)+'</b></span><span>藏 <b>'+fmtNum(v.collects)+'</b></span><span>转 <b>'+fmtNum(v.shares)+'</b></span><span>互动率 <b>'+(eng?eng.toFixed(2)+'%':'-')+'</b></span></div>'+
+  '<div class="body">'+lineRow('封面',v.cover)+lineRow('开头钩子',v.hook)+lineRow('内容结构',v.structure)+lineRow('金句/高光',v.golden)+lineRow('数据洞察',v.insight)+lineRow('可迁移点',v.copyable)+'</div>'+
+  '<div class="score-row"><span style="font-size:11px;color:var(--sub)">爆款评分</span><div class="bar"><i style="width:'+(score*10)+'%"></i></div><span style="font-size:13px;font-weight:600;color:var(--blueDeep)">'+score+'/10</span><button class="btn mini ghost" style="margin-left:auto" onclick="openVideoForm(\''+c.id+'\',\''+v.id+'\')">编辑</button><button class="btn mini ghost" onclick="delVideo(\''+c.id+'\',\''+v.id+'\')">删除</button></div>'+
+  '</div>';
+}
+function lineRow(lb,txt){return txt?'<div><span class="lb">'+esc(lb)+'：</span>'+esc(txt)+'</div>':''}
+function creatorTab(tab,id){openCreatorDetail(id,tab)}
+function editCreator(id){
+ var c=state.creators.find(function(x){return x.id===id});if(!c)return;
+ var html='<h3>编辑账号拆解：'+esc(c.name)+'</h3><div class="form-grid">';
+ html+='<div class="form-field"><label>账号名</label><input id="ecName" value="'+esc(c.name)+'"></div>';
+ html+='<div class="form-field"><label>主页链接</label><input id="ecUrl" type="url" value="'+esc(c.url)+'"></div>';
+ html+='<div class="form-field"><label>赛道</label><select id="ecTrack">'+PRELOAD.tracks.map(function(t){return '<option value="'+t.id+'" '+(c.track===t.id?'selected':'')+'>'+esc(t.name)+'</option>'}).join('')+'</select></div>';
+ html+='<div class="form-field"><label>平台</label><select id="ecPlat"><option value="">请选择</option>'+['小红书','抖音','视频号','B站','公众号','知乎','微博'].map(function(p){return '<option value="'+p+'" '+(c.plat===p?'selected':'')+'>'+p+'</option>'}).join('')+'</select></div>';
+ html+='<div class="form-field"><label>粉丝量</label><input id="ecFans" value="'+esc(c.fans)+'"></div>';
+ html+='<div class="form-field"><label>平均点赞</label><input id="ecAvgLike" value="'+esc(c.avgLike)+'"></div>';
+ html+='<div class="form-field"><label>更新频率</label><input id="ecFreq" value="'+esc(c.updateFreq)+'"></div>';
+ html+='<div class="form-field"><label>内容标签</label><input id="ecTags" value="'+esc(c.contentTags)+'"></div>';
+ html+='<div class="form-field full"><label>值得学什么</label><textarea id="ecNote">'+esc(c.note)+'</textarea></div>';
+ html+='<div class="form-field full"><label>可避开的问题</label><textarea id="ecWeak">'+esc(c.weakness)+'</textarea></div>';
+ html+='<div class="form-field full"><label>可迁移点</label><textarea id="ecCopy">'+esc(c.copyPoints)+'</textarea></div>';
+ html+='</div><div class="btnrow"><button class="btn" onclick="saveCreatorEdit(\''+c.id+'\')">保存修改</button><button class="btn ghost" onclick="openCreatorDetail(\''+c.id+'\')">取消</button></div>';
+ openModal(html);
+}
+function saveCreatorEdit(id){
+ var c=state.creators.find(function(x){return x.id===id});if(!c)return;
+ var name=$id('ecName').value.trim();if(!name){toast('账号名不能为空');return}
+ c.name=name;c.url=$id('ecUrl').value.trim();c.track=$id('ecTrack').value;c.plat=$id('ecPlat').value;
+ c.fans=$id('ecFans').value.trim();c.avgLike=$id('ecAvgLike').value.trim();c.updateFreq=$id('ecFreq').value.trim();c.contentTags=$id('ecTags').value.trim();
+ c.note=$id('ecNote').value.trim();c.weakness=$id('ecWeak').value.trim();c.copyPoints=$id('ecCopy').value.trim();
+ saveState();renderCreators();openCreatorDetail(id);toast('账号拆解已更新');
+}
+function openVideoForm(cid,vid){
+ var c=state.creators.find(function(x){return x.id===cid});if(!c)return;
+ var v=c.videos.find(function(x){return x.id===vid})||{};
+ var isEdit=!!v.id;
+ var html='<h3>'+(isEdit?'编辑':'添加')+'视频/笔记拆解</h3><div class="form-grid">';
+ html+='<div class="form-field full"><label>标题</label><input id="vdTitle" value="'+esc(v.title||'')+'" placeholder="这条视频/笔记的标题"></div>';
+ html+='<div class="form-field full"><label>链接（可选）</label><input id="vdUrl" type="url" value="'+esc(v.url||'')+'" placeholder="https://..."></div>';
+ html+='<div class="form-field"><label>平台</label><select id="vdPlat">'+'<option value="">同账号</option>'+['小红书','抖音','视频号','B站','公众号','知乎','微博'].map(function(p){return '<option value="'+p+'" '+(v.platform===p?'selected':'')+'>'+p+'</option>'}).join('')+'</select></div>';
+ html+='<div class="form-field"><label>记录日期</label><input id="vdTime" type="date" value="'+esc(v.time||todayStr())+'"></div>';
+ html+='<div class="form-field"><label>播放量</label><input id="vdViews" type="text" value="'+esc(v.views||'')+'" placeholder="如：1.2万 / 12000"></div>';
+ html+='<div class="form-field"><label>点赞</label><input id="vdLikes" type="text" value="'+esc(v.likes||'')+'" placeholder="如：2300"></div>';
+ html+='<div class="form-field"><label>评论</label><input id="vdComments" type="text" value="'+esc(v.comments||'')+'" placeholder="如：180"></div>';
+ html+='<div class="form-field"><label>收藏</label><input id="vdCollects" type="text" value="'+esc(v.collects||'')+'" placeholder="如：560"></div>';
+ html+='<div class="form-field"><label>转发</label><input id="vdShares" type="text" value="'+esc(v.shares||'')+'" placeholder="如：80"></div>';
+ html+='<div class="form-field"><label>爆款评分</label><input id="vdScore" type="number" min="0" max="10" value="'+esc(v.score||'')+'" placeholder="留空自动计算"></div>';
+ html+='<div class="form-field full"><label>封面描述</label><textarea id="vdCover" placeholder="封面怎么构图？用了什么配色/文字？">'+esc(v.cover||'')+'</textarea></div>';
+ html+='<div class="form-field full"><label>开头钩子（前3秒/首图）</label><textarea id="vdHook" placeholder="第一句话、第一个画面是什么？怎么留住人的？">'+esc(v.hook||'')+'</textarea></div>';
+ html+='<div class="form-field full"><label>内容结构</label><textarea id="vdStructure" placeholder="按时间线或信息点拆解：0-5秒… 5-15秒… 结尾…">'+esc(v.structure||'')+'</textarea></div>';
+ html+='<div class="form-field full"><label>金句/高光</label><textarea id="vdGolden" placeholder="评论区高赞、文案金句、反转点">'+esc(v.golden||'')+'</textarea></div>';
+ html+='<div class="form-field full"><label>数据洞察</label><textarea id="vdInsight" placeholder="为什么这条能火？时机、情绪、选题、形式哪个点最关键？">'+esc(v.insight||'')+'</textarea></div>';
+ html+='<div class="form-field full"><label>可迁移点</label><textarea id="vdCopyable" placeholder="这条的哪个元素可以搬到你的账号上？具体怎么改？">'+esc(v.copyable||'')+'</textarea></div>';
+ html+='</div><div class="btnrow"><button class="btn" onclick="saveVideo(\''+cid+'\','+(isEdit?'\''+v.id+'\'':'null')+')">'+(isEdit?'保存修改':'添加拆解')+'</button><button class="btn ghost" onclick="openCreatorDetail(\''+cid+'\')">取消</button></div>';
+ openModal(html);
+}
+function saveVideo(cid,vid){
+ var c=state.creators.find(function(x){return x.id===cid});if(!c)return;
+ var title=$id('vdTitle').value.trim();if(!title){toast('填个标题');return}
+ var v={
+  title:title,url:$id('vdUrl').value.trim(),platform:$id('vdPlat').value,time:$id('vdTime').value||todayStr(),
+  views:$id('vdViews').value.trim(),likes:$id('vdLikes').value.trim(),comments:$id('vdComments').value.trim(),collects:$id('vdCollects').value.trim(),shares:$id('vdShares').value.trim(),
+  cover:$id('vdCover').value.trim(),hook:$id('vdHook').value.trim(),structure:$id('vdStructure').value.trim(),golden:$id('vdGolden').value.trim(),insight:$id('vdInsight').value.trim(),copyable:$id('vdCopyable').value.trim(),
+  score:Number($id('vdScore').value)||0
+ };
+ if(!v.score)v.score=calcBoomScore(v);
+ if(vid){var idx=c.videos.findIndex(function(x){return x.id===vid});if(idx>=0){v.id=vid;c.videos[idx]=v}else{v.id=uid();c.videos.push(v)}}else{v.id=uid();c.videos.push(v)}
+ saveState();renderCreators();openCreatorDetail(cid);toast('视频拆解已保存');
+}
+function delVideo(cid,vid){
+ var c=state.creators.find(function(x){return x.id===cid});if(!c)return;
+ if(!confirm('确定删除这条视频拆解？'))return;
+ c.videos=c.videos.filter(function(x){return x.id!==vid});
+ saveState();renderCreators();openCreatorDetail(cid);toast('已删除');
+}
+
+/* ===================== 情报 · 热点追踪 ===================== */
+function renderTrack(){
+ var el=$id('sp-track');if(!el)return;
+ var followed={};state.follows.forEach(function(f){followed[f.topic]=true});
+ var html='<div class="heart"><div class="big">热点追踪</div><div class="small">8个系统热点方向 + 你自己追踪的话题。追踪后每天扫一眼趋势变化，判断要不要跟。</div></div>';
+ html+='<div class="sec"><h3>系统热点方向</h3>'+PRELOAD.trackHot.map(function(h){
+  var has=followed[h.topic];
+  return '<div class="hotitem"><div class="rk">'+h.heat+'</div><div class="bd"><div class="t">'+esc(h.topic)+' '+trackChip(h.track)+' '+trendArrow(h.trend)+' '+stageChip(h.stage)+'</div><div class="d" style="font-size:12px;color:var(--sub);margin-top:2px">'+esc(h.note)+'</div><div style="margin-top:6px">'+heatBar(h.heat)+'</div></div><div style="flex:0 0 auto">'+(has?'<button class="btn mini ghost" onclick="unfollow(\''+h.topic+'\')">已追踪</button>':'<button class="btn mini" onclick="followHot(\''+h.topic+'\',\''+h.track+'\',\''+h.heat+'\',\''+esc(h.note).replace(/'/g,"\\'")+'\')">追踪</button>')+'</div></div>';
+ }).join('')+'</div>';
+ html+='<div class="sec"><h3>我的追踪 <span class="tag">'+state.follows.length+' 个</span></h3>';
+ if(!state.follows.length)html+='<div class="empty">点上方「追踪」开始关注话题</div>';
+ else html+=state.follows.map(function(f){
+  return '<div class="listitem"><div class="ic" style="background:var(--greenBg);font-size:11px;color:#3E7A56">追</div><div class="bd"><div class="t">'+esc(f.topic)+'</div><div class="d">'+trackChip(f.track)+' · 热度 '+f.heat+' · 开始 '+f.time+'</div></div><div style="flex:0 0 auto"><button class="btn mini ghost" onclick="unfollow(\''+f.topic+'\')">取消</button></div></div>';
+ }).join('')+'</div>';
+ el.innerHTML=html;
+}
+function followHot(topic,track,heat,note){
+ if(state.follows.some(function(f){return f.topic===topic})){toast('已在追踪');return}
+ state.follows.push({id:uid(),topic:topic,track:track,heat:heat,note:note,time:todayStr()});
+ saveState();renderTrack();toast('已加入追踪');
+}
+function unfollow(topic){
+ var i=state.follows.findIndex(function(f){return f.topic===topic});if(i<0)return;
+ state.follows.splice(i,1);saveState();renderTrack();toast('已取消追踪');
+}
+
+/* ===================== 运营 · 发布排程 ===================== */
+function renderSchedule(){
+ var el=$id('sp-schedule');if(!el)return;
+ var html='<div class="sec"><h3>新增排程</h3><div class="form-stack"><div><label class="fl">内容标题</label><input id="schTitle" type="text" placeholder="如：下班后一个人的治愈小火锅｜咀嚼音ASMR"></div><div class="form-line"><div class="field"><label>赛道</label><select id="schTrack"><option value="eatASMR">演绎类吃播 ASMR</option>'+PRELOAD.tracks.map(function(t){return '<option value="'+t.id+'">'+esc(t.name)+'</option>'}).join('')+'</select></div><div class="field"><label>发布平台</label><select id="schPlat"><option value="小红书">小红书</option><option value="抖音">抖音</option><option value="B站">B站</option><option value="视频号">视频号</option></select></div></div><div class="form-line"><div class="field"><label>发布日期</label><input id="schDate" type="date" value="'+todayStr()+'"></div><div class="field"><label>发布时间</label><input id="schTime" type="time" value="22:00"></div></div></div><div class="btnrow" style="margin-top:14px"><button class="btn" onclick="addSchedule()">加入排程</button></div></div>';
+ html+='<div class="sec"><h3>最佳发布时段</h3><table class="tbl"><tr><th>平台</th><th>工作日</th><th>周末</th></tr>'+Object.keys(PRELOAD.bestTime).map(function(p){var b=PRELOAD.bestTime[p];return '<tr><td><b>'+esc(p)+'</b></td><td>'+b['工作日'].join(' / ')+'</td><td>'+b['周末'].join(' / ')+'</td></tr>'}).join('')+'</table><p style="font-size:11px;color:var(--sub);margin-top:6px">'+esc(PRELOAD.bestTime['小红书'].note)+'</p></div>';
+ html+='<div class="warnbox">🌙 吃播 ASMR 专属时段：<b>B系列纯享音（助眠向）</b>最佳 22:00-23:00 发布——睡前刷手机高峰，完播率和收藏率最高；<b>A系列治愈晚餐</b>建议 18:30-20:30（下班吃饭场景）。先按这个排两周，再根据实际数据微调。</div>';
+ html+='<div class="sec"><h3>排程列表 <span class="tag">'+state.schedule.length+' 条</span></h3>';
+ if(!state.schedule.length)html+='<div class="empty">先加一条排程。定赛道前可先做「排程演练」：假设一周发3条，分布在哪几天</div>';
+ else{
+  var list=state.schedule.slice().sort(function(a,b){return (a.date+b.time).localeCompare(b.date+b.time)});
+  html+=list.map(function(s){
+   var dd=daysTo(s.date);
+   var statusTxt=s.status==='done'?'<span class="chip.g" style="background:var(--greenBg);color:#3E7A56">已发布</span>':dd<0?'<span class="chip.r" style="background:var(--redBg);color:#B04A40">已过期</span>':dd===0?'<span class="chip.o" style="background:var(--orangeBg);color:#B4693C">今天</span>':'<span class="chip">还有'+dd+'天</span>';
+   return '<div class="listitem"><div class="ic" style="background:var(--blueBg);font-size:11px;color:var(--blueDeep)">'+esc(s.platform.charAt(0))+'</div><div class="bd"><div class="t">'+esc(s.title)+'</div><div class="d">'+trackChip(s.track)+' '+esc(s.platform)+' · '+fmtDateCN(s.date)+' '+esc(s.time)+' '+statusTxt+'</div></div><div style="flex:0 0 auto;display:flex;gap:4px;flex-direction:column">'+(s.status!=='done'?'<button class="btn mini green" onclick="scheduleDone(\''+s.id+'\')">标记发布</button>':'')+'<button class="btn mini ghost" onclick="delSchedule(\''+s.id+'\')">删除</button></div></div>';
+  }).join('');
+ }
+ html+='</div>';
+ el.innerHTML=html;
+}
+function addSchedule(){
+ var title=$id('schTitle').value.trim();if(!title){toast('先填标题');return}
+ var date=$id('schDate').value;if(!date){toast('选个日期');return}
+ state.schedule.push({id:uid(),title:title,track:$id('schTrack').value,platform:$id('schPlat').value,date:date,time:$id('schTime').value||'19:00',status:'plan'});
+ saveState();renderSchedule();toast('已加入排程');$id('schTitle').value='';
+}
+function scheduleDone(id){
+ var s=state.schedule.find(function(x){return x.id===id});if(!s)return;
+ s.status='done';saveState();renderSchedule();toast('已标记发布');
+}
+function delSchedule(id){
+ var i=state.schedule.findIndex(function(x){return x.id===id});if(i<0)return;
+ state.schedule.splice(i,1);saveState();renderSchedule();toast('已删除');
+}
+
+/* ===================== 运营 · 数据分析 ===================== */
+function renderAnalysis(){
+ var el=$id('sp-analysis');if(!el)return;
+ var r=state.records;
+ var totPlays=0,totLike=0,totCom=0,totCol=0,totFol=0;
+ r.forEach(function(x){totPlays+=Number(x.plays)||0;totLike+=Number(x.likes)||0;totCom+=Number(x.comments)||0;totCol+=Number(x.collects)||0;totFol+=Number(x.follows)||0});
+ var n=r.length;
+ var best=n?r.slice().sort(function(a,b){return (Number(b.plays)||0)-(Number(a.plays)||0)})[0]:null;
+ var html='<div class="heart"><div class="big">运营数据</div><div class="small">发布后把平台后台数据录入（或点底部「＋ 采集」粘贴数据文本）。汇总自动算互动率，帮你找短板。</div></div>';
+ html+='<div class="statrow"><div class="stat"><b>'+n+'</b><span>记录数</span></div><div class="stat"><b>'+(totPlays/10000).toFixed(1)+'w</b><span>总播放</span></div><div class="stat"><b>'+totFol+'</b><span>总涨粉</span></div><div class="stat"><b>'+(n&&totPlays?Math.round((totLike+totCom+totCol)/totPlays*100)+'%':'–')+'</b><span>互动率</span></div></div>';
+ if(best)html+='<div class="warnbox">🏆 播放最高：「'+esc(best.title)+'」'+Number(best.plays)+' 播放。复盘它：标题/封面/前3秒/发布时间，哪一点和别的不同？</div>';
+ if(r.length>=1){
+  var tips=[];
+  var sorted=r.slice().sort(function(a,b){return (Number(b.plays)||0)-(Number(a.plays)||0)});
+  var top=sorted[0],bot=sorted[sorted.length-1];
+  var topP=Number(top.plays)||0,botP=Number(bot.plays)||0;
+  var totIR=n&&totPlays?Math.round((totLike+totCom+totCol)/totPlays*100):0;
+  var topCol=topP?(Number(top.collects)||0)/topP:0;
+  if(r.length>=2&&topP>botP*2)tips.push({ic:'🎯',t:'播放差距明显（'+topP+' vs '+botP+'）：下一条优先复用「'+esc(top.title)+'」的标题/封面公式，选题往它靠',c:'var(--blue)'});
+  if(topCol>=0.05)tips.push({ic:'📌',t:'「'+esc(top.title)+'」收藏率 '+Math.round(topCol*100)+'%，吃播赛道最准的爆款信号：同题材往深挖，把食谱/步骤/清单做得更完整',c:'var(--green)'});
+  if(topCol>0&&topCol<0.02)tips.push({ic:'💡',t:'收藏率偏低：下一条在内容里加「教程/清单/食谱」价值点，引导收藏（收藏比点赞更值钱）',c:'var(--orange)'});
+  if(totIR>=8)tips.push({ic:'💬',t:'整体互动率 '+totIR+'% 不错：结尾强化评论引导（问一句/给选项），把互动进一步放大',c:'var(--purple)'});
+  if(totIR>0&&totIR<3)tips.push({ic:'🔇',t:'互动率仅 '+totIR+'%：前3秒钩子或结尾引导偏弱，下次发布后黄金1小时主动回评',c:'var(--red)'});
+  if(tips.length){
+   html+='<div class="sec"><h3>📋 下一条怎么优化 <span class="tag">自动复盘结论</span></h3>'+tips.map(function(t){return '<div class="listitem"><div class="ic" style="background:var(--bg);font-size:13px">'+t.ic+'</div><div class="bd"><div class="d" style="font-size:13px">'+t.t+'</div></div></div>'}).join('')+'<div style="font-size:11px;color:var(--sub);margin-top:8px">口径：播放差&gt;2倍看选题/封面 → 收藏率≥5%深挖题材，&lt;2%补教程价值 → 互动率≥8%放大引导。<b>发布≥3条后结论更准。</b></div></div>';
+  }
+ }
+ html+='<div class="sec"><h3>录入数据</h3><div class="form-grid"><div class="form-field full"><label>内容标题</label><input id="rcTitle" placeholder="如：下班后一个人的治愈小火锅｜咀嚼音ASMR"></div><div class="form-field"><label>发布日期</label><input id="rcDate" type="date" value="'+todayStr()+'"></div><div class="form-field"><label>发布平台</label><select id="rcPlatform"><option>小红书</option><option>抖音</option><option>视频号</option><option>B站</option></select></div><div class="form-field"><label>播放 / 曝光</label><input id="rcPlays" type="number" min="0" placeholder="0"></div><div class="form-field"><label>点赞</label><input id="rcLikes" type="number" min="0" placeholder="0"></div><div class="form-field"><label>评论</label><input id="rcCom" type="number" min="0" placeholder="0"></div><div class="form-field"><label>收藏</label><input id="rcCol" type="number" min="0" placeholder="0"></div><div class="form-field"><label>涨粉</label><input id="rcFol" type="number" min="0" placeholder="0"></div><div class="form-field"><label>内容链接（可选）</label><input id="rcUrl" type="url" placeholder="https://..."></div></div><div class="btnrow" style="margin-top:14px"><button class="btn" onclick="addRecord()">保存记录</button></div></div>';
+ html+='<div class="sec"><h3>记录列表 <span class="tag">'+n+' 条</span></h3>';
+ if(!n)html+='<div class="empty">发布第一条后回来录入。现在可以先看看「提示词库-数据复盘」模板长什么样</div>';
+ else html+=r.slice().reverse().map(function(x){
+  var plays=Number(x.plays)||0,ir=plays?(Number(x.likes)+Number(x.comments)+Number(x.collects))/plays*100:0;
+  return '<div class="listitem"><div class="ic" style="background:var(--redBg);font-size:11px;color:#B04A40">数</div><div class="bd"><div class="t">'+esc(x.title)+'</div><div class="d">'+x.date+' · 播放 '+plays+' · 赞'+x.likes+' 评'+x.comments+' 藏'+x.collects+' 粉'+x.follows+' · 互动率 '+ir.toFixed(1)+'%</div></div><div style="flex:0 0 auto;display:flex;gap:4px;flex-direction:column"><button class="btn mini ghost" onclick="recordReview(\''+x.id+'\')">AI复盘</button><button class="btn mini ghost" onclick="delRecord(\''+x.id+'\')">删除</button></div></div>';
+ }).join('')+'</div>';
+ el.innerHTML=html;
+}
+function addRecord(){
+ var title=$id('rcTitle').value.trim();if(!title){toast('先填标题');return}
+ state.records.push({id:uid(),title:title,date:$id('rcDate').value,platform:$id('rcPlatform').value,url:$id('rcUrl').value.trim(),plays:$id('rcPlays').value||0,likes:$id('rcLikes').value||0,comments:$id('rcCom').value||0,collects:$id('rcCol').value||0,follows:$id('rcFol').value||0});
+ saveState();renderAnalysis();toast('已保存');
+ $id('rcTitle').value='';$id('rcUrl').value='';$id('rcPlays').value='';$id('rcLikes').value='';$id('rcCom').value='';$id('rcCol').value='';$id('rcFol').value='';
+}
+function delRecord(id){
+ var i=state.records.findIndex(function(x){return x.id===id});if(i<0)return;
+ state.records.splice(i,1);saveState();renderAnalysis();toast('已删除');
+}
+function recordReview(id){
+ var x=state.records.find(function(x){return x.id===id});if(!x)return;
+ var tpl=PRELOAD.prompts['数据复盘'][0];
+ var text=tpl.p.replace('{曝光}',x.plays).replace('{互动}',(Number(x.likes)+Number(x.comments)+Number(x.collects))).replace('{赞}',x.likes).replace('{评}',x.comments).replace('{藏}',x.collects).replace('{涨粉}',x.follows).replace('{时间}',x.date).replace('{赛道}','（你的赛道）');
+ openModal('<h3>AI数据复盘</h3><p style="font-size:12px;color:var(--sub);margin-bottom:10px">复制下面这段到任意AI对话（豆包/Kimi/DeepSeek），粘贴你的数据即可获得分析。</p><pre style="background:var(--blueBg);border-radius:10px;padding:12px;font-size:12px;white-space:pre-wrap;color:#2E4A66;font-family:inherit;max-height:50vh;overflow-y:auto">'+esc(text)+'</pre><div class="btnrow"><button class="btn mini" onclick="copyText(this.parentElement.previousElementSibling.textContent,\'已复制\')">复制</button></div>');
+}
+
+/* ===================== 运营 · 变现商业化 ===================== */
+function renderMonetize(){
+ var el=$id('sp-monetize');if(!el)return;
+ var html='<div class="heart"><div class="big">变现商业化</div><div class="small">报价行情为2026市场参考区间，实际以平台官方报价工具和商单谈判为准。0粉也可以接「送测置换」（商家寄样品换内容）。</div></div>';
+ html+='<div class="sec"><h3>商单报价行情</h3>'+Object.keys(PRELOAD.quotes).filter(function(k){return k!=='note'&&k!=='带货'}).map(function(p){
+  return '<div style="margin-bottom:10px"><div style="font-size:12px;font-weight:600;color:var(--sub);margin-bottom:4px">'+esc(p)+'</div><table class="tbl">'+PRELOAD.quotes[p].map(function(r){return '<tr><td>'+esc(r[0])+'</td><td><b style="color:var(--blueDeep)">'+esc(r[1])+'</b></td></tr>'}).join('')+'</table></div>';
+ }).join('')+'<div style="font-size:12px;font-weight:600;color:var(--sub);margin:10px 0 4px">带货佣金</div><table class="tbl">'+PRELOAD.quotes['带货'].map(function(r){return '<tr><td>'+esc(r[0])+'</td><td><b style="color:var(--blueDeep)">'+esc(r[1])+'</b></td></tr>'}).join('')+'</table><p style="font-size:11px;color:var(--sub);margin-top:6px">'+esc(PRELOAD.quotes.note)+'</p></div>';
+ html+='<div class="sec"><h3>你的变现路径建议 <span class="tag">按粉丝阶段</span></h3><div class="timeline"><div class="tlitem"><h5>0-1万粉（起步期）</h5><p>主攻内容质量+人设建立 · 接「送测置换」（食品/厨具/小家电样品换内容）· 开通平台橱窗/商品分享 · 佣金带货优先选佣金高的品类（食品15-30%）</p></div><div class="tlitem"><h5>1-5万粉（成长期）</h5><p>开始接商单（500-8000元/篇）· 优先「吃播+厨具/食品」组合报价 · 积累品牌方关系，报价每3个月上调一次 · 可接助眠/生活方式品类（蓝牙音箱、香薰、枕头）</p></div><div class="tlitem"><h5>5万+粉（变现期）</h5><p>商单+带货双线 · 做「栏目化」内容抬报价 · 沉淀「声源素材包/收音教程」类知识产品 · 多平台同步放大（B站纯享音+抖音轻剧情双剪）</p></div></div></div>';
+ html+='<div class="sec"><h3>接单前避坑清单</h3><div class="checklist"><label><input type="checkbox" onchange="toast(\'提示：\')"><span>先验品牌：企查查/天眼查看公司是否正常经营</span></label><label><input type="checkbox"><span>确认结算周期：30天内回款是底线，超60天慎接</span></label><label><input type="checkbox"><span>报价写进合同/聊天留证：明确发布平台、保留时长、修改次数</span></label><label><input type="checkbox"><span>拒接与你人设冲突的品类：信任崩塌一次就回不来</span></label><label><input type="checkbox"><span>注意平台广告合规：含广告需标注「广告」</span></label></div></div>';
+ el.innerHTML=html;
+}
+
+/* ===================== 弹窗 / Toast / 同步 / 采集 ===================== */
+function openModal(arg){
+ var html=arg==='syncModal'?syncModalHtml():arg==='collectModal'?collectModalHtml():arg;
+ $id('modalBox').innerHTML='<button class="close" onclick="closeModal()">✕</button>'+html;
+ $id('modalMask').classList.add('on');
+}
+function closeModal(){$id('modalMask').classList.remove('on')}
+/* 当页跳转到指定页+子tab（明确行动按钮用：关闭弹窗 → 打开目标页） */
+function goSub(g,s){
+ closeModal();
+ switchPage(g);
+ if(s)switchSub(g,s);
+}
+var toastTimer=null;
+function toast(msg){var el=$id('toast');el.textContent=msg;el.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.style.display='none'},2200)}
+
+function syncModalHtml(){
+ var html='<h3>数据同步</h3><p style="font-size:12px;color:var(--sub);margin-bottom:12px">数据保存在本机浏览器（localStorage）。换设备/换浏览器时，用「同步码」搬移：一台生成 → 另一台导入合并。以后接云端（如腾讯云CloudBase）可实现无人值守自动同步。</p>';
+ html+='<div class="warnbox">⚠️ 清理浏览器缓存/隐私模式可能清空数据。建议每周生成一次同步码存档到微信文件传输助手或备忘录。</div>';
+ html+='<label class="fl">① 生成同步码（本机 → 其他设备）</label><div class="btnrow" style="margin-top:0"><button class="btn mini" onclick="syncGenerate()">生成同步码</button><button class="btn mini ghost" onclick="copyText(document.getElementById(\'syncOut\').value)">复制同步码</button></div><textarea id="syncOut" readonly placeholder="点击「生成同步码」后这里会出现一串文字，复制它" style="margin-top:8px;background:var(--bg)"></textarea>';
+ html+='<label class="fl" style="margin-top:14px">② 导入同步码（其他设备 → 本机）</label><textarea id="syncIn" placeholder="粘贴另一台设备生成的同步码" style="background:var(--bg)"></textarea><div class="btnrow" style="margin-top:0"><button class="btn mini green" onclick="syncImport()">合并导入</button></div>';
+ html+='<div class="btnrow"><button class="btn mini ghost" onclick="showCollectGuide()">📌 怎么采集内容？</button></div>';
+ return html;
+}
+function syncGenerate(){
+ var payload={
+  inspirations:state.inspirations,topics:state.topics,follows:state.follows,
+  schedule:state.schedule,records:state.records,creators:state.creators,
+  checklist:state.checklist,chosenTrack:state.chosenTrack,decided:state.decided,
+  decideBy:state.decideBy,gen:todayStr()
+ };
+ var txt='ZHQ-SYNC-1\n'+JSON.stringify(payload);
+ $id('syncOut').value=txt;toast('已生成，复制同步码');
+}
+function syncImport(){
+ var raw=$id('syncIn').value.trim();
+ if(!raw){toast('先粘贴同步码');return}
+ try{
+  var json=raw;
+  if(json.indexOf('\n')>-1)json=json.slice(json.indexOf('\n')+1);
+  var p=JSON.parse(json);
+  if(p.inspirations&&p.inspirations.length){
+   var ids={};state.inspirations.forEach(function(x){ids[x.id]=1});
+   p.inspirations.forEach(function(x){if(!ids[x.id]){state.inspirations.push(x);ids[x.id]=1}});
+  }
+  if(p.topics&&p.topics.length){var tids={};state.topics.forEach(function(x){tids[x.id]=1});p.topics.forEach(function(x){if(!tids[x.id]){state.topics.push(x);tids[x.id]=1}})}
+  if(p.follows&&p.follows.length){var fids={};state.follows.forEach(function(x){fids[x.id]=1});p.follows.forEach(function(x){if(!fids[x.id]){state.follows.push(x);fids[x.id]=1}})}
+  if(p.schedule&&p.schedule.length){var sids={};state.schedule.forEach(function(x){sids[x.id]=1});p.schedule.forEach(function(x){if(!sids[x.id]){state.schedule.push(x);sids[x.id]=1}})}
+  if(p.records&&p.records.length){var rids={};state.records.forEach(function(x){rids[x.id]=1});p.records.forEach(function(x){if(!rids[x.id]){state.records.push(x);rids[x.id]=1}})}
+  if(p.creators&&p.creators.length){var cids={};state.creators.forEach(function(x){cids[x.id]=1});p.creators.forEach(function(x){if(!cids[x.id]){state.creators.push(x);cids[x.id]=1}})}
+  if(p.checklist&&Object.keys(p.checklist).length)state.checklist=Object.assign(state.checklist,p.checklist);
+  if(p.decided&&p.chosenTrack){state.decided=true;state.chosenTrack=p.chosenTrack}
+  if(p.decideBy)state.decideBy=p.decideBy;
+  saveState();renderAll();toast('合并导入成功');
+ }catch(e){toast('同步码格式不对，请检查')}
+}
+function collectModalHtml(){
+ var code='javascript:(function(){var t=document.title||"",u=location.href,s="";try{s=window.getSelection?window.getSelection().toString():""}catch(e){}var r="【"+t+"】\\n"+u+(s?"\\n"+s:"");var a=document.createElement("textarea");a.value=r;document.body.appendChild(a);a.select();document.execCommand("copy");document.body.removeChild(a);prompt("已复制到剪贴板，回到工作台「灵感积累库」粘贴导入",r);})();';
+ var html='<h3>快速采集</h3><p style="font-size:12px;color:var(--sub);margin-bottom:12px">粘贴链接，或粘贴「【标题】+ 链接 + 想存的话」，工作台自动识别平台、匹配赛道、去重入库。</p>';
+ html+='<textarea id="collText" placeholder="示例：&#10;【下班后一个人的治愈小火锅｜咀嚼音ASMR】&#10;https://www.xiaohongshu.com/explore/xxx&#10;独居晚餐+奶油色调，评论区都在问锅和收音设备" style="min-height:110px"></textarea>';
+ html+='<div class="btnrow"><button class="btn" onclick="importClipboard()">自动整理入库</button><button class="btn mini ghost" onclick="manualCollect()">手动填写</button></div>';
+ html+='<details style="margin-top:14px;background:var(--bg);border-radius:12px;padding:10px 12px"><summary style="cursor:pointer;font-size:12px;color:var(--sub)">📌 备用方案：浏览器书签采集按钮（一键抓当前网页）</summary><div style="margin-top:8px;font-size:12px;color:var(--sub)">电脑浏览器装一个书签，刷到好内容点一下，自动抓取「页面标题+链接+选中的文字」复制到剪贴板，回工作台粘贴即入库。<br><br><b>安装步骤：</b><br>1. 复制下面的代码<br>2. 浏览器收藏夹 → 添加网页<br>3. 名称填「采集」→ 网址栏粘贴代码 → 保存<br>4. 浏览时点这个书签 → 弹出内容 → 已自动复制<br>5. 回工作台「探索-灵感积累库」→ 粘贴 → 入库<br><br><textarea id="bkCode" readonly style="background:#fff;font-size:11px;height:100px;margin-top:4px">'+esc(code)+'</textarea><div class="btnrow"><button class="btn mini" onclick="copyText(document.getElementById(\'bkCode\').value,\'代码已复制\')">复制代码</button></div><p style="margin-top:6px">💡 手机上装不了书签？电脑装一次，手机上刷到好东西发到「微信文件传输助手」，晚上统一粘贴导入。</p></div></details>';
+ return html;
+}
+function openCollect(){openModal('collectModal')}
+function showCollectGuide(){openModal('collectModal')}
+
+/* ===================== 初始化 ===================== */
+var UI={mat:'titles',hot:'小红书',dailyHot:null};
+function renderAll(){renderHome();renderCollect();renderFlow();renderLib();renderPool();renderWorkshop();renderPrompts();renderMaterial();renderHot();renderCreators();renderTrack();renderSchedule();renderAnalysis();renderMonetize();renderPrep();updateStats();updateSyncDot()}
+function bindNav(){
+ document.querySelectorAll('#mainNav a').forEach(function(a){a.onclick=function(){switchPage(a.dataset.p)}});
+ document.querySelectorAll('#mobileBar a').forEach(function(a){if(!a.classList.contains('plus'))a.onclick=function(){switchPage(a.dataset.p)}});
+ [['subnav-insp','insp'],['subnav-create','create'],['subnav-intel','intel'],['subnav-ops','ops']].forEach(function(pair){
+  $id(pair[0]).querySelectorAll('a').forEach(function(a){a.onclick=function(){switchSub(pair[1],a.dataset.s)}});
+ });
+}
+function parseRoute(){
+ var h=location.hash.replace(/^#/,'');if(!h)return;
+ var m=h.match(/^([^?]+)(?:\?sub=(.+))?$/);if(!m)return;
+ var p=m[1],s=m[2];
+ if($id('pg-'+p)){
+  switchPage(p);
+  if(s&&$id('sp-'+s))switchSub(p,s);
+ }
+}
+/* ---------- 每日热点：尝试加载 data/daily_hot.json，失败则回退预置 ---------- */
+function hotSearchUrl(platform, topic){
+ var q=encodeURIComponent(topic);
+ var map={
+  '抖音':'https://www.douyin.com/search/'+q,
+  '小红书':'https://www.xiaohongshu.com/search_result?keyword='+q,
+  'B站':'https://search.bilibili.com/all?keyword='+q,
+  '视频号':'https://weixin.qq.com/',
+  '微博':'https://s.weibo.com/weibo?q='+q,
+  '微博/新浪':'https://s.weibo.com/weibo?q='+q,
+  '综合':'https://www.douyin.com/search/'+q
+ };
+ return map[platform] || 'https://www.douyin.com/search/'+q;
+}
+/* 有真实来源链接时优先用来源链接，否则回退平台搜索 */
+function hotSourceUrl(h){
+ if(h&&h.source)return h.source;
+ return hotSearchUrl(h&&h.platform?h.platform:'综合',h&&h.topic?h.topic:'');
+}
+function hotSourceLine(h){
+ if(!h)return '';
+ var s=h.sourceName||'来源';
+ var d=h.date?' · '+h.date:'';
+ return '<div style="font-size:11px;color:#9AA0A6;margin-top:3px">🔗 '+esc(s)+d+(h.source?' · 点击标题直达':'')+'</div>';
+}
+function loadDailyHot(){
+ var after=function(){updateStats();};
+ var fallback=function(){UI.dailyHot=PRELOAD.asmrHot||null;renderHomeDailyHot();renderFlow();after();};
+ if(location.protocol==='file:'){fallback();return}
+ fetch('data/daily_hot.json?_='+Date.now())
+ .then(function(r){return r.json()})
+ .then(function(j){UI.dailyHot=j;renderHomeDailyHot();renderFlow();after();})
+ .catch(fallback);
+}
+function dailyHotItems(){
+ if(UI.dailyHot&&UI.dailyHot.items&&UI.dailyHot.items.length)return UI.dailyHot;
+ return PRELOAD.asmrHot||{items:[],insights:[]};
+}
+function renderHomeDailyHot(){
+ var el=$id('homeDailyHot');if(!el)return;
+ var d=dailyHotItems();
+ var items=(d.items||[]).slice(0,3);
+ var html='<h3>今日热点 <span class="tag">'+esc(d.trackName||'演绎类吃播 ASMR')+'</span><span style="font-weight:400;font-size:11px;color:var(--sub);margin-left:6px">'+esc(d.date||todayStr())+'</span></h3>';
+ if(!items.length){
+  html+='<div class="empty">暂无今日热点，点击「刷新热点」或去「灵感 → 灵感流」导入。</div>';
+ }else{
+  html+=items.map(function(h,i){
+   var link=hotSourceUrl(h);
+   return '<div class="hotitem" style="cursor:pointer" onclick="openDailyHotModal('+i+')"><div class="rk">'+(i+1)+'</div><div class="bd"><a class="hot-link" href="'+link+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+esc(h.topic)+'</a><div class="m" style="margin-top:4px"><span class="chip" style="background:'+trackInfo('eatASMR').light+';color:'+trackInfo('eatASMR').color+'">'+esc(h.platform||'综合')+'</span> <span class="chip n">'+esc(h.stage)+'</span></div><div style="margin-top:6px">'+heatBar(h.heat)+'</div>'+hotSourceLine(h)+'</div><div class="heat" style="font-size:12px;font-weight:600;color:var(--blueDeep)">'+h.heat+'</div></div>';
+  }).join('');
+ }
+ html+='<div class="btnrow" style="margin-top:10px"><button class="btn mini" onclick="openDailyHotModal()">查看全部 & 导入灵感库</button><button class="btn mini ghost" onclick="openDailyHotFile()">导入本地 daily_hot.json</button></div>';
+ el.innerHTML=html;
+}
+function openDailyHotModal(idx){
+ var d=dailyHotItems();
+ var items=d.items||[];
+ var html='<h3>今日热点 · '+esc(d.trackName||'演绎类吃播 ASMR')+' <span class="tag">'+esc(d.date||todayStr())+'</span></h3>';
+ html+='<p style="font-size:12px;color:var(--sub);margin-bottom:10px">来源：'+(d.sources||['小红书','抖音','B站']).join(' / ')+'。看到可拍的 → 点「导入这条」进灵感库。</p>';
+ html+=items.map(function(h,i){
+  var link=hotSourceUrl(h);
+  var searchLink=hotSearchUrl(h.platform,h.topic);
+  return '<div class="card" style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px"><div><h4 style="margin:0 0 4px 0"><a class="hot-link" href="'+link+'" target="_blank" rel="noopener">'+esc(h.topic)+'</a> <span class="chip" style="background:'+trackInfo('eatASMR').light+';color:'+trackInfo('eatASMR').color+'">'+esc(h.platform||'综合')+'</span> <span class="chip n">'+esc(h.stage)+'</span></h4>'+hotSourceLine(h)+'<div style="font-size:12px;color:var(--sub);line-height:1.6;margin-top:4px">'+esc(h.note)+'</div></div><div class="heat" style="font-size:14px;font-weight:700;color:var(--blueDeep);white-space:nowrap">'+h.heat+'°</div></div><div style="margin-top:8px;font-size:12px;color:#4A90D9">💡 可拍：'+esc(h.action)+'</div><div class="btnrow" style="margin-top:8px"><button class="btn mini" onclick="importDailyHotItem('+i+')">导入这条</button><a class="btn mini ghost" href="'+link+'" target="_blank" rel="noopener" style="text-decoration:none">打开来源链接</a><a class="btn mini ghost" href="'+searchLink+'" target="_blank" rel="noopener" style="text-decoration:none">去 '+esc(h.platform||'综合')+' 搜</a></div></div>';
+ }).join('');
+ if(d.insights&&d.insights.length){
+  html+='<div class="warnbox"><b>趋势洞察</b><br>'+d.insights.map(function(ins){return '· '+esc(ins)}).join('<br>')+'</div>';
+ }
+ html+='<div class="btnrow"><button class="btn mini" onclick="importDailyHotAll()">全部导入灵感库</button><button class="btn mini ghost" onclick="closeModal()">关闭</button></div>';
+ openModal(html);
+}
+function importDailyHotItem(i){
+ var d=dailyHotItems();var h=d.items[i];if(!h)return;
+ var text='【今日热点】'+h.topic+'：'+h.note+'（可拍：'+h.action+'）';
+ if(state.inspirations.some(function(x){return x.text.indexOf(h.topic)>-1})){toast('这条已在灵感库');return}
+ state.inspirations.push({id:uid(),text:text,track:'eatASMR',src:'每日热点·'+(h.platform||'综合'),fromHot:h.topic,time:todayStr()});
+ saveState();renderFlow();renderLib();toast('已导入灵感库');
+}
+function importDailyHotAll(){
+ var d=dailyHotItems();var n=0;
+ d.items.forEach(function(h){
+  var text='【今日热点】'+h.topic+'：'+h.note+'（可拍：'+h.action+'）';
+  if(!state.inspirations.some(function(x){return x.text.indexOf(h.topic)>-1})){
+   state.inspirations.push({id:uid(),text:text,track:'eatASMR',src:'每日热点·'+(h.platform||'综合'),fromHot:h.topic,time:todayStr()});n++;
+  }
+ });
+ saveState();renderFlow();renderLib();closeModal();toast('已导入 '+n+' 条热点到灵感库');
+}
+function openDailyHotFile(){
+ var html='<h3>导入本地每日热点文件</h3><p style="font-size:12px;color:var(--sub);margin-bottom:10px">早报自动搜索会生成 <code>data/daily_hot.json</code>。若你打开的是本地 index.html，可手动选择该文件导入。</p><input type="file" id="dhFile" accept=".json" onchange="importDailyHotFromFile(this)"><div class="btnrow" style="margin-top:12px"><button class="btn mini ghost" onclick="closeModal()">取消</button></div>';
+ openModal(html);
+}
+function importDailyHotFromFile(input){
+ var f=input.files[0];if(!f)return;
+ var reader=new FileReader();
+ reader.onload=function(e){
+  try{
+   var j=JSON.parse(e.target.result);
+   if(!j.items||!j.track){toast('文件格式不对');return}
+   UI.dailyHot=j;renderHomeDailyHot();renderFlow();closeModal();toast('已导入 '+j.items.length+' 条热点');
+  }catch(err){toast('JSON解析失败')}
+ };
+ reader.readAsText(f,'utf-8');
+}
+
+function init(){
+ loadState();initChecklist();seedData();
+ $id('homeDate').textContent=fmtDateCN(todayStr())+' '+weekCN(todayStr());
+ bindNav();
+ renderAll();
+ loadDailyHot();
+ parseRoute();
+}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',init)}
+
+</script>
+</body>
+</html>
