@@ -1,348 +1,358 @@
 {
-  "fetchedAt": "2026-09-07 00:01:44",
+  "fetchedAt": "2026-09-08 00:01:44",
   "sources": {
     "抖音热点榜": [
       {
-        "title": "教育部回应中小学是否须买校服",
-        "link": "https://www.douyin.com/search/%E6%95%99%E8%82%B2%E9%83%A8%E5%9B%9E%E5%BA%94%E4%B8%AD%E5%B0%8F%E5%AD%A6%E6%98%AF%E5%90%A6%E9%A1%BB%E4%B9%B0%E6%A0%A1%E6%9C%8D",
-        "heatText": "1210.8万"
+        "title": "郑钦文2:0战胜斯瓦泰克",
+        "link": "https://www.douyin.com/search/%E9%83%91%E9%92%A6%E6%96%872%3A0%E6%88%98%E8%83%9C%E6%96%AF%E7%93%A6%E6%B3%B0%E5%85%8B",
+        "heatText": "1216.4万"
       },
       {
-        "title": "老派少女的穿搭",
-        "link": "https://www.douyin.com/search/%E8%80%81%E6%B4%BE%E5%B0%91%E5%A5%B3%E7%9A%84%E7%A9%BF%E6%90%AD",
-        "heatText": "1201.9万"
+        "title": "中国女篮20分大胜意大利女篮",
+        "link": "https://www.douyin.com/search/%E4%B8%AD%E5%9B%BD%E5%A5%B3%E7%AF%AE20%E5%88%86%E5%A4%A7%E8%83%9C%E6%84%8F%E5%A4%A7%E5%88%A9%E5%A5%B3%E7%AF%AE",
+        "heatText": "1210.4万"
       },
       {
-        "title": "神仙下凡拜师中国科学家",
-        "link": "https://www.douyin.com/search/%E7%A5%9E%E4%BB%99%E4%B8%8B%E5%87%A1%E6%8B%9C%E5%B8%88%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E5%AE%B6",
-        "heatText": "1191.2万"
+        "title": "信息通信行业发展十五五规划发布",
+        "link": "https://www.douyin.com/search/%E4%BF%A1%E6%81%AF%E9%80%9A%E4%BF%A1%E8%A1%8C%E4%B8%9A%E5%8F%91%E5%B1%95%E5%8D%81%E4%BA%94%E4%BA%94%E8%A7%84%E5%88%92%E5%8F%91%E5%B8%83",
+        "heatText": "1209.1万"
       },
       {
-        "title": "中国女篮加时险胜捷克女篮",
-        "link": "https://www.douyin.com/search/%E4%B8%AD%E5%9B%BD%E5%A5%B3%E7%AF%AE%E5%8A%A0%E6%97%B6%E9%99%A9%E8%83%9C%E6%8D%B7%E5%85%8B%E5%A5%B3%E7%AF%AE",
-        "heatText": "1183.7万"
-      },
-      {
-        "title": "中超天津津门虎2:1浙江队",
-        "link": "https://www.douyin.com/search/%E4%B8%AD%E8%B6%85%E5%A4%A9%E6%B4%A5%E6%B4%A5%E9%97%A8%E8%99%8E2%3A1%E6%B5%99%E6%B1%9F%E9%98%9F",
-        "heatText": "1116.7万"
-      },
-      {
-        "title": "ChinaGT就比赛碰撞起火致歉",
-        "link": "https://www.douyin.com/search/ChinaGT%E5%B0%B1%E6%AF%94%E8%B5%9B%E7%A2%B0%E6%92%9E%E8%B5%B7%E7%81%AB%E8%87%B4%E6%AD%89",
-        "heatText": "1115.8万"
-      },
-      {
-        "title": "白露节气到",
-        "link": "https://www.douyin.com/search/%E7%99%BD%E9%9C%B2%E8%8A%82%E6%B0%94%E5%88%B0",
-        "heatText": "997.5万"
-      },
-      {
-        "title": "韩女早秋穿什么",
-        "link": "https://www.douyin.com/search/%E9%9F%A9%E5%A5%B3%E6%97%A9%E7%A7%8B%E7%A9%BF%E4%BB%80%E4%B9%88",
-        "heatText": "978.2万"
-      },
-      {
-        "title": "赵一鸣好想来被约谈签诚信承诺",
-        "link": "https://www.douyin.com/search/%E8%B5%B5%E4%B8%80%E9%B8%A3%E5%A5%BD%E6%83%B3%E6%9D%A5%E8%A2%AB%E7%BA%A6%E8%B0%88%E7%AD%BE%E8%AF%9A%E4%BF%A1%E6%89%BF%E8%AF%BA",
-        "heatText": "949.4万"
-      },
-      {
-        "title": "厄尔尼诺到底是啥",
-        "link": "https://www.douyin.com/search/%E5%8E%84%E5%B0%94%E5%B0%BC%E8%AF%BA%E5%88%B0%E5%BA%95%E6%98%AF%E5%95%A5",
-        "heatText": "947.2万"
-      },
-      {
-        "title": "张雪机车法国站七冠之战",
-        "link": "https://www.douyin.com/search/%E5%BC%A0%E9%9B%AA%E6%9C%BA%E8%BD%A6%E6%B3%95%E5%9B%BD%E7%AB%99%E4%B8%83%E5%86%A0%E4%B9%8B%E6%88%98",
-        "heatText": "936.8万"
-      },
-      {
-        "title": "你的背包让我走得好缓慢",
-        "link": "https://www.douyin.com/search/%E4%BD%A0%E7%9A%84%E8%83%8C%E5%8C%85%E8%AE%A9%E6%88%91%E8%B5%B0%E5%BE%97%E5%A5%BD%E7%BC%93%E6%85%A2",
-        "heatText": "931.5万"
-      },
-      {
-        "title": "青铜峡大坝开始泄洪系谣言",
-        "link": "https://www.douyin.com/search/%E9%9D%92%E9%93%9C%E5%B3%A1%E5%A4%A7%E5%9D%9D%E5%BC%80%E5%A7%8B%E6%B3%84%E6%B4%AA%E7%B3%BB%E8%B0%A3%E8%A8%80",
-        "heatText": "931.3万"
-      },
-      {
-        "title": "LGD 3:2战胜NIP",
-        "link": "https://www.douyin.com/search/LGD+3%3A2%E6%88%98%E8%83%9CNIP",
-        "heatText": "930.6万"
-      },
-      {
-        "title": "IG 3:1战胜WE",
-        "link": "https://www.douyin.com/search/IG+3%3A1%E6%88%98%E8%83%9CWE",
-        "heatText": "926.9万"
-      },
-      {
-        "title": "才刚开学我就已经想家了",
-        "link": "https://www.douyin.com/search/%E6%89%8D%E5%88%9A%E5%BC%80%E5%AD%A6%E6%88%91%E5%B0%B1%E5%B7%B2%E7%BB%8F%E6%83%B3%E5%AE%B6%E4%BA%86",
-        "heatText": "879.4万"
-      },
-      {
-        "title": "ChinaGT严重事故该谁负责",
-        "link": "https://www.douyin.com/search/ChinaGT%E4%B8%A5%E9%87%8D%E4%BA%8B%E6%95%85%E8%AF%A5%E8%B0%81%E8%B4%9F%E8%B4%A3",
-        "heatText": "877.4万"
-      },
-      {
-        "title": "王一博被撞车宣布退赛",
-        "link": "https://www.douyin.com/search/%E7%8E%8B%E4%B8%80%E5%8D%9A%E8%A2%AB%E6%92%9E%E8%BD%A6%E5%AE%A3%E5%B8%83%E9%80%80%E8%B5%9B",
-        "heatText": "869.4万"
-      },
-      {
-        "title": "伊朗称打击了美军航母和驱逐舰",
-        "link": "https://www.douyin.com/search/%E4%BC%8A%E6%9C%97%E7%A7%B0%E6%89%93%E5%87%BB%E4%BA%86%E7%BE%8E%E5%86%9B%E8%88%AA%E6%AF%8D%E5%92%8C%E9%A9%B1%E9%80%90%E8%88%B0",
-        "heatText": "833.9万"
-      },
-      {
-        "title": "山风山风等等我舞蹈挑战",
-        "link": "https://www.douyin.com/search/%E5%B1%B1%E9%A3%8E%E5%B1%B1%E9%A3%8E%E7%AD%89%E7%AD%89%E6%88%91%E8%88%9E%E8%B9%88%E6%8C%91%E6%88%98",
-        "heatText": "803.4万"
-      },
-      {
-        "title": "西藏泥石流43人遇难519人失联",
-        "link": "https://www.douyin.com/search/%E8%A5%BF%E8%97%8F%E6%B3%A5%E7%9F%B3%E6%B5%8143%E4%BA%BA%E9%81%87%E9%9A%BE519%E4%BA%BA%E5%A4%B1%E8%81%94",
-        "heatText": "787.7万"
-      },
-      {
-        "title": "我们都被困在这寂寞的夜晚",
-        "link": "https://www.douyin.com/search/%E6%88%91%E4%BB%AC%E9%83%BD%E8%A2%AB%E5%9B%B0%E5%9C%A8%E8%BF%99%E5%AF%82%E5%AF%9E%E7%9A%84%E5%A4%9C%E6%99%9A",
-        "heatText": "785.8万"
-      },
-      {
-        "title": "首届脆门零食大赛",
-        "link": "https://www.douyin.com/search/%E9%A6%96%E5%B1%8A%E8%84%86%E9%97%A8%E9%9B%B6%E9%A3%9F%E5%A4%A7%E8%B5%9B",
-        "heatText": "778.7万"
-      },
-      {
-        "title": "琵琶曲古风摇",
-        "link": "https://www.douyin.com/search/%E7%90%B5%E7%90%B6%E6%9B%B2%E5%8F%A4%E9%A3%8E%E6%91%87",
-        "heatText": "778.5万"
+        "title": "送你一口秋天味道",
+        "link": "https://www.douyin.com/search/%E9%80%81%E4%BD%A0%E4%B8%80%E5%8F%A3%E7%A7%8B%E5%A4%A9%E5%91%B3%E9%81%93",
+        "heatText": "1208.5万"
       },
       {
         "title": "真正想上大学的是高三的自己",
         "link": "https://www.douyin.com/search/%E7%9C%9F%E6%AD%A3%E6%83%B3%E4%B8%8A%E5%A4%A7%E5%AD%A6%E7%9A%84%E6%98%AF%E9%AB%98%E4%B8%89%E7%9A%84%E8%87%AA%E5%B7%B1",
-        "heatText": "778.3万"
-      },
-      {
-        "title": "穆祉丞来学功夫练武术了",
-        "link": "https://www.douyin.com/search/%E7%A9%86%E7%A5%89%E4%B8%9E%E6%9D%A5%E5%AD%A6%E5%8A%9F%E5%A4%AB%E7%BB%83%E6%AD%A6%E6%9C%AF%E4%BA%86",
-        "heatText": "778.3万"
-      },
-      {
-        "title": "田曦薇网速最快的一次",
-        "link": "https://www.douyin.com/search/%E7%94%B0%E6%9B%A6%E8%96%87%E7%BD%91%E9%80%9F%E6%9C%80%E5%BF%AB%E7%9A%84%E4%B8%80%E6%AC%A1",
-        "heatText": "777.5万"
-      },
-      {
-        "title": "TheShy克烈王",
-        "link": "https://www.douyin.com/search/TheShy%E5%85%8B%E7%83%88%E7%8E%8B",
-        "heatText": "775.8万"
-      },
-      {
-        "title": "当初的愿望实现了吗",
-        "link": "https://www.douyin.com/search/%E5%BD%93%E5%88%9D%E7%9A%84%E6%84%BF%E6%9C%9B%E5%AE%9E%E7%8E%B0%E4%BA%86%E5%90%97",
-        "heatText": "774.2万"
-      },
-      {
-        "title": "用AI拼豆的方式打开旅行",
-        "link": "https://www.douyin.com/search/%E7%94%A8AI%E6%8B%BC%E8%B1%86%E7%9A%84%E6%96%B9%E5%BC%8F%E6%89%93%E5%BC%80%E6%97%85%E8%A1%8C",
-        "heatText": "773.2万"
-      },
-      {
-        "title": "和汪苏泷合唱的女孩上大学了",
-        "link": "https://www.douyin.com/search/%E5%92%8C%E6%B1%AA%E8%8B%8F%E6%B3%B7%E5%90%88%E5%94%B1%E7%9A%84%E5%A5%B3%E5%AD%A9%E4%B8%8A%E5%A4%A7%E5%AD%A6%E4%BA%86",
-        "heatText": "772.7万"
-      },
-      {
-        "title": "歌迷齐喊伍佰演唱会加班",
-        "link": "https://www.douyin.com/search/%E6%AD%8C%E8%BF%B7%E9%BD%90%E5%96%8A%E4%BC%8D%E4%BD%B0%E6%BC%94%E5%94%B1%E4%BC%9A%E5%8A%A0%E7%8F%AD",
-        "heatText": "771.9万"
-      },
-      {
-        "title": "我会找到逆转时间的公式",
-        "link": "https://www.douyin.com/search/%E6%88%91%E4%BC%9A%E6%89%BE%E5%88%B0%E9%80%86%E8%BD%AC%E6%97%B6%E9%97%B4%E7%9A%84%E5%85%AC%E5%BC%8F",
-        "heatText": "769.8万"
+        "heatText": "1108.3万"
       },
       {
         "title": "这个秋天你跑步了吗",
         "link": "https://www.douyin.com/search/%E8%BF%99%E4%B8%AA%E7%A7%8B%E5%A4%A9%E4%BD%A0%E8%B7%91%E6%AD%A5%E4%BA%86%E5%90%97",
-        "heatText": "769.6万"
+        "heatText": "1105.7万"
       },
       {
-        "title": "军训才艺大赏",
-        "link": "https://www.douyin.com/search/%E5%86%9B%E8%AE%AD%E6%89%8D%E8%89%BA%E5%A4%A7%E8%B5%8F",
+        "title": "中国央行连续22个月增持黄金",
+        "link": "https://www.douyin.com/search/%E4%B8%AD%E5%9B%BD%E5%A4%AE%E8%A1%8C%E8%BF%9E%E7%BB%AD22%E4%B8%AA%E6%9C%88%E5%A2%9E%E6%8C%81%E9%BB%84%E9%87%91",
+        "heatText": "943.1万"
+      },
+      {
+        "title": "多地气温将创下立秋后新低",
+        "link": "https://www.douyin.com/search/%E5%A4%9A%E5%9C%B0%E6%B0%94%E6%B8%A9%E5%B0%86%E5%88%9B%E4%B8%8B%E7%AB%8B%E7%A7%8B%E5%90%8E%E6%96%B0%E4%BD%8E",
+        "heatText": "937.0万"
+      },
+      {
+        "title": "一定要试试潮汕鱼饭",
+        "link": "https://www.douyin.com/search/%E4%B8%80%E5%AE%9A%E8%A6%81%E8%AF%95%E8%AF%95%E6%BD%AE%E6%B1%95%E9%B1%BC%E9%A5%AD",
+        "heatText": "908.5万"
+      },
+      {
+        "title": "华为新品发布会 ​",
+        "link": "https://www.douyin.com/search/%E5%8D%8E%E4%B8%BA%E6%96%B0%E5%93%81%E5%8F%91%E5%B8%83%E4%BC%9A+%E2%80%8B",
+        "heatText": "899.3万"
+      },
+      {
+        "title": "秋天的第一件燕麦系卫衣",
+        "link": "https://www.douyin.com/search/%E7%A7%8B%E5%A4%A9%E7%9A%84%E7%AC%AC%E4%B8%80%E4%BB%B6%E7%87%95%E9%BA%A6%E7%B3%BB%E5%8D%AB%E8%A1%A3",
+        "heatText": "793.7万"
+      },
+      {
+        "title": "江西这些涉灾信息不实",
+        "link": "https://www.douyin.com/search/%E6%B1%9F%E8%A5%BF%E8%BF%99%E4%BA%9B%E6%B6%89%E7%81%BE%E4%BF%A1%E6%81%AF%E4%B8%8D%E5%AE%9E",
+        "heatText": "778.8万"
+      },
+      {
+        "title": "官方回应驳船往长江倾倒黑色固体",
+        "link": "https://www.douyin.com/search/%E5%AE%98%E6%96%B9%E5%9B%9E%E5%BA%94%E9%A9%B3%E8%88%B9%E5%BE%80%E9%95%BF%E6%B1%9F%E5%80%BE%E5%80%92%E9%BB%91%E8%89%B2%E5%9B%BA%E4%BD%93",
+        "heatText": "768.7万"
+      },
+      {
+        "title": "小米澎程N90探索版看点总结",
+        "link": "https://www.douyin.com/search/%E5%B0%8F%E7%B1%B3%E6%BE%8E%E7%A8%8BN90%E6%8E%A2%E7%B4%A2%E7%89%88%E7%9C%8B%E7%82%B9%E6%80%BB%E7%BB%93",
+        "heatText": "768.6万"
+      },
+      {
+        "title": "小米新品发布会",
+        "link": "https://www.douyin.com/search/%E5%B0%8F%E7%B1%B3%E6%96%B0%E5%93%81%E5%8F%91%E5%B8%83%E4%BC%9A",
+        "heatText": "768.5万"
+      },
+      {
+        "title": "你来找我吧我不想一个人了",
+        "link": "https://www.douyin.com/search/%E4%BD%A0%E6%9D%A5%E6%89%BE%E6%88%91%E5%90%A7%E6%88%91%E4%B8%8D%E6%83%B3%E4%B8%80%E4%B8%AA%E4%BA%BA%E4%BA%86",
+        "heatText": "768.4万"
+      },
+      {
+        "title": "王子不会拍为4岁白血病女孩圆梦",
+        "link": "https://www.douyin.com/search/%E7%8E%8B%E5%AD%90%E4%B8%8D%E4%BC%9A%E6%8B%8D%E4%B8%BA4%E5%B2%81%E7%99%BD%E8%A1%80%E7%97%85%E5%A5%B3%E5%AD%A9%E5%9C%86%E6%A2%A6",
         "heatText": "768.2万"
       },
       {
-        "title": "宋亚东拿到冠军挑战权",
-        "link": "https://www.douyin.com/search/%E5%AE%8B%E4%BA%9A%E4%B8%9C%E6%8B%BF%E5%88%B0%E5%86%A0%E5%86%9B%E6%8C%91%E6%88%98%E6%9D%83",
-        "heatText": "767.2万"
+        "title": "华为再发布高性能芯片",
+        "link": "https://www.douyin.com/search/%E5%8D%8E%E4%B8%BA%E5%86%8D%E5%8F%91%E5%B8%83%E9%AB%98%E6%80%A7%E8%83%BD%E8%8A%AF%E7%89%87",
+        "heatText": "767.3万"
       },
       {
-        "title": "弹壳盛宇和解",
-        "link": "https://www.douyin.com/search/%E5%BC%B9%E5%A3%B3%E7%9B%9B%E5%AE%87%E5%92%8C%E8%A7%A3",
+        "title": "一组绣球花拍出复古油画感",
+        "link": "https://www.douyin.com/search/%E4%B8%80%E7%BB%84%E7%BB%A3%E7%90%83%E8%8A%B1%E6%8B%8D%E5%87%BA%E5%A4%8D%E5%8F%A4%E6%B2%B9%E7%94%BB%E6%84%9F",
         "heatText": "766.7万"
       },
       {
-        "title": "如果我是德兰西小姐",
-        "link": "https://www.douyin.com/search/%E5%A6%82%E6%9E%9C%E6%88%91%E6%98%AF%E5%BE%B7%E5%85%B0%E8%A5%BF%E5%B0%8F%E5%A7%90",
-        "heatText": "766.6万"
+        "title": "等来了侯明昊的光绘镜头签",
+        "link": "https://www.douyin.com/search/%E7%AD%89%E6%9D%A5%E4%BA%86%E4%BE%AF%E6%98%8E%E6%98%8A%E7%9A%84%E5%85%89%E7%BB%98%E9%95%9C%E5%A4%B4%E7%AD%BE",
+        "heatText": "765.3万"
       },
       {
-        "title": "和平精英地铁逃生真人大片",
-        "link": "https://www.douyin.com/search/%E5%92%8C%E5%B9%B3%E7%B2%BE%E8%8B%B1%E5%9C%B0%E9%93%81%E9%80%83%E7%94%9F%E7%9C%9F%E4%BA%BA%E5%A4%A7%E7%89%87",
-        "heatText": "766.2万"
-      },
-      {
-        "title": "宋亚轩清清库存日常",
-        "link": "https://www.douyin.com/search/%E5%AE%8B%E4%BA%9A%E8%BD%A9%E6%B8%85%E6%B8%85%E5%BA%93%E5%AD%98%E6%97%A5%E5%B8%B8",
-        "heatText": "766.0万"
-      },
-      {
-        "title": "GAI上海演唱会",
-        "link": "https://www.douyin.com/search/GAI%E4%B8%8A%E6%B5%B7%E6%BC%94%E5%94%B1%E4%BC%9A",
-        "heatText": "765.4万"
-      },
-      {
-        "title": "锐评弹壳BossLife",
-        "link": "https://www.douyin.com/search/%E9%94%90%E8%AF%84%E5%BC%B9%E5%A3%B3BossLife",
+        "title": "田曦薇请保持这个更新速度",
+        "link": "https://www.douyin.com/search/%E7%94%B0%E6%9B%A6%E8%96%87%E8%AF%B7%E4%BF%9D%E6%8C%81%E8%BF%99%E4%B8%AA%E6%9B%B4%E6%96%B0%E9%80%9F%E5%BA%A6",
         "heatText": "765.2万"
       },
       {
-        "title": "15万层心之钢蒙多太拽了",
-        "link": "https://www.douyin.com/search/15%E4%B8%87%E5%B1%82%E5%BF%83%E4%B9%8B%E9%92%A2%E8%92%99%E5%A4%9A%E5%A4%AA%E6%8B%BD%E4%BA%86",
-        "heatText": "15万"
+        "title": "中戏迎新晚会太权威了",
+        "link": "https://www.douyin.com/search/%E4%B8%AD%E6%88%8F%E8%BF%8E%E6%96%B0%E6%99%9A%E4%BC%9A%E5%A4%AA%E6%9D%83%E5%A8%81%E4%BA%86",
+        "heatText": "765.2万"
       },
       {
-        "title": "宝石老舅演唱会打卡",
-        "link": "https://www.douyin.com/search/%E5%AE%9D%E7%9F%B3%E8%80%81%E8%88%85%E6%BC%94%E5%94%B1%E4%BC%9A%E6%89%93%E5%8D%A1",
-        "heatText": "765.1万"
-      },
-      {
-        "title": "兰香如故好多瓜啊",
-        "link": "https://www.douyin.com/search/%E5%85%B0%E9%A6%99%E5%A6%82%E6%95%85%E5%A5%BD%E5%A4%9A%E7%93%9C%E5%95%8A",
-        "heatText": "764.9万"
-      },
-      {
-        "title": "龙餐馆赛夫拍完离别戏没走出来",
-        "link": "https://www.douyin.com/search/%E9%BE%99%E9%A4%90%E9%A6%86%E8%B5%9B%E5%A4%AB%E6%8B%8D%E5%AE%8C%E7%A6%BB%E5%88%AB%E6%88%8F%E6%B2%A1%E8%B5%B0%E5%87%BA%E6%9D%A5",
-        "heatText": "764.4万"
-      },
-      {
-        "title": "火影圈迎来创大版五影会谈",
-        "link": "https://www.douyin.com/search/%E7%81%AB%E5%BD%B1%E5%9C%88%E8%BF%8E%E6%9D%A5%E5%88%9B%E5%A4%A7%E7%89%88%E4%BA%94%E5%BD%B1%E4%BC%9A%E8%B0%88",
-        "heatText": "764.4万"
-      },
-      {
-        "title": "泡椒美食唤醒我的舌尖味蕾",
-        "link": "https://www.douyin.com/search/%E6%B3%A1%E6%A4%92%E7%BE%8E%E9%A3%9F%E5%94%A4%E9%86%92%E6%88%91%E7%9A%84%E8%88%8C%E5%B0%96%E5%91%B3%E8%95%BE",
-        "heatText": "764.1万"
-      },
-      {
-        "title": "721分盲童郭斌赴长春大学报到",
-        "link": "https://www.douyin.com/search/721%E5%88%86%E7%9B%B2%E7%AB%A5%E9%83%AD%E6%96%8C%E8%B5%B4%E9%95%BF%E6%98%A5%E5%A4%A7%E5%AD%A6%E6%8A%A5%E5%88%B0",
+        "title": "老派少女的穿搭",
+        "link": "https://www.douyin.com/search/%E8%80%81%E6%B4%BE%E5%B0%91%E5%A5%B3%E7%9A%84%E7%A9%BF%E6%90%AD",
         "heatText": "763.6万"
+      },
+      {
+        "title": "国庆出游日常不费力穿搭",
+        "link": "https://www.douyin.com/search/%E5%9B%BD%E5%BA%86%E5%87%BA%E6%B8%B8%E6%97%A5%E5%B8%B8%E4%B8%8D%E8%B4%B9%E5%8A%9B%E7%A9%BF%E6%90%AD",
+        "heatText": "763.6万"
+      },
+      {
+        "title": "小团团版你可能不认识我",
+        "link": "https://www.douyin.com/search/%E5%B0%8F%E5%9B%A2%E5%9B%A2%E7%89%88%E4%BD%A0%E5%8F%AF%E8%83%BD%E4%B8%8D%E8%AE%A4%E8%AF%86%E6%88%91",
+        "heatText": "762.9万"
+      },
+      {
+        "title": "火影古堡萌黄形态可爱捏",
+        "link": "https://www.douyin.com/search/%E7%81%AB%E5%BD%B1%E5%8F%A4%E5%A0%A1%E8%90%8C%E9%BB%84%E5%BD%A2%E6%80%81%E5%8F%AF%E7%88%B1%E6%8D%8F",
+        "heatText": "762.6万"
+      },
+      {
+        "title": "短剧圈秋日团建来了",
+        "link": "https://www.douyin.com/search/%E7%9F%AD%E5%89%A7%E5%9C%88%E7%A7%8B%E6%97%A5%E5%9B%A2%E5%BB%BA%E6%9D%A5%E4%BA%86",
+        "heatText": "762.3万"
+      },
+      {
+        "title": "华为Mate XT 2正式上线",
+        "link": "https://www.douyin.com/search/%E5%8D%8E%E4%B8%BAMate+XT+2%E6%AD%A3%E5%BC%8F%E4%B8%8A%E7%BA%BF",
+        "heatText": "762.0万"
+      },
+      {
+        "title": "胡萝卜须抓住鼹鼠抛向天空",
+        "link": "https://www.douyin.com/search/%E8%83%A1%E8%90%9D%E5%8D%9C%E9%A1%BB%E6%8A%93%E4%BD%8F%E9%BC%B9%E9%BC%A0%E6%8A%9B%E5%90%91%E5%A4%A9%E7%A9%BA",
+        "heatText": "761.7万"
+      },
+      {
+        "title": "酒店都凑不齐的雷霆混搭风装修",
+        "link": "https://www.douyin.com/search/%E9%85%92%E5%BA%97%E9%83%BD%E5%87%91%E4%B8%8D%E9%BD%90%E7%9A%84%E9%9B%B7%E9%9C%86%E6%B7%B7%E6%90%AD%E9%A3%8E%E8%A3%85%E4%BF%AE",
+        "heatText": "761.3万"
+      },
+      {
+        "title": "被清明上河园的幕后诚意圈粉了",
+        "link": "https://www.douyin.com/search/%E8%A2%AB%E6%B8%85%E6%98%8E%E4%B8%8A%E6%B2%B3%E5%9B%AD%E7%9A%84%E5%B9%95%E5%90%8E%E8%AF%9A%E6%84%8F%E5%9C%88%E7%B2%89%E4%BA%86",
+        "heatText": "761.2万"
+      },
+      {
+        "title": "交锋见招拆招全程高能",
+        "link": "https://www.douyin.com/search/%E4%BA%A4%E9%94%8B%E8%A7%81%E6%8B%9B%E6%8B%86%E6%8B%9B%E5%85%A8%E7%A8%8B%E9%AB%98%E8%83%BD",
+        "heatText": "761.2万"
+      },
+      {
+        "title": "姜月初AI拼豆手速比斩妖还快",
+        "link": "https://www.douyin.com/search/%E5%A7%9C%E6%9C%88%E5%88%9DAI%E6%8B%BC%E8%B1%86%E6%89%8B%E9%80%9F%E6%AF%94%E6%96%A9%E5%A6%96%E8%BF%98%E5%BF%AB",
+        "heatText": "761.1万"
+      },
+      {
+        "title": "迪迦奥特曼30周年",
+        "link": "https://www.douyin.com/search/%E8%BF%AA%E8%BF%A6%E5%A5%A5%E7%89%B9%E6%9B%BC30%E5%91%A8%E5%B9%B4",
+        "heatText": "761.1万"
+      },
+      {
+        "title": "小米18Fold正式发布",
+        "link": "https://www.douyin.com/search/%E5%B0%8F%E7%B1%B318Fold%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83",
+        "heatText": "756.4万"
+      },
+      {
+        "title": "蘑菇射击挑战都谁通关了",
+        "link": "https://www.douyin.com/search/%E8%98%91%E8%8F%87%E5%B0%84%E5%87%BB%E6%8C%91%E6%88%98%E9%83%BD%E8%B0%81%E9%80%9A%E5%85%B3%E4%BA%86",
+        "heatText": "753.6万"
+      },
+      {
+        "title": "萌宠深情演唱梦的翅膀",
+        "link": "https://www.douyin.com/search/%E8%90%8C%E5%AE%A0%E6%B7%B1%E6%83%85%E6%BC%94%E5%94%B1%E6%A2%A6%E7%9A%84%E7%BF%85%E8%86%80",
+        "heatText": "751.9万"
+      },
+      {
+        "title": "俄称日本有“病”别传染给他国",
+        "link": "https://www.douyin.com/search/%E4%BF%84%E7%A7%B0%E6%97%A5%E6%9C%AC%E6%9C%89%E2%80%9C%E7%97%85%E2%80%9D%E5%88%AB%E4%BC%A0%E6%9F%93%E7%BB%99%E4%BB%96%E5%9B%BD",
+        "heatText": "746.9万"
+      },
+      {
+        "title": "我承认被鹿晗少年感穿搭帅到了",
+        "link": "https://www.douyin.com/search/%E6%88%91%E6%89%BF%E8%AE%A4%E8%A2%AB%E9%B9%BF%E6%99%97%E5%B0%91%E5%B9%B4%E6%84%9F%E7%A9%BF%E6%90%AD%E5%B8%85%E5%88%B0%E4%BA%86",
+        "heatText": "746.0万"
+      },
+      {
+        "title": "会理石榴果农感谢董宇辉",
+        "link": "https://www.douyin.com/search/%E4%BC%9A%E7%90%86%E7%9F%B3%E6%A6%B4%E6%9E%9C%E5%86%9C%E6%84%9F%E8%B0%A2%E8%91%A3%E5%AE%87%E8%BE%89",
+        "heatText": "740.7万"
+      },
+      {
+        "title": "三角洲彦祖返场时",
+        "link": "https://www.douyin.com/search/%E4%B8%89%E8%A7%92%E6%B4%B2%E5%BD%A6%E7%A5%96%E8%BF%94%E5%9C%BA%E6%97%B6",
+        "heatText": "737.5万"
+      },
+      {
+        "title": "六公主说井柏然的晴朗刚刚开始",
+        "link": "https://www.douyin.com/search/%E5%85%AD%E5%85%AC%E4%B8%BB%E8%AF%B4%E4%BA%95%E6%9F%8F%E7%84%B6%E7%9A%84%E6%99%B4%E6%9C%97%E5%88%9A%E5%88%9A%E5%BC%80%E5%A7%8B",
+        "heatText": "731.8万"
+      },
+      {
+        "title": "我们都被困在这寂寞的夜晚",
+        "link": "https://www.douyin.com/search/%E6%88%91%E4%BB%AC%E9%83%BD%E8%A2%AB%E5%9B%B0%E5%9C%A8%E8%BF%99%E5%AF%82%E5%AF%9E%E7%9A%84%E5%A4%9C%E6%99%9A",
+        "heatText": "730.1万"
+      },
+      {
+        "title": "檀健次穿燕麦系动次打次",
+        "link": "https://www.douyin.com/search/%E6%AA%80%E5%81%A5%E6%AC%A1%E7%A9%BF%E7%87%95%E9%BA%A6%E7%B3%BB%E5%8A%A8%E6%AC%A1%E6%89%93%E6%AC%A1",
+        "heatText": "725.8万"
+      },
+      {
+        "title": "首届脆门零食大赛",
+        "link": "https://www.douyin.com/search/%E9%A6%96%E5%B1%8A%E8%84%86%E9%97%A8%E9%9B%B6%E9%A3%9F%E5%A4%A7%E8%B5%9B",
+        "heatText": "723.5万"
+      },
+      {
+        "title": "郑业成王京花枪对打",
+        "link": "https://www.douyin.com/search/%E9%83%91%E4%B8%9A%E6%88%90%E7%8E%8B%E4%BA%AC%E8%8A%B1%E6%9E%AA%E5%AF%B9%E6%89%93",
+        "heatText": "717.3万"
+      },
+      {
+        "title": "我上班就兰香如故这样",
+        "link": "https://www.douyin.com/search/%E6%88%91%E4%B8%8A%E7%8F%AD%E5%B0%B1%E5%85%B0%E9%A6%99%E5%A6%82%E6%95%85%E8%BF%99%E6%A0%B7",
+        "heatText": "713.8万"
+      },
+      {
+        "title": "生逢其时被小姑钞能力爽到了",
+        "link": "https://www.douyin.com/search/%E7%94%9F%E9%80%A2%E5%85%B6%E6%97%B6%E8%A2%AB%E5%B0%8F%E5%A7%91%E9%92%9E%E8%83%BD%E5%8A%9B%E7%88%BD%E5%88%B0%E4%BA%86",
+        "heatText": "707.5万"
+      },
+      {
+        "title": "徐明浩SCN万人合唱",
+        "link": "https://www.douyin.com/search/%E5%BE%90%E6%98%8E%E6%B5%A9SCN%E4%B8%87%E4%BA%BA%E5%90%88%E5%94%B1",
+        "heatText": "704.1万"
+      },
+      {
+        "title": "陈哲远ALD1跳正太扭腰",
+        "link": "https://www.douyin.com/search/%E9%99%88%E5%93%B2%E8%BF%9CALD1%E8%B7%B3%E6%AD%A3%E5%A4%AA%E6%89%AD%E8%85%B0",
+        "heatText": "702.3万"
       }
     ],
     "抖音美食榜": [
       {
-        "title": "希望所有人一切都安好，福建加油！",
-        "link": "https://www.douyin.com/video/7681960714827447130",
-        "heatText": "25386894次播放"
+        "title": "梅尼耶婚礼蛋糕！！！ @梅尼耶（9.5号🎎）",
+        "link": "https://www.douyin.com/video/7682036713795146478",
+        "heatText": "20545365次播放"
+      },
+      {
+        "title": "如果幸福是一道，香菜炒牛肉。#香菜炒牛肉 #家常菜 #在家做美食",
+        "link": "https://www.douyin.com/video/7682024667829865286",
+        "heatText": "18926841次播放"
       },
       {
         "title": "外面的快餐不一定有家里的剩菜好吃#家庭煮男#夫妻",
         "link": "https://www.douyin.com/video/7681628228695563761",
-        "heatText": "16958675次播放"
+        "heatText": "8378054次播放"
       },
       {
-        "title": "避雷…. #当代女性精神状态",
-        "link": "https://www.douyin.com/video/7681677794505880418",
-        "heatText": "9852304次播放"
+        "title": "希望所有人一切都安好，福建加油！",
+        "link": "https://www.douyin.com/video/7681960714827447130",
+        "heatText": "7915743次播放"
       },
       {
-        "title": "开了340公里，从成都吃到重庆，看看到底谁更辣 #零跑B01#成都冒菜#重庆火锅",
-        "link": "https://www.douyin.com/video/7677842311624576163",
-        "heatText": "8838309次播放"
+        "title": "在镇江吃弗兰克推荐的「鸭血粉丝汤」～一口就被惊艳到 #特别乌啦啦 #心动打卡指南 #好好吃饭 #人间烟火",
+        "link": "https://www.douyin.com/video/7682037516211473715",
+        "heatText": "6864722次播放"
       },
       {
-        "title": "得加钱#全网最卑微老板娘#搞笑#老板与员工的日常",
-        "link": "https://www.douyin.com/video/7681594595872839823",
-        "heatText": "6945903次播放"
+        "title": "驾，这班可尔坏我好事，今天就拿黄膘牛排当个早餐，过俩天就要搬到冬牧场了，赶紧收拾一下#黄膘牛排 #草原美食 #察八旗 #新农人计划2026",
+        "link": "https://www.douyin.com/video/7681885272263493096",
+        "heatText": "6459494次播放"
       },
       {
-        "title": "黑龙江伊春吃特色山货，看看3人要花多少？ #人间烟火 #伊春 #山货 #野菜 #菌子",
-        "link": "https://www.douyin.com/video/7681971428958260506",
-        "heatText": "6343519次播放"
+        "title": "挑战广州大盘菜，必须一人2个菜 #大盘菜#广州美食",
+        "link": "https://www.douyin.com/video/7681979374762044770",
+        "heatText": "6068210次播放"
+      },
+      {
+        "title": "苏州大娘街头卖泡泡馄饨，6元50个，一年要包三头猪，凭手艺在苏州买了几套房，人间烟火气，最抚凡人心。#苏州美食 #寻味烟火气 #大娘还是你大娘",
+        "link": "https://www.douyin.com/video/7682252315642163109",
+        "heatText": "5711842次播放"
       },
       {
         "title": "这个质量你要我这个价钱？！",
         "link": "https://www.douyin.com/video/7681484283885653267",
-        "heatText": "5914507次播放"
+        "heatText": "5478616次播放"
       },
       {
-        "title": "沉浸体验30岁男保姆在家给女老板花288自制米其林大餐#日常vlog#情侣#男保姆#舒肤佳山茶花",
-        "link": "https://www.douyin.com/video/7676739142860165194",
-        "heatText": "5837466次播放"
+        "title": "来看一个羊肉店老板在上海，沉浸式参加一周一度“国际羊肉日”#国际羊肉日#羊肉面#佬居羊肉面#上海美食#热气羊肉",
+        "link": "https://www.douyin.com/video/7682339877123982258",
+        "heatText": "5067036次播放"
       },
       {
-        "title": "负鼠怎么都没想到，直接栽在了网友这一餐上 #负鼠 #搞笑 #抽象 #万万想不到",
-        "link": "https://www.douyin.com/video/7681608894095035675",
-        "heatText": "5545161次播放"
+        "title": "合肥开盲盒： 上错花轿嫁对郎，入错餐厅吃对粮 #古天乐喝古井天天乐#年份原浆品质升级#二百者也#人间烟火",
+        "link": "https://www.douyin.com/video/7681751295765548297",
+        "heatText": "4887267次播放"
+      },
+      {
+        "title": "遇到一位特殊的女孩在太原的街头摆摊， 特别坚强的一个女孩子，努力生活自食其力，我们拿刮刮乐听听她的故事#刮刮乐 #远哥刮刮乐换饭 #励志 #感动瞬间 #人间百态",
+        "link": "https://www.douyin.com/video/7681926495593450788",
+        "heatText": "4862965次播放"
+      },
+      {
+        "title": "别人说他总在没苦硬吃的路上，他只是选择 达则兼济天下#吴梓濠 #福建 #台风 #莆田灾情 #救灾",
+        "link": "https://www.douyin.com/video/7682313861621370122",
+        "heatText": "4788886次播放"
+      },
+      {
+        "title": "不知道麦当劳那些破早餐到底在贵什么？吃了这汉堡，告别赛里木湖 #汉堡#中国菜#美食#满级吃商通关赛#美味",
+        "link": "https://www.douyin.com/video/7682103002156567851",
+        "heatText": "4759400次播放"
+      },
+      {
+        "title": "原来中医理疗的风已经吹到小猫届了#猫咪 #中医 #万万没想到 #萌宠 #可爱",
+        "link": "https://www.douyin.com/video/7681759295125359922",
+        "heatText": "4610555次播放"
+      },
+      {
+        "title": "和潮汕两家现象级餐饮老板约个宵夜！#来驾啊#饮过这杯才算归来 #马爹利名士 #马爹利",
+        "link": "https://www.douyin.com/video/7679725916309703982",
+        "heatText": "4453207次播放"
+      },
+      {
+        "title": "今天去给粉丝出婚车送祝福，蹭饭蹭饭",
+        "link": "https://www.douyin.com/video/7682099085461021096",
+        "heatText": "4446498次播放"
+      },
+      {
+        "title": "这是真立体拼豆！也是真竹子！ 拼豆已经进化到这种地步了？ #满级吃商通关赛 #拼豆美食 #舒肤佳竹子 #舒肤佳沐浴露 #我的轻盈一身",
+        "link": "https://www.douyin.com/video/7671182198485142799",
+        "heatText": "4305110次播放"
       },
       {
         "title": "幸福在当下，眼中景，碗中餐，身边人🫶 小小非遗传承人给大家送情人节祝福啦#非遗人给宇宙的情书#百young非遗计划#我有我的七夕仪式感#花篮#七夕",
         "link": "https://www.douyin.com/video/7675303403560658661",
-        "heatText": "5288073次播放"
+        "heatText": "4053907次播放"
       },
       {
-        "title": "给工友们做大骨头 炖烂糊了，嘎嘎香！#dd小水 #工地盒饭 #记录在工地上的日子",
-        "link": "https://www.douyin.com/video/7681683191024038464",
-        "heatText": "5149695次播放"
-      },
-      {
-        "title": "复制链接打开剪映即可做同款 #ikun #蔡徐坤",
-        "link": "https://www.douyin.com/video/7681672559570015345",
-        "heatText": "5068563次播放"
-      },
-      {
-        "title": "口语化简易化的文化传播不好吗 #巴西funk #学功夫练武术 #概念黁 #kungfujumpstyle #学功夫练武术舞蹈挑战",
-        "link": "https://www.douyin.com/video/7681930253597428998",
-        "heatText": "4889255次播放"
-      },
-      {
-        "title": "我的前半生，找小三但韩国财阀大姨版 #即梦AI创作者成长计划 #我的前半生 #AI创作浪潮计划 #AI短片",
-        "link": "https://www.douyin.com/video/7681991907911716096",
-        "heatText": "4594444次播放"
-      },
-      {
-        "title": "有一种无能为力，是再也没有勇气去面对。不是懦弱，不是胆怯，是再也没有借口真情表露。",
-        "link": "https://www.douyin.com/video/7679703120243096475",
-        "heatText": "3927848次播放"
-      },
-      {
-        "title": "上海漂亮饭vs街头一碗面，都是米其林级的好吃？ #玲你看世界#唯品会秋上新 #大牌衣服3折买#原来你也是超V@唯品会",
-        "link": "https://www.douyin.com/video/7679740962666499374",
-        "heatText": "3875213次播放"
-      },
-      {
-        "title": "在山东烟台小巷子里吃牟平烧烤，真的夯爆了！猪肉和海鲜的绝美搭配#烟台美食#牟平烧烤#山东美食",
-        "link": "https://www.douyin.com/video/7681575799988899954",
-        "heatText": "3837833次播放"
-      },
-      {
-        "title": "好吃到流泪‼️简单到有手就会的糯米蒸排骨 #排骨做法 #糯米蒸排骨 #美食教程",
-        "link": "https://www.douyin.com/video/7681482315265369721",
-        "heatText": "3567560次播放"
-      },
-      {
-        "title": "“集中精力，快速通过” #合肥高架 #德国高速 #合肥",
-        "link": "https://www.douyin.com/video/7680750463750393088",
-        "heatText": "3507646次播放"
+        "title": "红烧鱼 红烧鱼重度爱好者😂😂#红烧鱼 #鱼的做法 #铁锅煎鱼 #煎鱼怎么不粘锅不掉皮 #铁锅煎鱼",
+        "link": "https://www.douyin.com/video/7681631600568475057",
+        "heatText": "3941147次播放"
       }
     ],
     "B站美食区排行榜": [
@@ -1051,47 +1061,39 @@
       {
         "title": "【Boki】魔鬼辣烤翅 + 酱料炸鸡吃播",
         "author": "Eat_with_Boki",
-        "play": 305397,
-        "danmaku": 680,
+        "play": 308917,
+        "danmaku": 683,
         "link": "http://www.bilibili.com/video/av117052824161278",
         "pubdate": "2026-08-11"
       },
       {
         "title": "【Boki】封神口感的火鸡面包吃播🔥",
         "author": "Eat_with_Boki",
-        "play": 136434,
-        "danmaku": 464,
+        "play": 141378,
+        "danmaku": 469,
         "link": "http://www.bilibili.com/video/av117081949405209",
         "pubdate": "2026-08-14"
       },
       {
         "title": "豪华马克定食！",
         "author": "大宸开饭了",
-        "play": 128148,
-        "danmaku": 233,
+        "play": 129354,
+        "danmaku": 234,
         "link": "http://www.bilibili.com/video/av117116325987558",
         "pubdate": "2026-08-18"
       },
       {
         "title": "【Boki】外酥爆汁炸猪蹄吃播🍖",
         "author": "Eat_with_Boki",
-        "play": 110957,
+        "play": 113611,
         "danmaku": 220,
         "link": "http://www.bilibili.com/video/av117087217389128",
         "pubdate": "2026-08-16"
       },
       {
-        "title": "【Boki】麻辣香锅+炸酱面++锅包肉🌶️",
-        "author": "Eat_with_Boki",
-        "play": 108294,
-        "danmaku": 314,
-        "link": "http://www.bilibili.com/video/av117052673099492",
-        "pubdate": "2026-08-08"
-      },
-      {
         "title": "【Boki】各类爆汁火鸡味香肠重口味吃播🔥",
         "author": "Eat_with_Boki",
-        "play": 103388,
+        "play": 105842,
         "danmaku": 269,
         "link": "http://www.bilibili.com/video/av117087250943588",
         "pubdate": "2026-08-13"
@@ -1099,39 +1101,47 @@
       {
         "title": "【Boki】辣爽嫩豆腐泡面吃播🍜",
         "author": "Eat_with_Boki",
-        "play": 94211,
-        "danmaku": 171,
+        "play": 95934,
+        "danmaku": 172,
         "link": "http://www.bilibili.com/video/av117115788985380",
         "pubdate": "2026-08-21"
       },
       {
-        "title": "【Boki】浓郁拉丝芝士汉堡披萨搭配火鸡面",
-        "author": "Eat_with_Boki",
-        "play": 94002,
-        "danmaku": 305,
-        "link": "http://www.bilibili.com/video/av117052773826614",
-        "pubdate": "2026-08-09"
-      },
-      {
-        "title": "【Boki】各种泡面一次性吃播🍜",
-        "author": "Eat_with_Boki",
-        "play": 90901,
-        "danmaku": 290,
-        "link": "http://www.bilibili.com/video/av117081630836322",
-        "pubdate": "2026-08-17"
-      },
-      {
         "title": "沉浸式给小猫揍饭",
         "author": "权威懒大王TV",
-        "play": 89792,
-        "danmaku": 241,
+        "play": 95142,
+        "danmaku": 246,
         "link": "http://www.bilibili.com/video/av117172193990712",
         "pubdate": "2026-08-28"
       },
       {
+        "title": "【Boki】浓郁拉丝芝士汉堡披萨搭配火鸡面",
+        "author": "Eat_with_Boki",
+        "play": 95000,
+        "danmaku": 308,
+        "link": "http://www.bilibili.com/video/av117052773826614",
+        "pubdate": "2026-08-09"
+      },
+      {
+        "title": "【Boki】鲜虾狂欢宴！🦐",
+        "author": "Eat_with_Boki",
+        "play": 93640,
+        "danmaku": 113,
+        "link": "http://www.bilibili.com/video/av117187914237958",
+        "pubdate": "2026-09-01"
+      },
+      {
+        "title": "【Boki】各种泡面一次性吃播🍜",
+        "author": "Eat_with_Boki",
+        "play": 92391,
+        "danmaku": 291,
+        "link": "http://www.bilibili.com/video/av117081630836322",
+        "pubdate": "2026-08-17"
+      },
+      {
         "title": "【Boki】大黑虎虾酱虾吃播🦐",
         "author": "Eat_with_Boki",
-        "play": 88226,
+        "play": 89800,
         "danmaku": 190,
         "link": "http://www.bilibili.com/video/av117081496422951",
         "pubdate": "2026-08-12"
@@ -1139,89 +1149,81 @@
       {
         "title": "【00猪】轻语食音 | 椒麻脆脆&amp;三文鱼海蜇头 | 咀嚼音ASMR",
         "author": "小0觉觉猪",
-        "play": 84698,
+        "play": 87207,
         "danmaku": 46,
         "link": "http://www.bilibili.com/video/av117162563997183",
         "pubdate": "2026-08-26"
       },
       {
-        "title": "【Boki】鲜虾狂欢宴！🦐",
-        "author": "Eat_with_Boki",
-        "play": 83213,
-        "danmaku": 108,
-        "link": "http://www.bilibili.com/video/av117187914237958",
-        "pubdate": "2026-09-01"
-      },
-      {
-        "title": "【Lisandra】真假食物咀嚼助眠ASMR🍦🍉🧈 无人声",
-        "author": "撵走坏情绪",
-        "play": 77002,
-        "danmaku": 257,
-        "link": "http://www.bilibili.com/video/av117061531540886",
-        "pubdate": "2026-08-08"
-      },
-      {
         "title": "沉浸式给小猫做饭",
         "author": "权威懒大王TV",
-        "play": 72380,
-        "danmaku": 133,
+        "play": 73375,
+        "danmaku": 135,
         "link": "http://www.bilibili.com/video/av117155198738233",
         "pubdate": "2026-08-25"
       },
       {
+        "title": "【Boki】下饭神器酱蟹 + 酱虾吃播🦀🦐",
+        "author": "Eat_with_Boki",
+        "play": 72922,
+        "danmaku": 111,
+        "link": "http://www.bilibili.com/video/av117115755499010",
+        "pubdate": "2026-08-19"
+      },
+      {
         "title": "【Boki】汉堡王新品吃播🍔",
         "author": "Eat_with_Boki",
-        "play": 71464,
+        "play": 72677,
         "danmaku": 188,
         "link": "http://www.bilibili.com/video/av117115721877733",
         "pubdate": "2026-08-18"
       },
       {
-        "title": "【Boki】下饭神器酱蟹 + 酱虾吃播🦀🦐",
-        "author": "Eat_with_Boki",
-        "play": 70791,
-        "danmaku": 110,
-        "link": "http://www.bilibili.com/video/av117115755499010",
-        "pubdate": "2026-08-19"
-      },
-      {
         "title": "今天吃兔里脊鸡蛋面面！",
         "author": "暴躁花臂甜心",
-        "play": 67651,
+        "play": 67863,
         "danmaku": 9,
         "link": "http://www.bilibili.com/video/av117144578691501",
         "pubdate": "2026-08-23"
       },
       {
+        "title": "【Boki】真炸酱配点心吃播！🥟",
+        "author": "Eat_with_Boki",
+        "play": 62474,
+        "danmaku": 84,
+        "link": "http://www.bilibili.com/video/av117188702766941",
+        "pubdate": "2026-09-03"
+      },
+      {
         "title": "【Boki】BHC芝士粉炸鸡套餐吃播！🍗",
         "author": "Eat_with_Boki",
-        "play": 60273,
+        "play": 61679,
         "danmaku": 109,
         "link": "http://www.bilibili.com/video/av117087183833090",
         "pubdate": "2026-08-15"
       },
       {
-        "title": "【Boki】真炸酱配点心吃播！🥟",
+        "title": "沉浸式给小猫做饭～",
+        "author": "糯叽小猫TV",
+        "play": 54203,
+        "danmaku": 272,
+        "link": "http://www.bilibili.com/video/av117166405978693",
+        "pubdate": "2026-08-27"
+      },
+      {
+        "title": "【Boki】🥓浓郁流心芝士汉堡+炸鸡🍔",
         "author": "Eat_with_Boki",
-        "play": 59226,
-        "danmaku": 79,
-        "link": "http://www.bilibili.com/video/av117188702766941",
-        "pubdate": "2026-09-03"
+        "play": 52675,
+        "danmaku": 115,
+        "link": "http://www.bilibili.com/video/av117119849071782",
+        "pubdate": "2026-08-25"
       }
     ],
     "B站搜索_沉浸式吃播_近30天按播放": [
       {
-        "title": "大家爱看的追捕者半沉浸式吃播！这期又冰又辣绝了绝了！！",
-        "author": "蛋仔小九九",
-        "play": 279329,
-        "danmaku": 49,
-        "link": "http://www.bilibili.com/video/av117058377485073",
-        "pubdate": "2026-08-08"
-      },
-      {
         "title": "韩式爆辣金针菇来喽",
         "author": "丸子吃饭吧",
-        "play": 260348,
+        "play": 261393,
         "danmaku": 0,
         "link": "http://www.bilibili.com/video/av117120352393467",
         "pubdate": "2026-08-19"
@@ -1229,23 +1231,23 @@
       {
         "title": "《沉浸不沉浸式吃播》",
         "author": "李李真会吃",
-        "play": 195280,
-        "danmaku": 798,
+        "play": 197136,
+        "danmaku": 804,
         "link": "http://www.bilibili.com/video/av117162312277301",
         "pubdate": "2026-08-26"
       },
       {
         "title": "沉浸式猫咪配餐｜今天来吃一块脆甜西瓜",
         "author": "Kitty的餐桌",
-        "play": 187454,
-        "danmaku": 234,
+        "play": 190125,
+        "danmaku": 239,
         "link": "http://www.bilibili.com/video/av117139830736876",
         "pubdate": "2026-08-22"
       },
       {
         "title": "沉浸式吃播",
         "author": "系嚣士啊",
-        "play": 151020,
+        "play": 151560,
         "danmaku": 227,
         "link": "http://www.bilibili.com/video/av117104565161348",
         "pubdate": "2026-08-16"
@@ -1253,15 +1255,15 @@
       {
         "title": "聊聊大家经常问我的问题，后半段弟弟（宫本武藏）沉浸式干汉堡",
         "author": "二姐不想做饭",
-        "play": 106625,
-        "danmaku": 122,
+        "play": 108867,
+        "danmaku": 123,
         "link": "http://www.bilibili.com/video/av117183904488125",
         "pubdate": "2026-08-30"
       },
       {
         "title": "小U在课上沉浸式吃火鸡面披萨🍕和美味的taco~",
         "author": "小U今天吃什么官方号",
-        "play": 103253,
+        "play": 103873,
         "danmaku": 3,
         "link": "http://www.bilibili.com/video/av117160953387107",
         "pubdate": "2026-08-26"
@@ -1269,15 +1271,15 @@
       {
         "title": "沉浸式给小猫揍饭",
         "author": "权威懒大王TV",
-        "play": 89792,
-        "danmaku": 241,
+        "play": 95142,
+        "danmaku": 246,
         "link": "http://www.bilibili.com/video/av117172193990712",
         "pubdate": "2026-08-28"
       },
       {
         "title": "沉浸式体验吃火腿肠 #淀粉砖 #吃货 #沉浸式吃播 #抽个象",
         "author": "大傻爱吃",
-        "play": 81646,
+        "play": 81777,
         "danmaku": 203,
         "link": "http://www.bilibili.com/video/av117076110935703",
         "pubdate": "2026-08-11"
@@ -1285,7 +1287,7 @@
       {
         "title": "景甜高铁吃播，好赏心悦目的一张脸… #景甜 #女明星 #吃播 #vlog",
         "author": "哈哈娱乐丫",
-        "play": 77423,
+        "play": 77789,
         "danmaku": 27,
         "link": "http://www.bilibili.com/video/av117102786643756",
         "pubdate": "2026-08-16"
@@ -1293,7 +1295,7 @@
       {
         "title": "你最喜欢哪个追捕的沉浸式吃播呢？",
         "author": "蛋仔小九九",
-        "play": 75914,
+        "play": 76232,
         "danmaku": 26,
         "link": "http://www.bilibili.com/video/av117078308752372",
         "pubdate": "2026-08-11"
@@ -1301,15 +1303,15 @@
       {
         "title": "沉浸式给小猫做饭",
         "author": "权威懒大王TV",
-        "play": 72380,
-        "danmaku": 133,
+        "play": 73375,
+        "danmaku": 135,
         "link": "http://www.bilibili.com/video/av117155198738233",
         "pubdate": "2026-08-25"
       },
       {
         "title": "大家爱看的追捕者沉浸式吃播来啦！好看爱看！！",
         "author": "蛋仔小九九",
-        "play": 70049,
+        "play": 70917,
         "danmaku": 4,
         "link": "http://www.bilibili.com/video/av117190783142859",
         "pubdate": "2026-09-01"
@@ -1317,7 +1319,7 @@
       {
         "title": "今天吃兔里脊鸡蛋面面！",
         "author": "暴躁花臂甜心",
-        "play": 67651,
+        "play": 67863,
         "danmaku": 9,
         "link": "http://www.bilibili.com/video/av117144578691501",
         "pubdate": "2026-08-23"
@@ -1325,7 +1327,7 @@
       {
         "title": "沉浸式吃播大挑战，越来越上头了",
         "author": "小歪顶呱呱a",
-        "play": 59791,
+        "play": 60407,
         "danmaku": 38,
         "link": "http://www.bilibili.com/video/av117125586884521",
         "pubdate": "2026-08-20"
@@ -1333,7 +1335,7 @@
       {
         "title": "醋多多版东北黏糊麻辣烫+烤肠～",
         "author": "米一吃饱饱",
-        "play": 56223,
+        "play": 57013,
         "danmaku": 68,
         "link": "http://www.bilibili.com/video/av117075976652447",
         "pubdate": "2026-08-11"
@@ -1341,23 +1343,23 @@
       {
         "title": "沉浸式给小猫做饭～",
         "author": "糯叽小猫TV",
-        "play": 53751,
-        "danmaku": 259,
+        "play": 54203,
+        "danmaku": 272,
         "link": "http://www.bilibili.com/video/av117166405978693",
         "pubdate": "2026-08-27"
       },
       {
         "title": "学做吃播的第1927天",
         "author": "青岛大姨爱测评",
-        "play": 49541,
-        "danmaku": 454,
+        "play": 49853,
+        "danmaku": 457,
         "link": "http://www.bilibili.com/video/av117131207249386",
         "pubdate": "2026-08-21"
       },
       {
         "title": "沉浸式剪肉🎧剪一块脆脆无籽冰西瓜🍉给咪吃",
         "author": "金多多爱干饭",
-        "play": 48995,
+        "play": 49288,
         "danmaku": 54,
         "link": "http://www.bilibili.com/video/av117111057876556",
         "pubdate": "2026-08-17"
@@ -1365,16 +1367,24 @@
       {
         "title": "沉浸式给小猫做饭第三天",
         "author": "糯叽小猫TV",
-        "play": 44633,
-        "danmaku": 177,
+        "play": 46403,
+        "danmaku": 178,
         "link": "http://www.bilibili.com/video/av117172177275801",
         "pubdate": "2026-08-28"
+      },
+      {
+        "title": "沉浸式吃冰稀饭+泡菜，最适合夏天的吃法！",
+        "author": "酱酱的治愈屋",
+        "play": 43096,
+        "danmaku": 34,
+        "link": "http://www.bilibili.com/video/av117132935433595",
+        "pubdate": "2026-08-21"
       }
     ]
   },
   "stat": {
-    "抖音热点榜": 49,
-    "抖音美食榜": 19,
+    "抖音热点榜": 50,
+    "抖音美食榜": 20,
     "B站美食区排行榜": 100,
     "B站搜索_ASMR吃播_近30天按播放": 20,
     "B站搜索_沉浸式吃播_近30天按播放": 20
