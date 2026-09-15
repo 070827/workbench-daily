@@ -2,8 +2,11 @@
 """
 云端版：规则挑选热点 → 生成 daily_hot.json（兼容工作台前端格式）
 无 AI 依赖，纯规则 + 模板文案，保证每天稳定产出。
-输入：data/platform_hot_raw.json + data/xhs_hot_raw.json
+输入：data/platform_hot_raw.json
 输出：data/daily_hot.json
+
+注：小红书抓取已停用（2026-09-15）。下方 pick_xhs 函数保留以便日后恢复，
+启用方法：① daily.yml 加回抓取步骤 + puppeteer；② main 里加回 xhs 调用。
 """
 import json, os, re, datetime, argparse
 
@@ -131,17 +134,12 @@ def make_item(p, today):
     if plat == "抖音":
         note = f"抖音实时榜单抓取（{today}），热度 {fmt_wan(wan)}次播放。高播放说明该标题句式/选题方向正吃流量，情绪化表达是抖音美食区标配。"
         action = "套用同款标题句式与选题方向，内容保持奶油清新风，封面突出食物最诱人瞬间，发布时间选 19:00-22:00 晚高峰。"
-    elif plat == "B站":
+    else:  # B站
         author = raw.get("author", "")
         pub = raw.get("pubdate", "")
         note = f"B站官方数据（{author or 'UP主'}，{pub or today} 发布），播放 {fmt_wan(wan)}。该内容在榜单/搜索的头部位置说明选题或系列化打法有效。"
         action = "参考其选题方向，B站吃播吃「系列化+人设」，可用「奶油小厨娘」固定角色做系列化更新，每周固定 3-4 条。"
-    else:
-        author = raw.get("author", "")
-        note = f"小红书搜索最热结果（{author or '作者'}，{today} 抓取），点赞 {fmt_wan(wan)}。小红书吃视觉统一性与情绪价值，颜色系列化/双人沉浸式是顶级流量形态。"
-        action = "对标该笔记的视觉方向，做白色系/奶油系沉浸式吃播系列化更新，标题带「沉浸式/治愈系/奶油系」关键词。"
-    unit = "播放" if plat != "小红书" else "点赞"
-    topic = f"【{plat}真实数据】「{title[:40]}」{fmt_wan(wan)}{unit}：{note.split('。')[0].split('，')[0][:30]}"
+    topic = f"【{plat}真实数据】「{title[:40]}」{fmt_wan(wan)}播放：{note.split('。')[0].split('，')[0][:30]}"
     return {
         "topic": topic,
         "heat": min(98, p["heat"]),
@@ -159,16 +157,12 @@ def make_insights(picks, today):
     ins = []
     dy = [p for p in picks if p["platform"] == "抖音"]
     bl = [p for p in picks if p["platform"] == "B站"]
-    xh = [p for p in picks if p["platform"] == "小红书"]
     if dy:
         top = dy[0]
         ins.append(f"【抖音】今日美食区头部内容「{top['raw'].get('title','')[:24]}」热度 {fmt_wan(top['wan'])}，情绪化标题与互动句式仍是流量密码，可优先拆解标题结构。")
     if bl:
         top = bl[0]
         ins.append(f"【B站】「{top['raw'].get('title','')[:24]}」播放 {fmt_wan(top['wan'])} 居榜首位，系列化+日更仍是 B 站吃播头部打法，建议错位做奶油清新系形成差异化。")
-    if xh:
-        top = xh[0]
-        ins.append(f"【小红书】「{top['raw'].get('title','')[:24]}」点赞 {fmt_wan(top['wan'])} 居搜索最热位，视觉统一性与情绪价值是小红书吃播核心，白色系/奶油系方向已验证有真实流量。")
     ins.append("【视频号】无公开接口未收录，你在微信刷到爆款吃播随手转发或截图给我，我会记录进工作台。")
     return ins
 
@@ -181,7 +175,6 @@ def main():
     today = datetime.date.today().isoformat()
     now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     plat = load('platform_hot_raw.json') or {}
-    xhs = load('xhs_hot_raw.json') or {}
 
     alerts = []
     # 抖音/B站错误检测
@@ -192,10 +185,6 @@ def main():
     picks = []
     picks += pick_douyin(plat.get('sources') or {})
     picks += pick_bili(plat.get('sources') or {})
-    xhs_picks, xhs_err = pick_xhs(xhs)
-    picks += xhs_picks
-    if xhs_err:
-        alerts.append(f"小红书数据未更新：{xhs_err}。今日早报仅含抖音+B站数据，可在电脑开机时让 WorkBuddy 重新导出登录态（对 AI 说「小红书重新登录」）。")
 
     if not picks:
         # 极端情况：全部失败也要生成文件并推送
@@ -210,11 +199,11 @@ def main():
         "date": today,
         "track": "eatASMR",
         "trackName": "演绎类吃播 ASMR",
-        "sources": ["抖音", "B站", "小红书", "视频号"],
+        "sources": ["抖音", "B站", "视频号"],
         "items": items,
         "insights": make_insights(picks, today),
         "updatedAt": now + "+08:00",
-        "searchNote": f"数据来源（{now} 云端自动抓取，100%平台原生真实数据）：①抖音热点榜+美食榜——tophub 聚合站实时榜单，douyin.com 原生视频直链+真实播放量；②B站美食区排行榜+「ASMR吃播」「沉浸式吃播」近30天按播放搜索——B站官方API（wbi签名）；③小红书「ASMR吃播」「沉浸式吃播」搜索最热——登录态 cookies 注入浏览器抓取，xiaohongshu.com 笔记直链+真实点赞数。视频号无公开接口未收录。本文件由 GitHub Actions 云端定时自动生成（规则挑选，非AI解读）。",
+        "searchNote": f"数据来源（{now} 云端自动抓取，100%平台原生真实数据）：①抖音热点榜+美食榜——tophub 聚合站实时榜单，douyin.com 原生视频直链+真实播放量；②B站美食区排行榜+「ASMR吃播」「沉浸式吃播」近30天按播放搜索——B站官方API（wbi签名）。小红书已停用（2026-09-15）。视频号无公开接口未收录。本文件由 GitHub Actions 云端定时自动生成（规则挑选，非AI解读）。",
         "alerts": alerts,
     }
 
