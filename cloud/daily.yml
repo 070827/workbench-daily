@@ -48,7 +48,7 @@ jobs:
 
       # ---- 失败汇总推送（铁律：任何失败都必须第一时间推送）----
       - name: 推送失败提醒
-        if: ${{ steps.fetch.outcome == 'failure' || steps.build.outcome == 'failure' || steps.push.outcome == 'failure' }}
+        if: ${{ failure() }}
         continue-on-error: true
         env:
           PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
@@ -61,6 +61,8 @@ jobs:
         run: |
           git config user.name "workbench-bot"
           git config user.email "workbench-bot@users.noreply.github.com"
+          # 先同步远程（避免并行提交冲突）
+          git pull --rebase --autostash || git pull --rebase
           git add -A data/ index.html 2>/dev/null || git add -A data/
           if ! git diff --cached --quiet; then
             git commit -m "daily data update $(date -u +'%Y-%m-%d %H:%M UTC')"
