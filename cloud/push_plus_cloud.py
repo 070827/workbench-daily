@@ -9,6 +9,19 @@ import json, sys, urllib.request, datetime, os
 
 PUSH_URL = 'https://www.pushplus.plus/send'
 
+# 线上工作台地址（GitHub Pages 托管，推送里作为跳转入口）
+WORKBENCH_URL = 'https://070827.github.io/workbench-daily/'
+
+# 入口按钮（顶部醒目版）
+BTN_TOP = ('<p style="text-align:center;margin:14px 0 18px 0">'
+           '<a href="{url}" style="display:inline-block;padding:11px 30px;background:#07C160;'
+           'color:#ffffff;border-radius:22px;text-decoration:none;font-weight:bold;font-size:15px">'
+           '📊 打开今日工作台</a></p>').format(url=WORKBENCH_URL)
+
+# 入口文字（末尾轻量版）
+LINK_TAIL = ('<a href="{url}" style="color:#07C160;font-weight:bold;text-decoration:none">'
+             '点此打开线上工作台 →</a>').format(url=WORKBENCH_URL)
+
 def get_token():
     tok = os.environ.get('PUSH_PLUS_TOKEN', '')
     if not tok:
@@ -40,6 +53,7 @@ def morning_html():
         source_tip = '数据来源：云端自动抓取（今日无热点数据）'
 
     content = '<h3>早安，文利</h3>'
+    content += BTN_TOP
     content += '<p>已选定【{}】赛道 · 运营期。今日建议：刷 10 分钟热点 + 存 2-3 条灵感 + 推进 1 个选题。</p>'.format(track_name)
     if daily and daily.get('alerts'):
         content += '<h4 style="color:#D93025">⚠️ 今日数据情况（请留意）</h4><ul>'
@@ -60,6 +74,7 @@ def morning_html():
             content += '<li>{}</li>'.format(ins)
         content += '</ul>'
     content += '<p style="color:#888;font-size:12px">{}。线上工作台已同步更新。</p>'.format(source_tip)
+    content += '<p style="text-align:center;color:#888;font-size:12px">' + LINK_TAIL + '</p>'
     return title, content
 
 def send(token, title, content):
@@ -80,7 +95,9 @@ if __name__ == '__main__':
         if len(sys.argv) < 4:
             print('Usage: push_plus_cloud.py alert "标题" "内容"')
             sys.exit(1)
-        print(send(token, sys.argv[2], sys.argv[3]))
+        # 异常推送也附上工作台入口，方便直接查看数据
+        alert_content = '<p>{}</p><p style="text-align:center;margin-top:16px">{}</p>'.format(sys.argv[3], LINK_TAIL)
+        print(send(token, sys.argv[2], alert_content))
     elif mode == 'morning':
         title, content = morning_html()
         print(send(token, title, content))
