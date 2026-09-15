@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-15 03:10:09",
+  "fetchedAt": "2026-09-15 03:11:01",
   "sources": {
     "抖音热点榜": [
       {
@@ -1064,7 +1064,7 @@
       {
         "title": "豪华马克定食！",
         "author": "大宸开饭了",
-        "play": 136816,
+        "play": 136817,
         "danmaku": 242,
         "link": "http://www.bilibili.com/video/av117116325987558",
         "pubdate": "2026-08-18"
@@ -1088,7 +1088,7 @@
       {
         "title": "【Boki】便利店吃播回归！",
         "author": "Eat_with_Boki",
-        "play": 116048,
+        "play": 116050,
         "danmaku": 166,
         "link": "http://www.bilibili.com/video/av117228297129114",
         "pubdate": "2026-09-07"
@@ -1136,7 +1136,7 @@
       {
         "title": "【Boki】汉堡王新品吃播🍔",
         "author": "Eat_with_Boki",
-        "play": 81014,
+        "play": 81017,
         "danmaku": 198,
         "link": "http://www.bilibili.com/video/av117115721877733",
         "pubdate": "2026-08-18"
@@ -1152,7 +1152,7 @@
       {
         "title": "今天吃兔里脊鸡蛋面面！",
         "author": "暴躁花臂甜心",
-        "play": 70867,
+        "play": 70868,
         "danmaku": 9,
         "link": "http://www.bilibili.com/video/av117144578691501",
         "pubdate": "2026-08-23"
@@ -1208,7 +1208,7 @@
       {
         "title": "【Boki】BBQ 牙买加炸鸡盛宴🍗",
         "author": "Eat_with_Boki",
-        "play": 47372,
+        "play": 47376,
         "danmaku": 95,
         "link": "http://www.bilibili.com/video/av117187931016174",
         "pubdate": "2026-08-31"
@@ -1226,7 +1226,7 @@
       {
         "title": "沉浸式猫咪配餐｜今天来吃一块脆甜西瓜",
         "author": "Kitty的餐桌",
-        "play": 213669,
+        "play": 213672,
         "danmaku": 244,
         "link": "http://www.bilibili.com/video/av117139830736876",
         "pubdate": "2026-08-22"
@@ -1242,7 +1242,7 @@
       {
         "title": "沉浸式吃播 - 小众火锅食材！",
         "author": "河马君",
-        "play": 168686,
+        "play": 168927,
         "danmaku": 416,
         "link": "http://www.bilibili.com/video/av117268763646196",
         "pubdate": "2026-09-14"
@@ -1258,7 +1258,7 @@
       {
         "title": "聊聊大家经常问我的问题，后半段弟弟（宫本武藏）沉浸式干汉堡",
         "author": "二姐不想做饭",
-        "play": 127753,
+        "play": 127755,
         "danmaku": 149,
         "link": "http://www.bilibili.com/video/av117183904488125",
         "pubdate": "2026-08-30"
@@ -1298,7 +1298,7 @@
       {
         "title": "大家爱看的追捕者沉浸式吃播来啦！好看爱看！！",
         "author": "蛋仔小九九",
-        "play": 76704,
+        "play": 76706,
         "danmaku": 4,
         "link": "http://www.bilibili.com/video/av117190783142859",
         "pubdate": "2026-09-01"
@@ -1306,10 +1306,18 @@
       {
         "title": "橘猫带娃沉浸式吃大餐！热辣面条大口扫盘，超治愈下饭！",
         "author": "MeowoStories",
-        "play": 76277,
+        "play": 76289,
         "danmaku": 0,
         "link": "http://www.bilibili.com/video/av117232340305236",
         "pubdate": "2026-09-07"
+      },
+      {
+        "title": "今天吃兔里脊鸡蛋面面！",
+        "author": "暴躁花臂甜心",
+        "play": 70868,
+        "danmaku": 9,
+        "link": "http://www.bilibili.com/video/av117144578691501",
+        "pubdate": "2026-08-23"
       },
       {
         "title": "沉浸式吃播大挑战，越来越上头了",
@@ -1362,18 +1370,10 @@
       {
         "title": "橙猫一家火辣吃播｜顶橙子挑战辣到眯眼",
         "author": "MeowoStories",
-        "play": 41133,
+        "play": 41135,
         "danmaku": 2,
         "link": "http://www.bilibili.com/video/av117191387121148",
         "pubdate": "2026-08-31"
-      },
-      {
-        "title": "一大堆烤牙买加风味烤全鸡腿",
-        "author": "Eat_GG",
-        "play": 37552,
-        "danmaku": 115,
-        "link": "http://www.bilibili.com/video/av117127801474403",
-        "pubdate": "2026-08-20"
       }
     ]
   },
